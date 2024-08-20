@@ -1,78 +1,49 @@
-<!DOCTYPE html>
-
-<!-- =========================================================
-* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
-==============================================================
-
-* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
-* Created by: ThemeSelection
-* License: You must have a valid license purchased in order to legally use the theme for your project.
-* Copyright ThemeSelection (https://themeselection.com)
-
-=========================================================
- -->
-<!-- beautify ignore:start -->
 <html
-    lang="en"
-    class="light-style layout-menu-fixed"
-    dir="ltr"
-    data-theme="theme-default"
-    data-assets-path="G:/Project/Designing/html/assets/"
-    data-template="vertical-menu-template-free">
-    <head>
-        <meta charset="utf-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+  lang="en"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="G:/Project/Designing/html/assets"
+  data-template="vertical-menu-template-free"
+>
+<head>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="G:/Project/Designing/html/assets/img/favicon.ico" />
 
-        <title>Placement Plus</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
 
-        <meta name="description" content />
+    <!-- Icons. Uncomment required icon fonts -->
+    <link rel="stylesheet" href="G:/Project/Designing/html/assets/vendor/fonts/boxicons.css" />
 
-        <!-- Favicon -->
-        <link rel="icon" type="image/x-icon"
-            href="G:/Project/Designing/html/assets/img/favicon/favicon.ico" />
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="G:/Project/Designing/html/assets/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="G:/Project/Designing/html/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="G:/Project/Designing/html/assets/css/demo.css" />
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-            rel="stylesheet" />
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="G:/Project/Designing/html/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
 
-        <!-- Icons. Uncomment required icon fonts -->
-        <link rel="stylesheet" href="G:/Project/Designing/html/assets/vendor/fonts/boxicons.css" />
+    <!-- Page CSS -->
 
-        <!-- Core CSS -->
-        <link rel="stylesheet" href="G:/Project/Designing/html/assets/vendor/css/core.css"
-            class="template-customizer-core-css" />
-        <link rel="stylesheet" href="G:/Project/Designing/html/assets/vendor/css/theme-default.css"
-            class="template-customizer-theme-css" />
-        <link rel="stylesheet" href="G:/Project/Designing/html/assets/css/demo.css" />
 
-        <!-- Vendors CSS -->
-        <link rel="stylesheet"
-            href="G:/Project/Designing/html/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <!-- Helpers -->
+    <script src="G:/Project/Designing/html/assets/vendor/js/helpers.js"></script>
 
-        <!-- Page CSS -->
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+  
+    <script src="G:/Project/Designing/html/assets/js/config.js"></script>
 
-        <!-- Helpers -->
-        <script src="G:/Project/Designing/html/assets/vendor/js/helpers.js"></script>
 
-        <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-        <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-        <script src="G:/Project/Designing/html/assets/js/config.js"></script>
-    </head>
+            <!-- Navbar Starts here-->
 
-    <body>
-        <!-- Layout wrapper -->
-        <div class="layout-wrapper layout-content-navbar layout-without-menu">
-            <div class="layout-container">
-                <!-- Layout container -->
-                <div class="layout-page">
-                    <!-- Navbar -->
-
-                    <nav
+                        <nav
                         class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
                         id="layout-navbar">
                         <div class="app-brand demo">
@@ -163,18 +134,21 @@
                             <ul
                                 class="navbar-nav flex-row align-items-center ms-auto">
                                 <!-- Place this tag where you want the button to render. -->
-                                <li class="nav-item lh-1 me-3">
-                                    <a
-                                        class="github-button"
-                                        href="https://github.com/themeselection/sneat-html-admin-template-free"
-                                        data-icon="octicon-star"
-                                        data-size="large"
-                                        data-show-count="true"
-                                        aria-label="Star themeselection/sneat-html-admin-template-free on GitHub">Star</a>
-                                </li>
+                               
+                                <li class="nav-item me-5">Home</li>
+                                <li class="nav-item me-5">About Us</li>
+                                <li class="nav-item me-5">Contact Us</li>
+                                <li class="nav-item me-5">Inquiry</li>
 
+                                <li class="nav-item me-5">
+                                    <button type="button" class="btn btn-primary">
+                                        <i class="bx bx-log-in-circle"></i> 
+                                      Login/Register
+                                    </button>
+                                </li>
+                                
                                 <!-- User -->
-                                <li
+                                <!-- <li
                                     class="nav-item navbar-dropdown dropdown-user dropdown">
                                     <a
                                         class="nav-link dropdown-toggle hide-arrow"
@@ -182,7 +156,7 @@
                                         data-bs-toggle="dropdown">
                                         <div class="avatar avatar-online">
                                             <img
-                                                src="G:/Project/Designing/html/assets/img/avatars/1.png"
+                                                src="./assets/img/avatars/1.png"
                                                 alt
                                                 class="w-px-40 h-auto rounded-circle" />
                                         </div>
@@ -196,7 +170,7 @@
                                                         <div
                                                             class="avatar avatar-online">
                                                             <img
-                                                                src="G:/Project/Designing/html/assets/img/avatars/1.png"
+                                                                src="./assets/img/avatars/1.png"
                                                                 alt
                                                                 class="w-px-40 h-auto rounded-circle" />
                                                         </div>
@@ -254,193 +228,11 @@
                                             </a>
                                         </li>
                                     </ul>
-                                </li>
+                                </li> -->
                                 <!--/ User -->
                             </ul>
                         </div>
                     </nav>
 
-                    <!-- / Navbar -->
-
-                    <!-- Content wrapper -->
-                    <div class="content-wrapper">
-                        <!-- Content -->
-                        <div class="container-xxl flex-grow-1 container-p-y">
-                            <!-- Layout Demo -->
-                            <div class="layout-demo-wrapper">
-                                <div class="layout-demo-placeholder">
-                                    <img
-                                        src="G:/Project/Designing/html/assets/img/layouts/layout-without-menu-light.png"
-                                        class="img-fluid"
-                                        alt="Layout without menu"
-                                        data-app-light-img="layouts/layout-without-menu-light.png"
-                                        data-app-dark-img="layouts/layout-without-menu-dark.png" />
-                                </div>
-                                <div class="layout-demo-info">
-                                    <h4>Layout without Menu (Navigation)</h4>
-                                    <button class="btn btn-primary"
-                                        type="button"
-                                        onclick="history.back()">Go
-                                        Back</button>
-                                </div>
-                            </div>
-                            <!--/ Layout Demo -->
-                        </div>
-                        <!-- / Content -->
-
-                        <!-- Footer -->
-                       
-<footer class="text-center text-lg-start bg-body-tertiary text-muted">
-    <!-- Section: Social media -->
-    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-      <!-- Left -->
-      <div class="me-5 d-none d-lg-block">
-       
-      </div>
-      <!-- Left -->
-  
-      <!-- Right -->
-      <div>
-        <a href="" class="me-4 text-reset">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="" class="me-4 text-reset">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="" class="me-4 text-reset">
-          <i class="fab fa-google"></i>
-        </a>
-        <a href="" class="me-4 text-reset">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="" class="me-4 text-reset">
-          <i class="fab fa-linkedin"></i>
-        </a>
-        <a href="" class="me-4 text-reset">
-          <i class="fab fa-github"></i>
-        </a>
-      </div>
-      <!-- Right -->
-    </section>
-    <!-- Section: Social media -->
-  
-    <!-- Section: Links  -->
-    <section class="">
-      <div class="container text-center text-md-start mt-5">
-        <!-- Grid row -->
-        <div class="row mt-3">
-          <!-- Grid column -->
-          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-            <!-- Content -->
-            <h6 class="text-uppercase fw-bold mb-4">
-              <i class="fas fa-gem me-3"></i>Company name
-            </h6>
-            <p>
-              Here you can use rows and columns to organize your footer content. Lorem ipsum
-              dolor sit amet, consectetur adipisicing elit.
-            </p>
-          </div>
-          <!-- Grid column -->
-  
-          <!-- Grid column -->
-          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-            <!-- Links -->
-            <h6 class="text-uppercase fw-bold mb-4">
-              Products
-            </h6>
-            <p>
-              <a href="#!" class="text-reset">Angular</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">React</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">Vue</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">Laravel</a>
-            </p>
-          </div>
-          <!-- Grid column -->
-  
-          <!-- Grid column -->
-          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-            <!-- Links -->
-            <h6 class="text-uppercase fw-bold mb-4">
-              Useful links
-            </h6>
-            <p>
-              <a href="#!" class="text-reset">Pricing</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">Settings</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">Orders</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">Help</a>
-            </p>
-          </div>
-          <!-- Grid column -->
-  
-          <!-- Grid column -->
-          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-            <!-- Links -->
-            <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-            <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
-            <p>
-              <i class="fas fa-envelope me-3"></i>
-              info@example.com
-            </p>
-            <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
-            <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
-          </div>
-          <!-- Grid column -->
-        </div>
-        <!-- Grid row -->
-      </div>
-    </section>
-    <!-- Section: Links  -->
-  
-    <!-- Copyright -->
-    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-      © 2024 Copyright:
-      <a class="text-reset fw-bold" href="https://mdbootstrap.com/">PlacementPlus.com</a>
-    </div>
-    <!-- Copyright -->
-  </footer>
-  <!-- Footer -->
-                    
-
-                        <div class="content-backdrop fade"></div>
-                    </div>
-                    <!-- Content wrapper -->
-                </div>
-                <!-- / Layout page -->
-            </div>
-        </div>
-        <!-- / Layout wrapper -->
-
-        <!-- Core JS -->
-        <!-- build:js assets/vendor/js/core.js -->
-        <script src="G:/Project/Designing/html/assets/vendor/libs/jquery/jquery.js"></script>
-        <script src="G:/Project/Designing/html/assets/vendor/libs/popper/popper.js"></script>
-        <script src="G:/Project/Designing/html/assets/vendor/js/bootstrap.js"></script>
-        <script
-            src="G:/Project/Designing/html/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-
-        <script src="G:/Project/Designing/html/assets/vendor/js/menu.js"></script>
-        <!-- endbuild -->
-
-        <!-- Vendors JS -->
-
-        <!-- Main JS -->
-        <script src="G:/Project/Designing/html/assets/js/main.js"></script>
-
-        <!-- Page JS -->
-
-        <!-- Place this tag in your head or just before your close body tag. -->
-        <script async defer src="https://buttons.github.io/buttons.js"></script>
-    </body>
-</html>
+                    <!-- / Navbar Ends Here -->
+</head>
