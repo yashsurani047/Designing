@@ -27,8 +27,9 @@
                       <tr>
                         <th>Company Name</th>
                         <th>Job Role</th>
-                        <th>Job Location</th>
+                        <th>Work Mode</th>
                         <th>Ctc</th>
+                        <th>Internship</th> <!-- yes(hover:paid,unpaid),no -->
                         <th>Bond</th>
                         <th>Details</th>
                       </tr>
@@ -85,8 +86,10 @@
                           </div>
                         </td>
                         <td>
+                        </td>
+                        <td>
                           <div>
-                          <a type="button" href="./ComDetails.php" class="btn btn-info">View Details</a>
+                          <a type="button" href="./JobDetails.php" class="btn btn-info">View Details</a>
                         </div>
                       </td>
                       </tr>
@@ -142,8 +145,10 @@
                           </div>
                         </td>
                         <td>
+                        </td>
+                        <td>
                           <div>
-                          <a type="button" href="./ComDetails.php" class="btn btn-info">View Details</a>
+                          <a type="button" href="./JobDetails.php" class="btn btn-info">View Details</a>
                         </div>
                       </td>
                       </tr>
@@ -198,8 +203,10 @@
                           </div>
                         </td>
                         <td>
+                        </td>
+                        <td>
                           <div>
-                          <a type="button" href="./ComDetails.php" class="btn btn-info">View Details</a>
+                          <a type="button" href="./JobDetails.php" class="btn btn-info">View Details</a>
                         </div>
                       </td>
                       </tr>
@@ -256,8 +263,10 @@
                           </div>
                         </td>
                         <td>
+                        </td>
+                        <td>
                           <div>
-                          <a type="button" href="./ComDetails.php" class="btn btn-info">View Details</a>
+                          <a type="button" href="./JobDetails.php" class="btn btn-info">View Details</a>
                         </div>
                       </td>
                       </tr>
