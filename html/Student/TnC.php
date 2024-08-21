@@ -1,26 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
 
-
-<button
-                          type="button"
-                          class="btn btn-primary"
-                          data-bs-toggle="modal"
-                          data-bs-target="#modalScrollable"
-                        >
-                          Option 2
-                        </button>
-                      <div class="modal fade" id="modalScrollable" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="modalScrollable" tabindex="-1" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-scrollable" role="document">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h5 class="modal-title" id="modalScrollableTitle">Modal title</h5>
+                              <h5 class="modal-title" id="modalScrollableTitle">Term&Condition</h5>
                               <button
                                 type="button"
                                 class="btn-close"
@@ -107,15 +90,19 @@
                                 scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
                                 auctor fringilla.
                               </p>
+                             <!-- checkbox -->
+                              <div class="form-check form-check-inline mt-3">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" />
+                            <label class="form-check-label" for="inlineCheckbox1">I Am Agree With Above Terms & Conditions</label>
+                          </div>
+                          <!-- checkbox -->
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                                 Close
                               </button>
-                              <button type="button" class="btn btn-primary">Save changes</button>
+                              <button type="button" class="btn btn-primary disabled">Apply</button>
                             </div>
                           </div>
                         </div>
                       </div>
-</body>
-</html>

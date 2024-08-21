@@ -1,3 +1,6 @@
+<?php include "../functions/basic.php"; ?>
+<?php include "../functions/Student.php"; ?>
+
 <!DOCTYPE html>
 
 <!-- =========================================================
@@ -12,13 +15,10 @@
 =========================================================
  -->
 <!-- beautify ignore:start -->
-<head>
   <!--  Header Starts here-->
-  <?php include "./StudHeader.php";?>
+  <?php headtag(); StudHeader(); ?>
     <!-- Header Ends Here -->
-
-  </head>
-
+    
   <body>
      <!-- Layout wrapper -->
      <div class="layout-wrapper layout-content-navbar layout-without-menu">
@@ -577,7 +577,7 @@
                         <!-- / Content -->
                          
  <!--  Header Starts here-->
-  <?php include "./StudFooter.php";?>
+  <?php Footer(); ?>
  <!-- Header Ends Here -->
 
   </body>
