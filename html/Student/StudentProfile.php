@@ -1,3 +1,6 @@
+<?php include "../functions/basic.php"; ?>
+<?php include "../functions/Student.php"; ?>
+
 <html
   lang="en"
   class="light-style layout-menu-fixed"
@@ -6,49 +9,11 @@
   data-assets-path="assets"
   data-template="vertical-menu-template-free"
 >
-<head>
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon/favicon.ico" />
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="assets/vendor/fonts/boxicons.css" />
-
-    <!-- Core CSS -->
-    <link rel="stylesheet" href="assets/vendor/css/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="assets/css/demo.css" />
-
-    <!-- Vendors CSS -->
-    <link rel="stylesheet" href="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-
-    <!-- Page CSS -->
-
-
-    <!-- Helpers -->
-    <script src="assets/vendor/js/helpers.js"></script>
-
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-  
-    <script src="assets/js/config.js"></script>
-
-
-          
-</head>
-
 
 <body>
 
  <!--  Header Starts here-->
-  <?php include "./StudHeader.php";?>
+  <?php headtag(); StudHeader();?>
     <!-- Header Ends Here -->
 
 <div class="col-xll-6"  >
@@ -134,13 +99,30 @@
                           type="text"
                           id="firstName"
                           name="firstName"
-                          value="John"
+                          placeholder="Enter First Name"
                           autofocus
                         />
                       </div>
                       <div class="mb-3 col-md-6">
                         <label for="lastName" class="form-label">Last Name</label>
-                        <input class="form-control" type="text" name="lastName" id="lastName" value="Doe" />
+                        <input class="form-control" type="text" name="lastName" id="lastName" placeholder="Enter Last Name" />
+                      </div>
+                      <div class="mb-3 col-md-6">
+                        <label for="lastName" class="form-label">Father Name</label>
+                        <input class="form-control" type="text" name="lastName" id="lastName" placeholder="Enter Father Name" />
+                      </div>
+                      <div class="mb-3 col-md-6">
+                        <label class="form-label" for="phoneNumber">Parents Number</label>
+                        <div class="input-group input-group-merge">
+                          <span class="input-group-text">IN (+91)</span>
+                          <input
+                            type="text"
+                            id="phoneNumber"
+                            name="phoneNumber"
+                            class="form-control"
+                            placeholder="90********"
+                          />
+                        </div>
                       </div>
                       <div class="mb-3 col-md-6">
                         <label for="email" class="form-label">E-mail</label>
@@ -149,30 +131,29 @@
                           type="text"
                           id="email"
                           name="email"
-                          value="john.doe@example.com"
-                          placeholder="john.doe@example.com"
+                          placeholder="example@gmail.com"
                         />
                       </div>
                       <div class="mb-3 col-md-6">
-                        <label for="organization" class="form-label">Organization</label>
+                        <label for="organization" class="form-label">Stream</label>
                         <input
                           type="text"
                           class="form-control"
                           id="organization"
                           name="organization"
-                          value="ThemeSelection"
+                          placeholder="MCA"
                         />
                       </div>
                       <div class="mb-3 col-md-6">
                         <label class="form-label" for="phoneNumber">Phone Number</label>
                         <div class="input-group input-group-merge">
-                          <span class="input-group-text">US (+1)</span>
+                          <span class="input-group-text">IN (+91)</span>
                           <input
                             type="text"
                             id="phoneNumber"
                             name="phoneNumber"
                             class="form-control"
-                            placeholder="202 555 0111"
+                            placeholder="90********"
                           />
                         </div>
                       </div>
@@ -182,7 +163,7 @@
                       </div>
                       <div class="mb-3 col-md-6">
                         <label for="state" class="form-label">State</label>
-                        <input class="form-control" type="text" id="state" name="state" placeholder="California" />
+                        <input class="form-control" type="text" id="state" name="state" placeholder="Gujarat" />
                       </div>
                       <div class="mb-3 col-md-6">
                         <label for="zipCode" class="form-label">Zip Code</label>
@@ -191,84 +172,23 @@
                           class="form-control"
                           id="zipCode"
                           name="zipCode"
-                          placeholder="231465"
+                          placeholder="360002"
                           maxlength="6"
                         />
                       </div>
-                      <div class="mb-3 col-md-6">
-                        <label class="form-label" for="country">Country</label>
-                        <select id="country" class="select2 form-select">
-                          <option value="">Select</option>
-                          <option value="Australia">Australia</option>
-                          <option value="Bangladesh">Bangladesh</option>
-                          <option value="Belarus">Belarus</option>
-                          <option value="Brazil">Brazil</option>
-                          <option value="Canada">Canada</option>
-                          <option value="China">China</option>
-                          <option value="France">France</option>
-                          <option value="Germany">Germany</option>
-                          <option value="India">India</option>
-                          <option value="Indonesia">Indonesia</option>
-                          <option value="Israel">Israel</option>
-                          <option value="Italy">Italy</option>
-                          <option value="Japan">Japan</option>
-                          <option value="Korea">Korea, Republic of</option>
-                          <option value="Mexico">Mexico</option>
-                          <option value="Philippines">Philippines</option>
-                          <option value="Russia">Russian Federation</option>
-                          <option value="South Africa">South Africa</option>
-                          <option value="Thailand">Thailand</option>
-                          <option value="Turkey">Turkey</option>
-                          <option value="Ukraine">Ukraine</option>
-                          <option value="United Arab Emirates">United Arab Emirates</option>
-                          <option value="United Kingdom">United Kingdom</option>
-                          <option value="United States">United States</option>
-                        </select>
-                      </div>
+                     
                       <div class="mb-3 col-md-6">
                         <label for="language" class="form-label">Language</label>
                         <select id="language" class="select2 form-select">
                           <option value="">Select Language</option>
                           <option value="en">English</option>
-                          <option value="fr">French</option>
-                          <option value="de">German</option>
-                          <option value="pt">Portuguese</option>
+                          <option value="fr">Gujarati</option>
+                          <option value="de">Hindi</option>
+                          <option value="pt">Sanskrit</option>
                         </select>
                       </div>
-                      <div class="mb-3 col-md-6">
-                        <label for="timeZones" class="form-label">Timezone</label>
-                        <select id="timeZones" class="select2 form-select">
-                          <option value="">Select Timezone</option>
-                          <option value="-12">(GMT-12:00) International Date Line West</option>
-                          <option value="-11">(GMT-11:00) Midway Island, Samoa</option>
-                          <option value="-10">(GMT-10:00) Hawaii</option>
-                          <option value="-9">(GMT-09:00) Alaska</option>
-                          <option value="-8">(GMT-08:00) Pacific Time (US & Canada)</option>
-                          <option value="-8">(GMT-08:00) Tijuana, Baja California</option>
-                          <option value="-7">(GMT-07:00) Arizona</option>
-                          <option value="-7">(GMT-07:00) Chihuahua, La Paz, Mazatlan</option>
-                          <option value="-7">(GMT-07:00) Mountain Time (US & Canada)</option>
-                          <option value="-6">(GMT-06:00) Central America</option>
-                          <option value="-6">(GMT-06:00) Central Time (US & Canada)</option>
-                          <option value="-6">(GMT-06:00) Guadalajara, Mexico City, Monterrey</option>
-                          <option value="-6">(GMT-06:00) Saskatchewan</option>
-                          <option value="-5">(GMT-05:00) Bogota, Lima, Quito, Rio Branco</option>
-                          <option value="-5">(GMT-05:00) Eastern Time (US & Canada)</option>
-                          <option value="-5">(GMT-05:00) Indiana (East)</option>
-                          <option value="-4">(GMT-04:00) Atlantic Time (Canada)</option>
-                          <option value="-4">(GMT-04:00) Caracas, La Paz</option>
-                        </select>
-                      </div>
-                      <div class="mb-3 col-md-6">
-                        <label for="currency" class="form-label">Currency</label>
-                        <select id="currency" class="select2 form-select">
-                          <option value="">Select Currency</option>
-                          <option value="usd">USD</option>
-                          <option value="euro">Euro</option>
-                          <option value="pound">Pound</option>
-                          <option value="bitcoin">Bitcoin</option>
-                        </select>
-                      </div>
+                      
+                    
                     </div>
                     <div class="mt-2">
                       <button type="submit" class="btn btn-primary me-2">Save changes</button>
@@ -282,118 +202,126 @@
         <div class="tab-pane fade" id="navs-justified-profile" role="tabpanel">
             <div class="card">
                 <!-- Notifications -->
-                <h5 class="card-header">Recent Devices</h5>
-                <div class="card-body">
-                  <span
-                    >We need permission from your browser to show notifications.
-                    <span class="notificationRequest"><strong>Request Permission</strong></span></span
-                  >
-                  <div class="error"></div>
-                </div>
-                <div class="table-responsive">
-                  <table class="table table-striped table-borderless border-bottom">
-                    <thead>
-                      <tr>
-                        <th class="text-nowrap">Type</th>
-                        <th class="text-nowrap text-center">✉️ Email</th>
-                        <th class="text-nowrap text-center">🖥 Browser</th>
-                        <th class="text-nowrap text-center">👩🏻‍💻 App</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td class="text-nowrap">New for you</td>
-                        <td>
-                          <div class="form-check d-flex justify-content-center">
-                            <input class="form-check-input" type="checkbox" id="defaultCheck1" checked />
-                          </div>
-                        </td>
-                        <td>
-                          <div class="form-check d-flex justify-content-center">
-                            <input class="form-check-input" type="checkbox" id="defaultCheck2" checked />
-                          </div>
-                        </td>
-                        <td>
-                          <div class="form-check d-flex justify-content-center">
-                            <input class="form-check-input" type="checkbox" id="defaultCheck3" checked />
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="text-nowrap">Account activity</td>
-                        <td>
-                          <div class="form-check d-flex justify-content-center">
-                            <input class="form-check-input" type="checkbox" id="defaultCheck4" checked />
-                          </div>
-                        </td>
-                        <td>
-                          <div class="form-check d-flex justify-content-center">
-                            <input class="form-check-input" type="checkbox" id="defaultCheck5" checked />
-                          </div>
-                        </td>
-                        <td>
-                          <div class="form-check d-flex justify-content-center">
-                            <input class="form-check-input" type="checkbox" id="defaultCheck6" checked />
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="text-nowrap">A new browser used to sign in</td>
-                        <td>
-                          <div class="form-check d-flex justify-content-center">
-                            <input class="form-check-input" type="checkbox" id="defaultCheck7" checked />
-                          </div>
-                        </td>
-                        <td>
-                          <div class="form-check d-flex justify-content-center">
-                            <input class="form-check-input" type="checkbox" id="defaultCheck8" checked />
-                          </div>
-                        </td>
-                        <td>
-                          <div class="form-check d-flex justify-content-center">
-                            <input class="form-check-input" type="checkbox" id="defaultCheck9" />
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="text-nowrap">A new device is linked</td>
-                        <td>
-                          <div class="form-check d-flex justify-content-center">
-                            <input class="form-check-input" type="checkbox" id="defaultCheck10" checked />
-                          </div>
-                        </td>
-                        <td>
-                          <div class="form-check d-flex justify-content-center">
-                            <input class="form-check-input" type="checkbox" id="defaultCheck11" />
-                          </div>
-                        </td>
-                        <td>
-                          <div class="form-check d-flex justify-content-center">
-                            <input class="form-check-input" type="checkbox" id="defaultCheck12" />
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="card-body">
-                  <h6>When should we send you notifications?</h6>
-                  <form action="javascript:void(0);">
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <select id="sendNotification" class="form-select" name="sendNotification">
-                          <option selected>Only when I'm online</option>
-                          <option>Anytime</option>
-                        </select>
-                      </div>
-                      <div class="mt-4">
-                        <button type="submit" class="btn btn-primary me-2">Save changes</button>
-                        <button type="reset" class="btn btn-outline-secondary">Discard</button>
-                      </div>
+                <div class="col-xl">
+                  <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                      <h5 class="mb-0">Qulifications</h5>
                     </div>
-                  </form>
+                    <div class="card-body">
+                      <form>
+                        <div class="mb-3">
+                          <label class="form-label" for="basic-icon-default-fullname">Enter Your 10th Persentage/CGPA</label>
+                          <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-fullname2" class="input-group-text"
+                              ></span>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="basic-icon-default-fullname"
+                              placeholder=""
+                              aria-label=""
+                              aria-describedby="basic-icon-default-fullname2"
+                            />
+                          </div>
+                        </div>
+                        <div class="mb-3">
+                        <h6><label for="formFileMultiple" class="form-label">Upload 10th Marksheet</label></h6>
+                        <input class="form-control" type="file" id="formFileMultiple" multiple />
+                      </div>
+                        <div class="mb-3">
+                          <label class="form-label" for="basic-icon-default-company">Enter Your 12th Persentage/CGPA</label>
+                          <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-company2" class="input-group-text"
+                              ></span>
+                            <input
+                              type="text"
+                              id="basic-icon-default-company"
+                              class="form-control"
+                              placeholder=""
+                              aria-label="ACME Inc."
+                              aria-describedby="basic-icon-default-company2"
+                            />
+                          </div>
+                        </div>
+                        <div class="mb-3">
+                        <h6><label for="formFileMultiple" class="form-label">Upload 12th Marksheet</label></h6>
+                        <input class="form-control" type="file" id="formFileMultiple" multiple />
+                      </div>
+                        <div class="mb-3">
+                          <label class="form-label" for="basic-icon-default-email">Enter Your Graduation Qulifications</label>
+                          <div class="input-group input-group-merge">
+                            <span class="input-group-text"></span>
+                            <input
+                              type="text"
+                              id="basic-icon-default-email"
+                              class="form-control"
+                              placeholder=""
+                              aria-label=""
+                              aria-describedby="basic-icon-default-email2"
+                            />
+                          
+                          </div>
+                        </div>
+
+                        <div class="mb-3">
+                          <label class="form-label" for="basic-icon-default-phone">Enter Your Graduation Persentage/CGPA </label>
+                          <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-phone2" class="input-group-text"
+                              ></span>
+                            <input
+                              type="text"
+                              id="basic-icon-default-phone"
+                              class="form-control phone-mask"
+                              placeholder=""
+                              aria-label=""
+                              aria-describedby="basic-icon-default-phone2"
+                            />
+                          </div>
+                        </div>
+                        <div class="mb-3">
+                        <h6><label for="formFileMultiple" class="form-label">Upload Graduation Marksheet</label></h6>
+                        <input class="form-control" type="file" id="formFileMultiple" multiple />
+                      </div>
+                        <div class="mb-3">
+                          <label class="form-label" for="basic-icon-default-email">Enter Your Post Graduation Qulifications</label>
+                          <div class="input-group input-group-merge">
+                            <span class="input-group-text"></span>
+                            <input
+                              type="text"
+                              id="basic-icon-default-email"
+                              class="form-control"
+                              placeholder=""
+                              aria-label=""
+                              aria-describedby="basic-icon-default-email2"
+                            />
+                          
+                          </div>
+                        </div>
+
+                        <div class="mb-3">
+                          <label class="form-label" for="basic-icon-default-phone">Enter Your Post-Graduation Persentage/CGPA </label>
+                          <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-phone2" class="input-group-text"
+                              ></span>
+                            <input
+                              type="text"
+                              id="basic-icon-default-phone"
+                              class="form-control phone-mask"
+                              placeholder=""
+                              aria-label=""
+                              aria-describedby="basic-icon-default-phone2"
+                            />
+                          </div>
+                        </div>
+                        <div class="mb-3">
+                        <h6><label for="formFileMultiple" class="form-label">Upload Post-Graduation Marksheet</label></h6>
+                        <input class="form-control" type="file" id="formFileMultiple" multiple />
+                      </div>
+                        <button type="submit" class="btn btn-primary">Send</button>
+                      </form>
+                    </div>
+                  </div>
                 </div>
-                <!-- /Notifications -->
               </div>
         </div>
         <div class="tab-pane fade" id="navs-justified-messages" role="tabpanel">
@@ -617,7 +545,7 @@
 
  <!--  Footer Starts here-->
 
- <?php include "./StudFooter.php";?>
+ <?php Footer(); ?>
 
 <!-- Footer Ends Here -->
 

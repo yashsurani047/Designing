@@ -1,3 +1,5 @@
+
+<?php include("./functions/basic.php"); ?>
 <html
   lang="en"
   class="light-style layout-menu-fixed"
@@ -6,8 +8,7 @@
   data-assets-path="assets"
   data-template="vertical-menu-template-free"
 >
-<?php include("headtag.php"); ?>
-
+<?php headtag(); ?>
 <!-- Footer Stars Here -->
                        
  <footer class="text-center text-lg-start bg-body-tertiary text-muted">

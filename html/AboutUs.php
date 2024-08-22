@@ -1,3 +1,6 @@
+<?php include "./functions/basic.php"; ?>
+<?php include "./functions/Student.php"; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +13,7 @@
    
    <header>
           <!--  Header Starts here-->
-  <?php include $_SERVER['DOCUMENT_ROOT'] . '/Project/Designing/html/Partial/Header.php';?>
+  <?php HeaderMain(); headtag();?>
     <!-- Header Ends Here -->   
    </header>
         <section class="about-section">
@@ -21,7 +24,7 @@
         </section>
 
     <!--  Footer Starts here-->
-        <?php include $_SERVER['DOCUMENT_ROOT'] . '/Project/Designing/html/Partial/Footer.php';?>
+        <?php Footer(); ?>
     <!-- Footer Ends Here --> 
 </body>
 </html>

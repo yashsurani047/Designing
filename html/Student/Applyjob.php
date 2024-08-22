@@ -1,4 +1,5 @@
-
+<?php include "../functions/basic.php"; ?>
+<?php include "../functions/Student.php"; ?>
   <head>
    
     <!-- Page CSS -->
@@ -13,9 +14,10 @@
   </head>
 
   <body>
-     <!--  Header Starts here-->
-  <?php include  "./StudHeader.php";?>
+    <!--  Header Starts here-->
+  <?php headtag(); StudHeader(); ?>
     <!-- Header Ends Here -->
+    
 
    <!-- Main Content Starts Here -->
      <!-- Hoverable Table rows -->
@@ -278,7 +280,7 @@
     <!-- Main Content Ends Here -->
 
     <!--  Footer Starts here-->
-  <?php include  "./StudFooter.php";?>
+  <?php Footer() ?>
     <!-- Footer Ends Here -->
 
 

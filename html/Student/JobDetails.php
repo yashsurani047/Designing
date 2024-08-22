@@ -1,3 +1,6 @@
+<?php include "../functions/basic.php"; ?>
+<?php include "../functions/Student.php"; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +10,7 @@
 </head>
 <body>
     <!-- Header Portion Starts -->
-    <?php include "./StudHeader.php"; ?>
+    <?php headtag(); StudHeader(); ?> 
     <!-- Header Portion Ends-->
 
     <!-- Main Content Starts Here -->
@@ -63,7 +66,7 @@
                                    aria-describedby="basic-icon-default-phone2" />
                         </div>
                     </div>
-                    <div class="mb-3">
+                    <!-- <div class="mb-3">
                         <label class="form-label" for="basic-icon-default-message">Message</label>
                         <div class="input-group input-group-merge">
                             <span id="basic-icon-default-message2" class="input-group-text">
@@ -74,7 +77,7 @@
                                       aria-label="Hi, Do you have a moment to talk Joe?"
                                       aria-describedby="basic-icon-default-message2"></textarea>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- pop up model starts-->
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                             data-bs-target="#modalScrollable">
@@ -89,7 +92,7 @@
     <!-- Main Content Ends Here -->
 
     <!-- Footer Portion Starts -->
-    <?php include "./StudFooter.php"; ?>
+    <?php Footer() ?>
     <!-- Footer Portion Ends -->
 </body>
 </html>
