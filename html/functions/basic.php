@@ -775,3 +775,31 @@ At PlacementPlace, we are dedicated to connecting you with the best companies in
   <!-- Footer Ends Here -->
   ";
 } // Checked - may be change
+
+function startContainer($path,$user){
+  echo "
+  <!DOCTYPE html>
+  </head>
+  <body>
+    ".navbar($path, $user)."
+    <div class='layout-wrapper layout-content-navbar layout-without-menu'>
+      <div class='layout-container'>
+        <div class='layout-page'>
+          <div class='content-wrapper'>
+            <div class='container-xl flex-grow-1 container-p-y'>
+              <!-- Content Start -->
+  ";
+}
+function endContainer($path){
+  echo "
+              <!-- Content End -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    ". footer($path)."
+  </body>
+  </html>
+  ";
+}
