@@ -147,6 +147,9 @@
                                 <a class="nav-item me-5 desktop-nav " href="index.php">Home</a>
                                 <a class="nav-item me-5 desktop-nav " href="./AboutUs.php">About Us</a>
                                 <a class="nav-item me-5 desktop-nav " href="./ContactUs.php">Contact Us</a>
+                                <a class="nav-item me-5 desktop-nav " href="../html/Student/index.php">Student</a>
+                                <a class="nav-item me-5 desktop-nav " href="./ContactUs.php">Company</a>
+                                <a class="nav-item me-5 desktop-nav " href="./ContactUs.php">College</a>
 
                                 <li class="nav-item me-5 desktop-nav ">
                                     <a type="button" class="btn btn-primary desktop-nav " href="./Authentication/Login.php">

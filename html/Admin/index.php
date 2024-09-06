@@ -73,7 +73,7 @@
 
   <!-- Hoverable Table rows -->
   <div class="card" style="margin-top:40px; margin-left:40px; margin-right:40px;">
-                <h5 class="card-header">Hoverable rows</h5>
+                <h5 class="card-header">All Data</h5>
                 <div class="table-responsive text-nowrap">
                   <table class="table table-hover">
                     <thead>

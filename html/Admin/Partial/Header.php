@@ -96,11 +96,11 @@
 
               <ul class="navbar-nav flex-row align-items-center ms-auto">
                 <!-- Place this tag where you want the button to render. -->
-                <a class="nav-item me-5 desktop-nav " href="">Home</a>
-                <a class="nav-item me-5 desktop-nav " href="">View Company</a>
-                <a class="nav-item me-5 desktop-nav " href="">View College</a>
-                <a class="nav-item me-5 desktop-nav " href="">View Student</a>
-
+                <a class="nav-item me-5 desktop-nav " href="./index.php">Home</a>
+                <a class="nav-item me-5 desktop-nav " href="./ViewCompany.php">View Company</a>
+                <a class="nav-item me-5 desktop-nav " href="./ViewCollege.php">View College</a>
+                <a class="nav-item me-5 desktop-nav " href="./ViewStudent.php">View Student</a>
+                <a class='btn btn-primary'style='margin-right:10px;' href="../Admin/Authentication/Login.php">Login</a>
                 
                 <!-- User -->
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">

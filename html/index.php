@@ -1,16 +1,15 @@
+<?php include "functions/basic.php"; ?>
+
 <!DOCTYPE html>
 
     </head>
 
     <body>
- 
-   <header>
      <!--  Header Starts here-->
-     <?php include "./functions/basic.php"; ?>
-     <?php include "./functions/Student.php"; ?>
+    
     <!-- Header Ends Here -->
-    <?php headtag(); HeaderMain(); ?>
-   </header>
+    <?php Navbar(".","Guest"); ?>
+   </header>  
         <!-- Layout wrapper -->
         <div class="layout-wrapper layout-content-navbar layout-without-menu">
             <div class="layout-container">
