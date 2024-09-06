@@ -1,8 +1,9 @@
 <?php
-  require "./functions/basic.php";
-  $path = ".";
-  $user = "Guest";
-  startContainer($path,$user); 
+$path = ".";
+$user = "Guest";
+
+require "$path/functions/basic.php";
+startContainer($path, $user);
 ?>
 
 <?php endContainer($path); ?>

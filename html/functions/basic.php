@@ -72,10 +72,10 @@ function navbar($path, $user)
   headTag($path);
   switch ($user) {
     case "Guest": guestNavbar($path); break;
-    case "Company": companyNavbar($path); break;
-    case "Collage": collageNavbar($path); break;
-    case "Student": studentNavbar($path); break;
-    case "Admin": adminNavbar($path); break;
+    case "Company": require "$path/functions/Company.php"; companyNavbar($path); break;
+    case "Collage": require "$path/functions/Collage.php"; collageNavbar($path); break;
+    case "Student": require "$path/functions/Student.php"; studentNavbar($path); break;
+    case "Admin": require "$path/functions/Company.php"; adminNavbar($path); break;
     default: headTag($path); commonHeader($path);
   }
 } // Checked - may be change
