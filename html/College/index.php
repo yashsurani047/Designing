@@ -1,8 +1,11 @@
-<?php include "../functions/basic.php"; ?>
-<?php include "../functions/College.php"; ?>
-
+<?php
+  require "./functions/basic.php"; 
+  require "functions/collage.php"; 
+  $path = ".";
+  $user = "Collage";
+?>
 <head>
-    <?php headtag(); CollHeader(); ?>
+    <?php navbar($path,$user); ?>
     </head>
 
 <body>

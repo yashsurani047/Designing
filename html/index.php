@@ -1,22 +1,17 @@
-<?php include "functions/basic.php"; ?>
-
+<?php
+  require "functions/basic.php"; 
+  $path = ".";
+  $user = "Guest";
+?>
 <!DOCTYPE html>
-
     </head>
-
-    <body>
-     <!--  Header Starts here-->
-    
-    <!-- Header Ends Here -->
-    <?php Navbar(".","Guest"); ?>
-   </header>  
+<body>
+  <?php navbar($path,$user); ?>
         <!-- Layout wrapper -->
         <div class="layout-wrapper layout-content-navbar layout-without-menu">
             <div class="layout-container">
                 <!-- Layout container -->
                 <div class="layout-page">
-                   
-
                     <!-- Content wrapper -->
                     <div class="content-wrapper">
                         <!-- Content -->
@@ -46,7 +41,7 @@
                                               <div class="col-sm-5 text-center text-sm-left">
                                                 <div class="card-body pb-0 px-0 px-md-4">
                                                   <img
-                                                    src="../assets/img/illustrations/man-with-laptop-light.png"
+                                                    src="./assets/img/illustrations/man-with-laptop-light.png"
                                                     height="140"
                                                     alt="View Badge User"
                                                     data-app-dark-img="illustrations/man-with-laptop-dark.png"
@@ -65,7 +60,7 @@
                                                   <div class="card-title d-flex align-items-start justify-content-between">
                                                     <div class="avatar flex-shrink-0">
                                                       <img
-                                                        src="../assets/img/icons/unicons/chart-success.png"
+                                                        src="./assets/img/icons/unicons/chart-success.png"
                                                         alt="chart success"
                                                         class="rounded"
                                                       />
@@ -99,7 +94,7 @@
                                                   <div class="card-title d-flex align-items-start justify-content-between">
                                                     <div class="avatar flex-shrink-0">
                                                       <img
-                                                        src="../assets/img/icons/unicons/wallet-info.png"
+                                                        src="./assets/img/icons/unicons/wallet-info.png"
                                                         alt="Credit Card"
                                                         class="rounded"
                                                       />
@@ -194,7 +189,7 @@
                                                 <div class="card-body">
                                                   <div class="card-title d-flex align-items-start justify-content-between">
                                                     <div class="avatar flex-shrink-0">
-                                                      <img src="../assets/img/icons/unicons/paypal.png" alt="Credit Card" class="rounded" />
+                                                      <img src="./assets/img/icons/unicons/paypal.png" alt="Credit Card" class="rounded" />
                                                     </div>
                                                     <div class="dropdown">
                                                       <button
@@ -224,7 +219,7 @@
                                                 <div class="card-body">
                                                   <div class="card-title d-flex align-items-start justify-content-between">
                                                     <div class="avatar flex-shrink-0">
-                                                      <img src="../assets/img/icons/unicons/cc-primary.png" alt="Credit Card" class="rounded" />
+                                                      <img src="./assets/img/icons/unicons/cc-primary.png" alt="Credit Card" class="rounded" />
                                                     </div>
                                                     <div class="dropdown">
                                                       <button
@@ -249,8 +244,7 @@
                                                 </div>
                                               </div>
                                             </div>
-                                            <!-- </div>
-                            <div class="row"> -->
+                                            </div> <div class="row">
                                             <div class="col-12 mb-4">
                                               <div class="card">
                                                 <div class="card-body">
@@ -408,7 +402,7 @@
                                                 <div class="tab-pane fade show active" id="navs-tabs-line-card-income" role="tabpanel">
                                                   <div class="d-flex p-4 pt-3">
                                                     <div class="avatar flex-shrink-0 me-3">
-                                                      <img src="../assets/img/icons/unicons/wallet.png" alt="User" />
+                                                      <img src="./assets/img/icons/unicons/wallet.png" alt="User" />
                                                     </div>
                                                     <div>
                                                       <small class="text-muted d-block">Total Balance</small>
@@ -569,7 +563,7 @@
 
    <!--  Footer Starts here-->
 
-  <?php Footer(); ?>
+  <?php footer($path); ?>
 
     <!-- Footer Ends Here -->
 

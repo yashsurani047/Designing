@@ -1,4 +1,5 @@
 <?php
+
 function headTag($path)
 {
   echo "
@@ -28,7 +29,7 @@ function headTag($path)
    
      <!-- Page CSS -->
      <!-- Page -->
-     <link rel='stylesheet' href='../../assets/vendor/css/pages/page-auth.css' />
+     <link rel='stylesheet' href='$path/assets/vendor/css/pages/page-auth.css' />
 
 
     <!-- Helpers -->
@@ -63,40 +64,23 @@ function headTag($path)
 
 </head>
     ";
-}
+} // checked - Done
 
 
 function navbar($path, $user)
 {
-
+  headTag($path);
   switch ($user) {
-    case "Guest":
-      headTag($path);
-      guestNavbar();
-      break;
-    case "Company":
-      headTag($path);
-      companyNavbar();
-      break;
-    case "Collage":
-      headTag($path);
-      collageNavbar();
-      break;
-    case "Student":
-      headTag($path);
-      studentNavbar();
-      break;
-    case "Admin":
-      headTag($path);
-      adminNavbar();
-      break;
-    default:
-      headTag($path);
-      commonHeader();
+    case "Guest": guestNavbar($path); break;
+    case "Company": companyNavbar($path); break;
+    case "Collage": collageNavbar($path); break;
+    case "Student": studentNavbar($path); break;
+    case "Admin": adminNavbar($path); break;
+    default: headTag($path); commonHeader($path);
   }
-}
+} // Checked - may be change
 
-function guestNavbar()
+function guestNavbar($path)
 {
   echo "
 <nav
@@ -176,7 +160,7 @@ function guestNavbar()
           </span>
           <span
               class='app-brand-text demo menu-text fw-bolder ms-2'
-              href='Project/Designing/html/index.php'>Placement Plus
+              href='$path/index.php'>Placement Plus
           </span>
       </a>
 
@@ -192,15 +176,15 @@ function guestNavbar()
       <ul
           class='navbar-nav flex-row align-items-center ms-auto'>
          
-          <a class='nav-item me-5 desktop-nav ' href='index.php'>Home</a>
-          <a class='nav-item me-5 desktop-nav ' href='./AboutUs.php'>About Us</a>
-          <a class='nav-item me-5 desktop-nav ' href='./ContactUs.php'>Contact Us</a>
-          <a class='nav-item me-5 desktop-nav ' href='../html/Student'>Student</a>
-          <a class='nav-item me-5 desktop-nav ' href='../html/Company'>Company</a>
-          <a class='nav-item me-5 desktop-nav ' href='../html/College'>College</a>
+          <a class='nav-item me-5 desktop-nav' href='$path/index.php'>Home</a>
+          <a class='nav-item me-5 desktop-nav' href='$path/AboutUs.php'>About Us</a>
+          <a class='nav-item me-5 desktop-nav' href='$path/ContactUs.php'>Contact Us</a>
+          <a class='nav-item me-5 desktop-nav' href='$path/Student'>Student</a>
+          <a class='nav-item me-5 desktop-nav' href='$path/Company'>Company</a>
+          <a class='nav-item me-5 desktop-nav' href='$path/College'>College</a>
 
-          <li class='nav-item me-5 desktop-nav '>
-              <a type='button' class='btn btn-primary desktop-nav ' href='./Authentication/Login.php'>
+          <li class='nav-item me-5 desktop-nav'>
+              <a type='button' class='btn btn-primary desktop-nav' href='$path/Authentication/Login.php'>
                   <i class='bx bx-log-in-circle desktop-nav '></i>
                 Login/Register
               </a>
@@ -208,10 +192,9 @@ function guestNavbar()
       </ul>
   </div>
 </nav>
-
 ";
-}
-function companyNavbar()
+} // Checked - may be change
+function companyNavbar($path)
 {
   echo "
   <nav class='layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme' id='layout-navbar'>
@@ -251,7 +234,7 @@ function companyNavbar()
                               </g>
                           </svg>
                       </span>
-                      <span class='app-brand-text demo menu-text fw-bolder ms-2' href='./index.php'>Placement Plus
+                      <span class='app-brand-text demo menu-text fw-bolder ms-2' href='$path/index.php'>Placement Plus
                       </span>
                   </a>
 
@@ -279,10 +262,10 @@ function companyNavbar()
 
     <ul class='navbar-nav flex-row align-items-center ms-auto'>
 
-    <a class='nav-item me-5 desktop-nav ' href='./index.php'>Home</a>
-    <a class='nav-item me-5 desktop-nav ' href='./FindCollege.php'>Find College</a>
-    <a class='nav-item me-5 desktop-nav ' href='./EmployeeRequest.php'>Employee requests</a>
-    <a class='btn btn-primary'style='margin-right:10px;' href='../Authentication/Login.php'>Login</a>
+    <a class='nav-item me-5 desktop-nav ' href='$path/index.php'>Home</a>
+    <a class='nav-item me-5 desktop-nav ' href='$path/FindCollege.php'>Find College</a>
+    <a class='nav-item me-5 desktop-nav ' href='$path/EmployeeRequest.php'>Employee requests</a>
+    <a class='btn btn-primary'style='margin-right:10px;' href='$path/Authentication/Login.php'>Login</a>
    
       <!-- Place this tag where you want the button to render. -->
      
@@ -290,7 +273,7 @@ function companyNavbar()
       <li class='nav-item navbar-dropdown dropdown-user dropdown'>
         <a class='nav-link dropdown-toggle hide-arrow' href='javascript:void(0);' data-bs-toggle='dropdown'>
           <div class='avatar avatar-online'>
-            <img src='../assets/img/avatars/1.png' alt class='w-px-40 h-auto rounded-circle' />
+            <img src='$path/assets/img/avatars/1.png' alt class='w-px-40 h-auto rounded-circle' />
           </div>
         </a>
         <ul class='dropdown-menu dropdown-menu-end'>
@@ -299,7 +282,7 @@ function companyNavbar()
               <div class='d-flex'>
                 <div class='flex-shrink-0 me-3'>
                   <div class='avatar avatar-online'>
-                    <img src='../assets/img/avatars/1.png' alt class='w-px-40 h-auto rounded-circle' />
+                    <img src='$path/assets/img/avatars/1.png' alt class='w-px-40 h-auto rounded-circle' />
                   </div>
                 </div>
                 <div class='flex-grow-1'>
@@ -313,7 +296,7 @@ function companyNavbar()
             <div class='dropdown-divider'></div>
           </li>
           <li>
-            <a class='dropdown-item' href='../College/CollegeProfile.php'>
+            <a class='dropdown-item' href='$path/College/CollegeProfile.php'>
               <i class='bx bx-user me-2'></i>
               <span class='align-middle'>My Profile</span>
             </a>
@@ -350,8 +333,8 @@ function companyNavbar()
 </nav>
   ";
 
-}
-function collageNavbar()
+} // Checked - may be change
+function collageNavbar($path)
 {
   echo "
   <nav
@@ -409,7 +392,7 @@ function collageNavbar()
                               </g>
                           </svg>
                       </span>
-                      <span class='app-brand-text demo menu-text fw-bolder ms-2' href='./index.php'>Placement Plus
+                      <span class='app-brand-text demo menu-text fw-bolder ms-2' href='$path/index.php'>Placement Plus
                       </span>
                   </a>
 
@@ -429,10 +412,10 @@ function collageNavbar()
 
     <ul class='navbar-nav flex-row align-items-center ms-auto'>
 
-    <a class='nav-item me-5 desktop-nav ' href='./index.php'>Home</a>
-    <a class='nav-item me-5 desktop-nav ' href='./StudentList.php'>Students</a>
-    <a class='nav-item me-5 desktop-nav ' href='./JobDrive.php'>Job Drive</a>
-    <a class='btn btn-primary'style='margin-right:10px;' href='../Authentication/Login.php'>Login</a>
+    <a class='nav-item me-5 desktop-nav ' href='$path/index.php'>Home</a>
+    <a class='nav-item me-5 desktop-nav ' href='$path/StudentList.php'>Students</a>
+    <a class='nav-item me-5 desktop-nav ' href='$path/JobDrive.php'>Job Drive</a>
+    <a class='btn btn-primary'style='margin-right:10px;' href='$path/Authentication/Login.php'>Login</a>
    
       <!-- Place this tag where you want the button to render. -->
      
@@ -440,7 +423,7 @@ function collageNavbar()
       <li class='nav-item navbar-dropdown dropdown-user dropdown'>
         <a class='nav-link dropdown-toggle hide-arrow' href='javascript:void(0);' data-bs-toggle='dropdown'>
           <div class='avatar avatar-online'>
-            <img src='../assets/img/avatars/1.png' alt class='w-px-40 h-auto rounded-circle' />
+            <img src='$path/assets/img/avatars/1.png' alt class='w-px-40 h-auto rounded-circle' />
           </div>
         </a>
         <ul class='dropdown-menu dropdown-menu-end'>
@@ -449,7 +432,7 @@ function collageNavbar()
               <div class='d-flex'>
                 <div class='flex-shrink-0 me-3'>
                   <div class='avatar avatar-online'>
-                    <img src='../assets/img/avatars/1.png' alt class='w-px-40 h-auto rounded-circle' />
+                    <img src='$path/assets/img/avatars/1.png' alt class='w-px-40 h-auto rounded-circle' />
                   </div>
                 </div>
                 <div class='flex-grow-1'>
@@ -463,7 +446,7 @@ function collageNavbar()
             <div class='dropdown-divider'></div>
           </li>
           <li>
-            <a class='dropdown-item' href='../College/CollegeProfile.php'>
+            <a class='dropdown-item' href='$path/College/CollegeProfile.php'>
               <i class='bx bx-user me-2'></i>
               <span class='align-middle'>My Profile</span>
             </a>
@@ -499,8 +482,8 @@ function collageNavbar()
   </div>
 </nav>
   ";
-}
-function studentNavbar()
+} // Checked - may be change
+function studentNavbar($path)
 {
   echo "
   <nav class='layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme' id='layout-navbar'>
@@ -555,7 +538,7 @@ function studentNavbar()
                               </g>
                           </svg>
                       </span>
-                      <span class='app-brand-text demo menu-text fw-bolder ms-2' href='./index.php'>Placement Plus
+                      <span class='app-brand-text demo menu-text fw-bolder ms-2' href='$path/index.php'>Placement Plus
                       </span>
                   </a>
 
@@ -577,17 +560,17 @@ function studentNavbar()
 
     <ul class='navbar-nav flex-row align-items-center ms-auto'>
 
-    <a class='nav-item me-5 desktop-nav ' href='./index.php'>Home</a>
-    <a class='nav-item me-5 desktop-nav ' href='./Applyjob.php'>Apply For New Job</a>
-    <a class='nav-item me-5 desktop-nav ' href='./Appliedjob.php'>Already Applied</a>
-    <a class='btn btn-primary'style='margin-right:10px;' href='../Student/Authentication/Login.php'>Login</a>
+    <a class='nav-item me-5 desktop-nav ' href='$path/index.php'>Home</a>
+    <a class='nav-item me-5 desktop-nav ' href='$path/Applyjob.php'>Apply For New Job</a>
+    <a class='nav-item me-5 desktop-nav ' href='$path/Appliedjob.php'>Already Applied</a>
+    <a class='btn btn-primary'style='margin-right:10px;' href='$path/Student/Authentication/Login.php'>Login</a>
       <!-- Place this tag where you want the button to render. -->
      
       <!-- User -->
       <li class='nav-item navbar-dropdown dropdown-user dropdown'>
         <a class='nav-link dropdown-toggle hide-arrow' href='javascript:void(0);' data-bs-toggle='dropdown'>
           <div class='avatar avatar-online'>
-            <img src='../assets/img/avatars/1.png' alt class='w-px-40 h-auto rounded-circle' />
+            <img src='$path/assets/img/avatars/1.png' alt class='w-px-40 h-auto rounded-circle' />
           </div>
         </a>
         <ul class='dropdown-menu dropdown-menu-end'>
@@ -596,7 +579,7 @@ function studentNavbar()
               <div class='d-flex'>
                 <div class='flex-shrink-0 me-3'>
                   <div class='avatar avatar-online'>
-                    <img src='../assets/img/avatars/1.png' alt class='w-px-40 h-auto rounded-circle' />
+                    <img src='$path/assets/img/avatars/1.png' alt class='w-px-40 h-auto rounded-circle' />
                   </div>
                 </div>
                 <div class='flex-grow-1'>
@@ -610,7 +593,7 @@ function studentNavbar()
             <div class='dropdown-divider'></div>
           </li>
           <li>
-            <a class='dropdown-item' href='StudentProfile.php'>
+            <a class='dropdown-item' href='$path/StudentProfile.php'>
               <i class='bx bx-user me-2'></i>
               <span class='align-middle'>My Profile</span>
             </a>
@@ -634,7 +617,7 @@ function studentNavbar()
             <div class='dropdown-divider'></div>
           </li>
           <li>
-            <a class='dropdown-item' href='auth-login-basic.html'>
+            <a class='dropdown-item' href='$path/auth-login-basic.html'>
               <i class='bx bx-power-off me-2'></i>
               <span class='align-middle'>Log Out</span>
             </a>
@@ -646,16 +629,16 @@ function studentNavbar()
   </div>
 </nav>
   ";
-}
+} // Checked - may be change
 function adminNavbar()
 {
   echo " ";
-}
+} // Empty
 function commonHeader()
 {
   echo " ";
-}
-function footer()
+} // Empty
+function footer($path)
 {
   echo "
   <html
@@ -728,7 +711,7 @@ At PlacementPlace, we are dedicated to connecting you with the best companies in
             </h6>
             <p>
             
-              <a href='' class='text-reset'>Our T&c</a>
+              <a href='#!' class='text-reset'>Our T&c</a>
             </p>
             <p>
               <a href='#!' class='text-reset'>Our Policy</a>
@@ -791,5 +774,4 @@ At PlacementPlace, we are dedicated to connecting you with the best companies in
   </footer>
   <!-- Footer Ends Here -->
   ";
-}
-?>
+} // Checked - may be change

@@ -1,5 +1,8 @@
-<?php include "./functions/basic.php"; ?>
-<?php include "./functions/Student.php"; ?>
+<?php
+  require "functions/basic.php";
+  $path = ".";
+  $user = "Guest";
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,9 +16,10 @@
    
    <header>
           <!--  Header Starts here-->
-  <?php HeaderMain(); headtag();?>
-    <!-- Header Ends Here -->   
+  <?php navbar($path,$user);?>
+    <!-- Header Ends Here -->
    </header>
+   
         <section class="about-section">
             <h1>About Us</h1>
             <p>At Placement Plus, our mission is to provide the best solutions for your business growth. Our platform offers a wide range of tools and services to help you succeed in the competitive market.</p>
@@ -24,7 +28,7 @@
         </section>
 
     <!--  Footer Starts here-->
-        <?php Footer(); ?>
+        <?php footer($path); ?>
     <!-- Footer Ends Here --> 
 </body>
 </html>
