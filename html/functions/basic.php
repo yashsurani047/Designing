@@ -73,7 +73,7 @@ function navbar($path, $user)
   switch ($user) {
     case "Guest": guestNavbar($path); break;
     case "Company": require "$path/functions/Company.php"; companyNavbar($path); break;
-    case "Collage": require "$path/functions/Collage.php"; collageNavbar($path); break;
+    case "College": require "$path/functions/College.php"; collageNavbar($path); break;
     case "Student": require "$path/functions/Student.php"; studentNavbar($path); break;
     case "Admin": require "$path/functions/Company.php"; adminNavbar($path); break;
     default: headTag($path); commonHeader($path);
@@ -262,9 +262,9 @@ function companyNavbar($path)
 
     <ul class='navbar-nav flex-row align-items-center ms-auto'>
 
-    <a class='nav-item me-5 desktop-nav ' href='$path/index.php'>Home</a>
-    <a class='nav-item me-5 desktop-nav ' href='$path/FindCollege.php'>Find College</a>
-    <a class='nav-item me-5 desktop-nav ' href='$path/EmployeeRequest.php'>Employee requests</a>
+    <a class='nav-item me-5 desktop-nav ' href='$path/Company/index.php'>Home</a>
+    <a class='nav-item me-5 desktop-nav ' href='$path/Company/FindCollege.php'>Find College</a>
+    <a class='nav-item me-5 desktop-nav ' href='$path/Company/EmployeeRequest.php'>Employee requests</a>
     <a class='btn btn-primary'style='margin-right:10px;' href='$path/Authentication/Login.php'>Login</a>
    
       <!-- Place this tag where you want the button to render. -->
@@ -412,9 +412,9 @@ function collageNavbar($path)
 
     <ul class='navbar-nav flex-row align-items-center ms-auto'>
 
-    <a class='nav-item me-5 desktop-nav ' href='$path/index.php'>Home</a>
-    <a class='nav-item me-5 desktop-nav ' href='$path/StudentList.php'>Students</a>
-    <a class='nav-item me-5 desktop-nav ' href='$path/JobDrive.php'>Job Drive</a>
+    <a class='nav-item me-5 desktop-nav ' href='$path/College/index.php'>Home</a>
+    <a class='nav-item me-5 desktop-nav ' href='$path/College/StudentList.php'>Students</a>
+    <a class='nav-item me-5 desktop-nav ' href='$path/College/JobDrive.php'>Job Drive</a>
     <a class='btn btn-primary'style='margin-right:10px;' href='$path/Authentication/Login.php'>Login</a>
    
       <!-- Place this tag where you want the button to render. -->
@@ -560,9 +560,9 @@ function studentNavbar($path)
 
     <ul class='navbar-nav flex-row align-items-center ms-auto'>
 
-    <a class='nav-item me-5 desktop-nav ' href='$path/index.php'>Home</a>
-    <a class='nav-item me-5 desktop-nav ' href='$path/Applyjob.php'>Apply For New Job</a>
-    <a class='nav-item me-5 desktop-nav ' href='$path/Appliedjob.php'>Already Applied</a>
+    <a class='nav-item me-5 desktop-nav ' href='$path/Student/index.php'>Home</a>
+    <a class='nav-item me-5 desktop-nav ' href='$path/Student/Applyjob.php'>Apply To Job</a>
+    <a class='nav-item me-5 desktop-nav ' href='$path/Student/Appliedjob.php'>Already Applied</a>
     <a class='btn btn-primary'style='margin-right:10px;' href='$path/Student/Authentication/Login.php'>Login</a>
       <!-- Place this tag where you want the button to render. -->
      
@@ -593,7 +593,7 @@ function studentNavbar($path)
             <div class='dropdown-divider'></div>
           </li>
           <li>
-            <a class='dropdown-item' href='$path/StudentProfile.php'>
+            <a class='dropdown-item' href='$path/Student/StudentProfile.php'>
               <i class='bx bx-user me-2'></i>
               <span class='align-middle'>My Profile</span>
             </a>

@@ -1,25 +1,12 @@
-<?php include "../functions/basic.php"; ?>
-<?php include "../functions/Student.php"; ?>
+<head>
+<?php
+$path = "../";
+$user = "Student";
 
-<!DOCTYPE html>
-
-<!-- =========================================================
-* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
-==============================================================
-
-* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
-* Created by: ThemeSelection
-* License: You must have a valid license purchased in order to legally use the theme for your project.
-* Copyright ThemeSelection (https://themeselection.com)
-
-=========================================================
- -->
-<!-- beautify ignore:start -->
-  <!--  Header Starts here-->
-  <?php headtag(); StudHeader(); ?>
-    <!-- Header Ends Here -->
-    
-  <body>
+require "$path/functions/basic.php";
+startContainer($path, $user);
+?>
+ <body>
      <!-- Layout wrapper -->
      <div class="layout-wrapper layout-content-navbar layout-without-menu">
             <div class="layout-container">
@@ -577,8 +564,8 @@
                         <!-- / Content -->
                          
  <!--  Header Starts here-->
-  <?php Footer(); ?>
- <!-- Header Ends Here -->
+ <?php endContainer($path); ?>
+  <!-- Header Ends Here -->
 
   </body>
 </html>

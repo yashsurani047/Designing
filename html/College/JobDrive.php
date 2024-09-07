@@ -1,8 +1,10 @@
-<?php include "../functions/basic.php"; ?>
-<?php include "../functions/College.php"; ?>
+<?php
+$path = "../";
+$user = "College";
 
-<head>
-    <?php headtag(); CollHeader(); ?>
+require "$path/functions/basic.php";
+startContainer($path, $user);
+?>
     </head>
 
 <body>
@@ -289,5 +291,5 @@
                 </div>
               </div>
               <!--/ Bordered Table -->
- <?php Footer(); ?>
+ <?php endContainer($path); ?>
 </body>

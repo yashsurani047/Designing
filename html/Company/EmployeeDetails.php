@@ -1,7 +1,10 @@
-<?php include "../functions/basic.php"; ?>
-<?php include "../functions/Company.php"; ?>
+<?php
+$path = "../";
+$user = "Company";
 
-<?php headtag(); ComHeader(); ?>
+require "$path/functions/basic.php";
+startContainer($path, $user);
+?>
 
 <div class="tab-content">
         <div class="tab-pane fade show active" id="navs-justified-home" role="tabpanel">
@@ -477,4 +480,4 @@
         </div>
       </div>
 
-      <?php Footer();  ?>
+      <?php endContainer($path);  ?>

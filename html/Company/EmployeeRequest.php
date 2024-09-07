@@ -1,8 +1,10 @@
-<?php include "../functions/basic.php"; ?>
-<?php include "../functions/Company.php"; ?>
+<?php
+$path = "../";
+$user = "Company";
 
-<head>
-    <?php headtag(); ComHeader(); ?>
+require "$path/functions/basic.php";
+startContainer($path, $user);
+?>
     </head>
 
 <body>
@@ -216,5 +218,5 @@
                   </div>
                 </div>
               </div>
-              <!--/ Bordered Table --> <?php Footer(); ?>
+              <!--/ Bordered Table --> <?php endContainer($path); ?>
 </body>

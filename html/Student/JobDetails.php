@@ -1,18 +1,14 @@
-<?php include "../functions/basic.php"; ?>
-<?php include "../functions/Student.php"; ?>
-
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<?php
+$path = "../";
+$user = "Student";
+
+require "$path/functions/basic.php";
+startContainer($path, $user);
+?>
     <title>Company Basic Details</title>
 </head>
 <body>
-    <!-- Header Portion Starts -->
-    <?php headtag(); StudHeader(); ?> 
-    <!-- Header Portion Ends-->
-
     <!-- Main Content Starts Here -->
     <div class="col-xl" style="margin-top: 30px; margin-left: 30px; margin-right: 30px;">
         <div class="card mb-4">
@@ -23,49 +19,115 @@
             <div class="card-body">
                 <form>
                     <div class="mb-3">
-                        <label class="form-label" for="basic-icon-default-fullname">Full Name</label>
+                        <label class="form-label" for="basic-icon-default-fullname">Company Name</label>
                         <div class="input-group input-group-merge">
                             <span id="basic-icon-default-fullname2" class="input-group-text">
-                                <i class="bx bx-user"></i>
+                                <i class=""></i>
                             </span>
                             <input type="text" class="form-control" id="basic-icon-default-fullname"
-                                   placeholder="John Doe" aria-label="John Doe"
+                                   placeholder="" aria-label=""
                                    aria-describedby="basic-icon-default-fullname2" />
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="basic-icon-default-company">Company</label>
+                        <label class="form-label" for="basic-icon-default-fullname">Company URL</label>
+                        <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-fullname2" class="input-group-text">
+                                <i class=""></i>
+                            </span>
+                            <input type="text" class="form-control" id="basic-icon-default-fullname"
+                                   placeholder="" aria-label=""
+                                   aria-describedby="basic-icon-default-fullname2" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-icon-default-fullname">Selection Process</label>
+                        <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-fullname2" class="input-group-text">
+                                <i class=""></i>
+                            </span>
+                            <input type="text" class="form-control" id="basic-icon-default-fullname"
+                                   placeholder="" aria-label=""
+                                   aria-describedby="basic-icon-default-fullname2" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-icon-default-fullname">CTC</label>
+                        <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-fullname2" class="input-group-text">
+                                <i class=""></i>
+                            </span>
+                            <input type="text" class="form-control" id="basic-icon-default-fullname"
+                                   placeholder="" aria-label=""
+                                   aria-describedby="basic-icon-default-fullname2" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-icon-default-fullname">Stipend</label>
+                        <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-fullname2" class="input-group-text">
+                                <i class=""></i>
+                            </span>
+                            <input type="text" class="form-control" id="basic-icon-default-fullname"
+                                   placeholder="" aria-label=""
+                                   aria-describedby="basic-icon-default-fullname2" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-icon-default-company">Internship</label>
                         <div class="input-group input-group-merge">
                             <span id="basic-icon-default-company2" class="input-group-text">
-                                <i class="bx bx-buildings"></i>
+                                <i class=""></i>
                             </span>
                             <input type="text" id="basic-icon-default-company" class="form-control"
-                                   placeholder="ACME Inc." aria-label="ACME Inc."
+                                   placeholder="" aria-label=""
+                                   aria-describedby="basic-icon-default-company2" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-icon-default-company">Bond</label>
+                        <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-company2" class="input-group-text">
+                                <i class=""></i>
+                            </span>
+                            <input type="text" id="basic-icon-default-company" class="form-control"
+                                   placeholder="" aria-label=""
+                                   aria-describedby="basic-icon-default-company2" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-icon-default-company">Job Profile</label>
+                        <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-company2" class="input-group-text">
+                                <i class=""></i>
+                            </span>
+                            <input type="text" id="basic-icon-default-company" class="form-control"
+                                   placeholder="" aria-label=""
+                                   aria-describedby="basic-icon-default-company2" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-icon-default-company">Date of Joining</label>
+                        <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-company2" class="input-group-text">
+                                <i class=""></i>
+                            </span>
+                            <input type="text" id="basic-icon-default-company" class="form-control"
+                                   placeholder="" aria-label=""
                                    aria-describedby="basic-icon-default-company2" />
                         </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="basic-icon-default-email">Email</label>
                         <div class="input-group input-group-merge">
-                            <span class="input-group-text"><i class="bx bx-envelope"></i></span>
+                            <span class="input-group-text"><i class=""></i></span>
                             <input type="text" id="basic-icon-default-email" class="form-control"
-                                   placeholder="john.doe" aria-label="john.doe"
+                                   placeholder="" aria-label="john.doe"
                                    aria-describedby="basic-icon-default-email2" />
                             <span id="basic-icon-default-email2" class="input-group-text">@example.com</span>
                         </div>
-                        <div class="form-text">You can use letters, numbers & periods</div>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="basic-icon-default-phone">Phone No</label>
-                        <div class="input-group input-group-merge">
-                            <span id="basic-icon-default-phone2" class="input-group-text">
-                                <i class="bx bx-phone"></i>
-                            </span>
-                            <input type="text" id="basic-icon-default-phone" class="form-control phone-mask"
-                                   placeholder="658 799 8941" aria-label="658 799 8941"
-                                   aria-describedby="basic-icon-default-phone2" />
-                        </div>
-                    </div>
+                   
                     <!-- <div class="mb-3">
                         <label class="form-label" for="basic-icon-default-message">Message</label>
                         <div class="input-group input-group-merge">
@@ -92,7 +154,7 @@
     <!-- Main Content Ends Here -->
 
     <!-- Footer Portion Starts -->
-    <?php Footer() ?>
+    <?php endContainer($path); ?>
     <!-- Footer Portion Ends -->
 </body>
 </html>

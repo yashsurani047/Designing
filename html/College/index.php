@@ -1,17 +1,17 @@
-<?php
-  require "./functions/basic.php"; 
-  require "functions/collage.php"; 
-  $path = ".";
-  $user = "Collage";
-?>
 <head>
-    <?php navbar($path,$user); ?>
-    </head>
+<?php
+$path = "../";
+$user = "College";
+
+require "$path/functions/basic.php";
+startContainer($path, $user);
+?>
+ </head>
 
 <body>
 
   <!-- Bordered Table -->
-  <div class="card" style="margin-left:35px;margin-right:35px;margin-top:35px;">
+  <div class="card" style="margin-left:30px;margin-right:35px;margin-top:35px;">
                 <h5 class="card-header"></h5>
                 <div class="card-body">
                   
@@ -19,7 +19,7 @@
                     <table class="table table-bordered">
                    
                     <div style="text-align:right;">
-                   <a class="btn btn-primary" style="margin-bottom:10px;margin-right: 80px;" href="AddStudent.php">Add Student</a>
+                   <a class="btn btn-primary" style="margin-bottom:20px;margin-right: 0px;" href="AddStudent.php">Add Student</a>
                    </div>
                      <thead>
                         <tr>
@@ -261,5 +261,5 @@
                 </div>
               </div>
               <!--/ Bordered Table -->
- <?php Footer(); ?>
+ <?php endContainer($path); ?>
 </body>

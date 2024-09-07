@@ -3,3 +3,4 @@
   $path = ".";
   $user = "Guest";
 ?>
+<?php endContainer($path); ?>

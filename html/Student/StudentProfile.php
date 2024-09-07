@@ -1,21 +1,11 @@
-<?php include "../functions/basic.php"; ?>
-<?php include "../functions/Student.php"; ?>
+<?php
+$path = "../";
+$user = "Student";
 
-<html
-  lang="en"
-  class="light-style layout-menu-fixed"
-  dir="ltr"
-  data-theme="theme-default"
-  data-assets-path="assets"
-  data-template="vertical-menu-template-free"
->
-
+require "$path/functions/basic.php";
+startContainer($path, $user);
+?>
 <body>
-
- <!--  Header Starts here-->
-  <?php headtag(); StudHeader();?>
-    <!-- Header Ends Here -->
-
 <div class="col-xll-6"  >
 
     <div class="nav-align-top mb-4 full-screen-center mt-5 ms-5 me-5">
@@ -545,7 +535,7 @@
 
  <!--  Footer Starts here-->
 
- <?php Footer(); ?>
+ <?php endContainer($path);?>
 
 <!-- Footer Ends Here -->
 

@@ -1,12 +1,12 @@
-<?php include "../functions/basic.php"; ?>
-<?php include "../functions/College.php"; ?>
+<?php
+$path = "../";
+$user = "College";
 
-<head>
-    <?php headtag(); CollHeader(); ?>
+require "$path/functions/basic.php";
+startContainer($path, $user);
+?>
     </head>
-
 <body>
-
   <!-- Bordered Table -->
   <div class="card" style="margin-left:35px;margin-right:35px;margin-top:35px;">
                 <h5 class="card-header"></h5>
@@ -254,5 +254,5 @@
                 </div>
               </div>
               <!--/ Bordered Table -->
- <?php Footer(); ?>
+ <?php endContainer($path); ?>
 </body>
