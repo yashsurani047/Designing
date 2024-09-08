@@ -750,7 +750,7 @@ At PlacementPlace, we are dedicated to connecting you with the best companies in
               Users Login Links
             </h6>
             <p>
-              <a href='$path/Student/Authentication' class='text-reset'>Student</a>
+              <a href='$path/Authentication' class='text-reset'>Student</a>
             </p>
             <p>
               <a href='$path/Company' class='text-reset'>Company</a>
