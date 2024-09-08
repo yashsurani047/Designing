@@ -63,9 +63,115 @@ function headTag($path)
     <script async defer src='https://buttons.github.io/buttons.js'></script>
 
 </head>
+<style>
+        .error {
+            color: red;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+        .input-group-text i {
+            display: none;
+        }
+        .input-group.valid .input-group-text .bx-check {
+            color: green;
+            display: block;
+        }
+        .input-group.invalid .input-group-text .bx-x {
+            color: red;
+            display: block;
+        }
+    </style>
+
+    <!-- JavaScript validation script -->
+    <script>
+      function validateForm() {
+        let valid = true;
+
+        // Clear previous errors
+        document.getElementById('usernameError').textContent = '';
+        document.getElementById('emailError').textContent = '';
+        document.getElementById('passwordError').textContent = '';
+        document.getElementById('confirmPasswordError').textContent = '';
+        document.getElementById('termsError').textContent = '';
+
+        // Username validation
+        const username = document.getElementById('Username').value;
+        if (username === '') {
+          valid = false;
+          document.getElementById('usernameError').textContent = 'Username is required.';
+          setInvalid('Username');
+        } else {
+          setValid('Username');
+        }
+
+        // Email validation
+        const email = document.getElementById('Email').value;
+        const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+        if (email === '') {
+          valid = false;
+          document.getElementById('emailError').textContent = 'Email is required.';
+          setInvalid('Email');
+        } else if (!email.match(emailPattern)) {
+          valid = false;
+          document.getElementById('emailError').textContent = 'Please enter a valid email address.';
+          setInvalid('Email');
+        } else {
+          setValid('Email');
+        }
+
+        // Password validation
+        const password = document.getElementById('Password').value;
+        const confirmPassword = document.getElementById('ConfirmPassword').value;
+        if (password === '') {
+          valid = false;
+          document.getElementById('passwordError').textContent = 'Password is required.';
+          setInvalid('Password');
+        } else if (password.length < 6) {
+          valid = false;
+          document.getElementById('passwordError').textContent = 'Password must be at least 6 characters long.';
+          setInvalid('Password');
+        } else {
+          setValid('Password');
+        }
+
+        // Confirm Password validation
+        if (confirmPassword === '') {
+          valid = false;
+          document.getElementById('confirmPasswordError').textContent = 'Please confirm your password.';
+          setInvalid('ConfirmPassword');
+        } else if (password !== confirmPassword) {
+          valid = false;
+          document.getElementById('confirmPasswordError').textContent = 'Passwords do not match.';
+          setInvalid('ConfirmPassword');
+        } else {
+          setValid('ConfirmPassword');
+        }
+
+        // Terms and conditions validation
+        const terms = document.getElementById('terms-conditions').checked;
+        if (!terms) {
+          valid = false;
+          document.getElementById('termsError').textContent = 'You must agree to the privacy policy & terms.';
+        }
+
+        return valid;
+      }
+
+      function setValid(elementId) {
+        const element = document.getElementById(elementId).parentNode;
+        element.classList.remove('invalid');
+        element.classList.add('valid');
+      }
+
+      function setInvalid(elementId) {
+        const element = document.getElementById(elementId).parentNode;
+        element.classList.remove('valid');
+        element.classList.add('invalid');
+      }
+    </script>
+
     ";
 } // checked - Done
-
 
 function navbar($path, $user)
 {
@@ -76,7 +182,7 @@ function navbar($path, $user)
     case "College": require "$path/functions/College.php"; collageNavbar($path); break;
     case "Student": require "$path/functions/Student.php"; studentNavbar($path); break;
     case "Admin": require "$path/functions/Company.php"; adminNavbar($path); break;
-    default: headTag($path); commonHeader($path);
+    default: echo "";
   }
 } // Checked - may be change
 
@@ -409,10 +515,9 @@ function collageNavbar($path)
 
     <ul class='navbar-nav flex-row align-items-center ms-auto'>
 
-    <a class='nav-item me-5 desktop-nav ' href='$path/College/index.php'>Home</a>
-    <a class='nav-item me-5 desktop-nav ' href='$path/College/StudentList.php'>Students</a>
-    <a class='nav-item me-5 desktop-nav ' href='$path/College/JobDrive.php'>Job Drive</a>
-    <a class='btn btn-primary'style='margin-right:10px;' href='$path/Authentication/Login.php'>Login</a>
+    <a class='nav-item me-5 desktop-nav ' href='$path/user/College/index.php'>Home</a>
+    <a class='nav-item me-5 desktop-nav ' href='$path/user/College/StudentList.php'>Students</a>
+    <a class='nav-item me-5 desktop-nav ' href='$path/user/College/JobDrive.php'>Job Drive</a>
    
       <!-- Place this tag where you want the button to render. -->
      
@@ -557,10 +662,10 @@ function studentNavbar($path)
 
     <ul class='navbar-nav flex-row align-items-center ms-auto'>
 
-    <a class='nav-item me-5 desktop-nav ' href='$path/Student/index.php'>Home</a>
-    <a class='nav-item me-5 desktop-nav ' href='$path/Student/Applyjob.php'>Apply To Job</a>
-    <a class='nav-item me-5 desktop-nav ' href='$path/Student/Appliedjob.php'>Already Applied</a>
-    <a class='btn btn-primary'style='margin-right:10px;' href='$path/Student/Authentication/Login.php'>Login</a>
+    <a class='nav-item me-5 desktop-nav ' href='$path/user/Student/index.php'>Home</a>
+    <a class='nav-item me-5 desktop-nav ' href='$path/user/Student/Applyjob.php'>Apply To Job</a>
+    <a class='nav-item me-5 desktop-nav ' href='$path/user/Student/Appliedjob.php'>Already Applied</a>
+    <a class='btn btn-primary'style='margin-right:10px;' href='$path/Authentication/Student/Login.php'>Login</a>
       <!-- Place this tag where you want the button to render. -->
      
       <!-- User -->
@@ -750,16 +855,16 @@ At PlacementPlace, we are dedicated to connecting you with the best companies in
               Users Login Links
             </h6>
             <p>
-              <a href='$path/Student' class='text-reset'>Student</a>
+              <a href='$path/User/Student' class='text-reset'>Student</a>
             </p>
             <p>
-              <a href='$path/Company' class='text-reset'>Company</a>
+              <a href='$path/User/Company' class='text-reset'>Company</a>
             </p>
             <p>
-              <a href='$path/College' class='text-reset'>College</a>
+              <a href='$path/User/College' class='text-reset'>College</a>
             </p>
             <p>
-              <a href='$path/Developer' class='text-reset'>Developer</a>
+              <a href='$path/User/Admin' class='text-reset'>Administrator</a>
             </p>
           </div>
           <!-- Grid column -->
@@ -808,7 +913,7 @@ function startContainer($path,$user){
               <!-- Content Start -->
   ";
 }
-function endContainer($path){
+function endContainer($path, $nofooter = null){
   echo "
               <!-- Content End -->
             </div>
@@ -816,7 +921,11 @@ function endContainer($path){
         </div>
       </div>
     </div>
-    ". footer($path)."
+    ";
+    if($nofooter == null){
+      footer($path);
+    }
+    echo "
   </body>
   </html>
   ";

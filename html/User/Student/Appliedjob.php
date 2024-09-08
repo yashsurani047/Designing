@@ -1,11 +1,12 @@
 <?php
-$path = ".";
-$user = "Guest";
+$path = "../..";
+$user = "Student";
 
 require "$path/functions/basic.php";
+require "$path/functions/table.php";
 startContainer($path, $user);
 ?>
 <main>
-    <h1><center>This is Guest Contact Us Page</center></h1>
+  <?php AppliedJob($user); ?>
 </main>
 <?php endContainer($path); ?>
