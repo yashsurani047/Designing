@@ -179,9 +179,6 @@ function guestNavbar($path)
           <a class='nav-item me-5 desktop-nav' href='$path/index.php'>Home</a>
           <a class='nav-item me-5 desktop-nav' href='$path/AboutUs.php'>About Us</a>
           <a class='nav-item me-5 desktop-nav' href='$path/ContactUs.php'>Contact Us</a>
-          <a class='nav-item me-5 desktop-nav' href='$path/Student'>Student</a>
-          <a class='nav-item me-5 desktop-nav' href='$path/Company'>Company</a>
-          <a class='nav-item me-5 desktop-nav' href='$path/College'>College</a>
 
           <li class='nav-item me-5 desktop-nav'>
               <a type='button' class='btn btn-primary desktop-nav' href='$path/Authentication/Login.php'>
@@ -745,7 +742,28 @@ At PlacementPlace, we are dedicated to connecting you with the best companies in
             </p>
           </div>
           <!-- Grid column -->
-  
+
+          <!-- Grid column -->
+          <div class='col-md-3 col-lg-2 col-xl-2 mx-auto mb-4'>
+            <!-- Links -->
+            <h6 class='text-uppercase fw-bold mb-4'>
+              Users Login Links
+            </h6>
+            <p>
+              <a href='$path/Student/Authentication' class='text-reset'>Student</a>
+            </p>
+            <p>
+              <a href='$path/Company' class='text-reset'>Company</a>
+            </p>
+            <p>
+              <a href='$path/College' class='text-reset'>College</a>
+            </p>
+            <p>
+              <a href='$path/Developer' class='text-reset'>Developer</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
           <!-- Grid column -->
           <div class='col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4'>
             <!-- Links -->
