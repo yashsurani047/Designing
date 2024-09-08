@@ -34,6 +34,7 @@ startContainer($path, $user);
                         <th>Ctc</th>
                         <th>Internship</th> <!-- yes(hover:paid,unpaid),no -->
                         <th>Bond</th>
+                        <th>Status</th>
                         <th>Details</th>
                       </tr>
                     </thead>
@@ -52,6 +53,9 @@ startContainer($path, $user);
                         </td>
                         <td>
                          2 year
+                        </td>
+                        <td>
+                          Pending
                         </td>
                         <td>
                           <div>
@@ -76,6 +80,9 @@ startContainer($path, $user);
                          3 year
                         </td>
                         <td>
+                          Processing
+                        </td>
+                        <td>
                           <div>
                           <a type="button" href="./JobDetails.php" class="btn btn-info">View Details</a>
                         </div>
@@ -98,6 +105,9 @@ startContainer($path, $user);
                          2 year
                         </td>
                         <td>
+                          Rejected
+                        </td>
+                        <td>
                           <div>
                           <a type="button" href="./JobDetails.php" class="btn btn-info">View Details</a>
                         </div>
@@ -118,6 +128,9 @@ startContainer($path, $user);
                         </td>
                         <td>
                          2 year
+                        </td>
+                        <td>
+                          Approved
                         </td>
                         <td>
                           <div>
