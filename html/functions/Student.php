@@ -1,5 +1,6 @@
 <?php
-function StudHeader(){
+  function StudHeader()
+{
   echo "
   <nav
   class='layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme'
@@ -172,8 +173,9 @@ function StudHeader(){
   ";
 }
 
-function LoginHadtag(){
-echo"
+function LoginHadtag()
+{
+  echo "
  <!-- Favicon -->
     <link rel='icon' type='image/x-icon' href='../assets/img/favicon/favicon.ico' />
 
@@ -235,6 +237,6 @@ echo"
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src='https://buttons.github.io/buttons.js'></script>
 
-"
-;}
+";
+}
 ?>
