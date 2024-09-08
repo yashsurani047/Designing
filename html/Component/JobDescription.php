@@ -1,18 +1,5 @@
-<head>
-    <?php
-    $path = "../..";
-    $user = "Student";
-
-    require "$path/functions/basic.php";
-    startContainer($path, $user);
-    ?>
-    <title>Company Basic Details</title>
-
-</head>
-
-<body>
-    <!-- Main Content Starts Here -->
-    <div class="col-xl" style="margin-top: 30px; margin-left: 30px; margin-right: 30px;">
+<!-- Main Content Starts Here -->
+<div class="col-xl" style="margin-top: 30px; margin-left: 30px; margin-right: 30px;">
         <div class="card mb-4">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h3 class="">Job Details</h3>
@@ -159,37 +146,26 @@
 
                     <br>
                     <br>
-                    <center> <!-- Buttons -->
-                        <button type="button" class="btn btn-primary">Next</button>
-                        <button type="button" class="btn btn-success">Approve</button>
+                    <!-- Buttons -->
+                    <center>
+                        <!-- for student  -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalScrollable">Next</button>
+                        <span class="badge bg-info">Already Applied</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalScrollable">Request for Withdraw Registration</button>
+                        <br><br>
+
+                        <!-- for Collage -->
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalScrollable">Approve</button>
                         <button type="button" class="btn btn-danger">Deny</button>
+                        <br><br>
+
+                        <!-- For Company  -->
                         <button type="button" class="btn btn-warning">Update</button>
                         <button type="button" class="btn btn-secondary">Cancel</button>
                         <button type="button" class="btn btn-danger">Close Job Drive</button>
+                        <?php include "./TnC.php"; ?>
                     </center>
-
                 </form>
             </div>
         </div>
     </div>
-
-
-    <!-- Main Content Ends Here -->
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- Footer Portion Starts -->
-    <?php endContainer($path); ?>
-    <!-- Footer Portion Ends -->
-</body>
-
-</html>
