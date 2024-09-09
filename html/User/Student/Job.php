@@ -7,6 +7,6 @@ require "$path/functions/table.php";
 startContainer($path, $user);
 ?>
 <main>
-  <?php AppliedJobList($user); ?>
+  <?php JobList($user); ?>
 </main>
 <?php endContainer($path); ?>

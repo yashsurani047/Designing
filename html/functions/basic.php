@@ -337,8 +337,8 @@ function companyNavbar($path)
                               </g>
                           </svg>
                       </span>
-                      <span class='app-brand-text demo menu-text fw-bolder ms-2' href='$path/index.php'>Placement Plus
-                      </span>
+                      <a class='app-brand-text demo menu-text fw-bolder ms-2' href='$path/index.php'>Placement Plus
+                      </a>
                   </a>
 
                   <a href='javascript:void(0);' class='layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none'>
@@ -365,10 +365,10 @@ function companyNavbar($path)
 
     <ul class='navbar-nav flex-row align-items-center ms-auto'>
 
-    <a class='nav-item me-5 desktop-nav ' href='$path/Company/index.php'>Home</a>
-    <a class='nav-item me-5 desktop-nav ' href='$path/Company/FindCollege.php'>Find College</a>
-    <a class='nav-item me-5 desktop-nav ' href='$path/Company/EmployeeRequest.php'>Employee requests</a>
-    <a class='btn btn-primary'style='margin-right:10px;' href='$path/Authentication/Login.php'>Login</a>
+    <a class='nav-item me-5 desktop-nav ' href='$path/user/Company/index.php'>Home</a>
+    <a class='nav-item me-5 desktop-nav ' href='$path/user/Company/FindCollege.php'>Find College</a>
+    <a class='nav-item me-5 desktop-nav ' href='$path/user/Company/EmployeeRequest.php'>Employee requests</a>
+    <a class='btn btn-primary'style='margin-right:10px;' href='$path/Authentication/Company/Login.php'>Login</a>
    
       <!-- Place this tag where you want the button to render. -->
      
@@ -399,7 +399,7 @@ function companyNavbar($path)
             <div class='dropdown-divider'></div>
           </li>
           <li>
-            <a class='dropdown-item' href='$path/College/CollegeProfile.php'>
+            <a class='dropdown-item' href='$path/collage/CollegeProfile.php'>
               <i class='bx bx-user me-2'></i>
               <span class='align-middle'>My Profile</span>
             </a>
@@ -495,8 +495,8 @@ function collageNavbar($path)
                               </g>
                           </svg>
                       </span>
-                      <span class='app-brand-text demo menu-text fw-bolder ms-2' href='$path/index.php'>Placement Plus
-                      </span>
+                      <a class='app-brand-text demo menu-text fw-bolder ms-2' href='$path/index.php'>Placement Plus
+                      </a>
                   </a>
 
                   <a href='javascript:void(0);' class='layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none'>
@@ -515,9 +515,9 @@ function collageNavbar($path)
 
     <ul class='navbar-nav flex-row align-items-center ms-auto'>
 
-    <a class='nav-item me-5 desktop-nav ' href='$path/user/College/index.php'>Home</a>
-    <a class='nav-item me-5 desktop-nav ' href='$path/user/College/StudentList.php'>Students</a>
-    <a class='nav-item me-5 desktop-nav ' href='$path/user/College/JobDrive.php'>Job Drive</a>
+    <a class='nav-item me-5 desktop-nav ' href='$path/user/collage/index.php'>Home</a>
+    <a class='nav-item me-5 desktop-nav ' href='$path/user/collage/StudentList.php'>Students</a>
+    <a class='nav-item me-5 desktop-nav ' href='$path/user/collage/JobDrive.php'>Job Drive</a>
    
       <!-- Place this tag where you want the button to render. -->
      
@@ -548,7 +548,7 @@ function collageNavbar($path)
             <div class='dropdown-divider'></div>
           </li>
           <li>
-            <a class='dropdown-item' href='$path/College/CollegeProfile.php'>
+            <a class='dropdown-item' href='$path/collage/CollegeProfile.php'>
               <i class='bx bx-user me-2'></i>
               <span class='align-middle'>My Profile</span>
             </a>
@@ -640,8 +640,8 @@ function studentNavbar($path)
                               </g>
                           </svg>
                       </span>
-                      <span class='app-brand-text demo menu-text fw-bolder ms-2' href='$path/index.php'>Placement Plus
-                      </span>
+                      <a class='app-brand-text demo menu-text fw-bolder ms-2' href='$path/index.php'>Placement Plus
+                      </a>
                   </a>
 
                   <a href='javascript:void(0);'
@@ -663,7 +663,7 @@ function studentNavbar($path)
     <ul class='navbar-nav flex-row align-items-center ms-auto'>
 
     <a class='nav-item me-5 desktop-nav ' href='$path/user/Student/index.php'>Home</a>
-    <a class='nav-item me-5 desktop-nav ' href='$path/user/Student/Applyjob.php'>Apply To Job</a>
+    <a class='nav-item me-5 desktop-nav ' href='$path/user/Student/Job.php'>Apply To Job</a>
     <a class='nav-item me-5 desktop-nav ' href='$path/user/Student/Appliedjob.php'>Already Applied</a>
     <a class='btn btn-primary'style='margin-right:10px;' href='$path/Authentication/Student/Login.php'>Login</a>
       <!-- Place this tag where you want the button to render. -->
@@ -861,7 +861,7 @@ At PlacementPlace, we are dedicated to connecting you with the best companies in
               <a href='$path/User/Company' class='text-reset'>Company</a>
             </p>
             <p>
-              <a href='$path/User/College' class='text-reset'>College</a>
+              <a href='$path/user/Collage' class='text-reset'>College</a>
             </p>
             <p>
               <a href='$path/User/Admin' class='text-reset'>Administrator</a>

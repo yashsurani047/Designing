@@ -1,6 +1,6 @@
 <?php
 
-function JobDrives($user){
+function JobList($user){
     echo "
     <!-- Hoverable Table rows -->
      <div class='card' style='margin-top:30px; margin-left:30px; margin-right:30px;'>
@@ -36,7 +36,7 @@ function JobDrives($user){
                         </td>
                         <td>
                           <div>
-                          <a type='button' href='./JobDetails.php' class='btn btn-info'>View Details</a>
+                          <a type='button' href='JobDescription.php' class='btn btn-info'>View Details</a>
                         </div>
                       </td>
                       </tr>
@@ -58,7 +58,7 @@ function JobDrives($user){
                         </td>
                         <td>
                           <div>
-                          <a type='button' href='./JobDetails.php' class='btn btn-info'>View Details</a>
+                          <a type='button' href='./JobDescription.php' class='btn btn-info'>View Details</a>
                         </div>
                       </td>
                       </tr>
@@ -80,7 +80,7 @@ function JobDrives($user){
                         </td>
                         <td>
                           <div>
-                          <a type='button' href='./JobDetails.php' class='btn btn-info'>View Details</a>
+                          <a type='button' href='./JobDescription.php' class='btn btn-info'>View Details</a>
                         </div>
                       </td>
                       </tr>
@@ -102,7 +102,7 @@ function JobDrives($user){
                         </td>
                         <td>
                           <div>
-                          <a type='button' href='./JobDetails.php' class='btn btn-info'>View Details</a>
+                          <a type='button' href='./JobDescription.php' class='btn btn-info'>View Details</a>
                         </div>
                       </td>
                       </tr>
@@ -118,7 +118,7 @@ function JobDrives($user){
 }
 
 
-function AppliedJob($user){
+function AppliedJobList($user){
     echo "
     <!-- Hoverable Table rows -->
      <div class='card' style='margin-top:30px; margin-left:30px; margin-right:30px;'>
@@ -154,7 +154,7 @@ function AppliedJob($user){
                         </td>
                         <td>
                           <div>
-                          <a type='button' href='./JobDetails.php' class='btn btn-info'>View Details</a>
+                          <a type='button' href='./JobDescription.php' class='btn btn-info'>View Details</a>
                         </div>
                       </td>
                       </tr>
@@ -176,7 +176,7 @@ function AppliedJob($user){
                         </td>
                         <td>
                           <div>
-                          <a type='button' href='./JobDetails.php' class='btn btn-info'>View Details</a>
+                          <a type='button' href='.\JobDescription.php' class='btn btn-info'>View Details</a>
                         </div>
                       </td>
                       </tr>
@@ -198,7 +198,7 @@ function AppliedJob($user){
                         </td>
                         <td>
                           <div>
-                          <a type='button' href='./JobDetails.php' class='btn btn-info'>View Details</a>
+                          <a type='button' href='./JobDescription.php' class='btn btn-info'>View Details</a>
                         </div>
                       </td>
                       </tr>
@@ -220,7 +220,7 @@ function AppliedJob($user){
                         </td>
                         <td>
                           <div>
-                          <a type='button' href='./JobDetails.php' class='btn btn-info'>View Details</a>
+                          <a type='button' href='./JobDescription.php' class='btn btn-info'>View Details</a>
                         </div>
                       </td>
                       </tr>
