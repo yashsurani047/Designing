@@ -287,7 +287,7 @@ function guestNavbar($path)
           <a class='nav-item me-5 desktop-nav' href='$path/ContactUs.php'>Contact Us</a>
 
           <li class='nav-item me-5 desktop-nav'>
-              <a type='button' class='btn btn-primary desktop-nav' href='$path/Authentication/Login.php'>
+              <a type='button' class='btn btn-primary desktop-nav' href='$path/Authentication/'>
                   <i class='bx bx-log-in-circle desktop-nav '></i>
                 Login/Register
               </a>
@@ -368,7 +368,6 @@ function companyNavbar($path)
     <a class='nav-item me-5 desktop-nav ' href='$path/user/Company/index.php'>Home</a>
     <a class='nav-item me-5 desktop-nav ' href='$path/user/Company/FindCollege.php'>Find College</a>
     <a class='nav-item me-5 desktop-nav ' href='$path/user/Company/EmployeeRequest.php'>Employee requests</a>
-    <a class='btn btn-primary'style='margin-right:10px;' href='$path/Authentication/Company/Login.php'>Login</a>
    
       <!-- Place this tag where you want the button to render. -->
      
@@ -665,7 +664,6 @@ function studentNavbar($path)
     <a class='nav-item me-5 desktop-nav ' href='$path/user/Student/index.php'>Home</a>
     <a class='nav-item me-5 desktop-nav ' href='$path/user/Student/Job.php'>Apply To Job</a>
     <a class='nav-item me-5 desktop-nav ' href='$path/user/Student/Appliedjob.php'>Already Applied</a>
-    <a class='btn btn-primary'style='margin-right:10px;' href='$path/Authentication/Student/Login.php'>Login</a>
       <!-- Place this tag where you want the button to render. -->
      
       <!-- User -->

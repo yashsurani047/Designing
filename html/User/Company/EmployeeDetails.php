@@ -22,9 +22,6 @@ startContainer($path, $user);
                       id="uploadedAvatar"
                     />
                     <div class="button-wrapper">
-                    
-                    
-
                     </div>
                   </div>
                 </div>

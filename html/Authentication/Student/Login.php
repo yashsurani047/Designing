@@ -78,7 +78,7 @@ startContainer($path, "");
                                 <span id="passwordError" class="error"></span>
                             </div>
                             <div class="mb-3">
-                                <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+                                <a href="../../user/Student"><div class="btn btn-primary d-grid w-100" type="submit">Sign in</div></a>
                             </div>
                         </form>
 

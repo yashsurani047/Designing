@@ -1,8 +1,11 @@
-<?php include "../functions/basic.php"; ?>
-<?php include "../functions/College.php"; ?>
+<?php
+$path = "../..";
+$user = "Guest";
 
-<?php headtag(); CollHeader(); ?>
-
+require "$path/functions/basic.php";
+startContainer($path, $user);
+?>
+<main>
 <div class="tab-content">
         <div class="tab-pane fade show active" id="navs-justified-home" role="tabpanel">
            <div class="card mb-4">
@@ -490,5 +493,5 @@
               </div>
         </div>
       </div>
-
-      <?php Footer();  ?>
+</main>
+<?php endContainer($path); ?>
