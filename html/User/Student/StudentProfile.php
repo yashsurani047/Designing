@@ -50,7 +50,7 @@ startContainer($path, $user);
                 <div class="card-body">
                   <div class="d-flex align-items-start align-items-sm-center gap-4">
                     <img
-                      src="assets/img/avatars/1.png"
+                      src="<?php echo $path?>/assets/img/avatars/1.png"
                       alt="user-avatar"
                       class="d-block rounded"
                       height="100"
@@ -327,7 +327,7 @@ startContainer($path, $user);
                       <!-- Connections -->
                       <div class="d-flex mb-3">
                         <div class="flex-shrink-0">
-                          <img src="assets/img/icons/brands/google.png" alt="google" class="me-3" height="30" />
+                          <img src="<?php echo $path?>/assets/img/icons/brands/google.png" alt="google" class="me-3" height="30" />
                         </div>
                         <div class="flex-grow-1 row">
                           <div class="col-9 mb-sm-0 mb-2">
@@ -343,7 +343,7 @@ startContainer($path, $user);
                       </div>
                       <div class="d-flex mb-3">
                         <div class="flex-shrink-0">
-                          <img src="assets/img/icons/brands/slack.png" alt="slack" class="me-3" height="30" />
+                          <img src="<?php echo $path?>/assets/img/icons/brands/slack.png" alt="slack" class="me-3" height="30" />
                         </div>
                         <div class="flex-grow-1 row">
                           <div class="col-9 mb-sm-0 mb-2">
@@ -359,7 +359,7 @@ startContainer($path, $user);
                       </div>
                       <div class="d-flex mb-3">
                         <div class="flex-shrink-0">
-                          <img src="assets/img/icons/brands/github.png" alt="github" class="me-3" height="30" />
+                          <img src="<?php echo $path?>/assets/img/icons/brands/github.png" alt="github" class="me-3" height="30" />
                         </div>
                         <div class="flex-grow-1 row">
                           <div class="col-9 mb-sm-0 mb-2">
@@ -376,7 +376,7 @@ startContainer($path, $user);
                       <div class="d-flex mb-3">
                         <div class="flex-shrink-0">
                           <img
-                            src="assets/img/icons/brands/mailchimp.png"
+                            src="<?php echo $path?>/assets/img/icons/brands/mailchimp.png"
                             alt="mailchimp"
                             class="me-3"
                             height="30"
@@ -396,7 +396,7 @@ startContainer($path, $user);
                       </div>
                       <div class="d-flex">
                         <div class="flex-shrink-0">
-                          <img src="assets/img/icons/brands/asana.png" alt="asana" class="me-3" height="30" />
+                          <img src="<?php echo $path?>/assets/img/icons/brands/asana.png" alt="asana" class="me-3" height="30" />
                         </div>
                         <div class="flex-grow-1 row">
                           <div class="col-9 mb-sm-0 mb-2">
@@ -423,7 +423,7 @@ startContainer($path, $user);
                       <div class="d-flex mb-3">
                         <div class="flex-shrink-0">
                           <img
-                            src="assets/img/icons/brands/facebook.png"
+                            src="<?php echo $path?>/assets/img/icons/brands/facebook.png"
                             alt="facebook"
                             class="me-3"
                             height="30"
@@ -444,7 +444,7 @@ startContainer($path, $user);
                       <div class="d-flex mb-3">
                         <div class="flex-shrink-0">
                           <img
-                            src="assets/img/icons/brands/twitter.png"
+                            src="<?php echo $path?>/assets/img/icons/brands/twitter.png"
                             alt="twitter"
                             class="me-3"
                             height="30"
@@ -465,7 +465,7 @@ startContainer($path, $user);
                       <div class="d-flex mb-3">
                         <div class="flex-shrink-0">
                           <img
-                            src="assets/img/icons/brands/instagram.png"
+                            src="<?php echo $path?>/assets/img/icons/brands/instagram.png"
                             alt="instagram"
                             class="me-3"
                             height="30"
@@ -486,7 +486,7 @@ startContainer($path, $user);
                       <div class="d-flex mb-3">
                         <div class="flex-shrink-0">
                           <img
-                            src="assets/img/icons/brands/dribbble.png"
+                            src="<?php echo $path?>/assets/img/icons/brands/dribbble.png"
                             alt="dribbble"
                             class="me-3"
                             height="30"
@@ -507,7 +507,7 @@ startContainer($path, $user);
                       <div class="d-flex">
                         <div class="flex-shrink-0">
                           <img
-                            src="assets/img/icons/brands/behance.png"
+                            src="<?php echo $path?>/assets/img/icons/brands/behance.png"
                             alt="behance"
                             class="me-3"
                             height="30"
