@@ -234,3 +234,7 @@ function AppliedJobList($user){
     ";
 
 }
+
+function Employees($user){
+
+}
