@@ -693,7 +693,7 @@ function studentNavbar($path)
             <div class='dropdown-divider'></div>
           </li>
           <li>
-            <a class='dropdown-item' href='$path/Student/StudentProfile.php'>
+            <a class='dropdown-item' href='$path/user/Student/StudentProfile.php'>
               <i class='bx bx-user me-2'></i>
               <span class='align-middle'>My Profile</span>
             </a>
