@@ -54,7 +54,7 @@ startContainer($path, $user);
 	                            <p class="section-paragraph">Access a curated list of verified job opportunities from trusted companies. Every listing is thoroughly checked to ensure authenticity, offering students a safe and reliable pathway to employment..</p>
 								<div class="features-image">
 									<img class="features-illustration asset-dark" src="dist/images/features-illustration-dark.svg" alt="Feature illustration">
-									<img class="features-box asset-dark" src="dist/images/features-box-dark.svg" alt="Feature box" >
+									<img class="features-box asset-dark" src="dist/images/4.avif" alt="Feature box" >
 									<img class="features-illustration asset-dark" src="dist/images/features-illustration-top-dark.svg" alt="Feature illustration top">
 									<img class="features-illustration asset-light" src="dist/images/features-illustration-light.svg" alt="Feature illustration">
 									<img class="features-box asset-light" src="assets\img\backgrounds\PlacementPlusLogo.png" height="500px" width="400px" alt="Feature box">

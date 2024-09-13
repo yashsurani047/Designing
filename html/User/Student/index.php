@@ -101,19 +101,19 @@
                     </ol>
                     <div class="carousel-inner">
                       <div class="carousel-item active">
-                        <img class="d-block w-100" src="<?php echo $path ?>/assets/img/illustrations/1.avif" alt="First slide" />
+                        <img class="d-block w-100" src="<?php echo $path ?>/assets/img/illustrations/1.avif" alt="First slide" height="350px" />
                         <div class="carousel-caption d-none d-md-block">
                          
                         </div>
                       </div>
                       <div class="carousel-item">
-                        <img class="d-block w-100" src="<?php echo $path ?>/assets/img/illustrations/2.avif" alt="Second slide" />
+                        <img class="d-block w-100" src="<?php echo $path ?>/assets/img/illustrations/2.avif" alt="Second slide" height="350px"/>
                         <div class="carousel-caption d-none d-md-block">
                         
                         </div>
                       </div>
                       <div class="carousel-item">
-                        <img class="d-block w-100" src="<?php echo $path ?>/assets/img/illustrations/3.avif" alt="Third slide" />
+                        <img class="d-block w-100" src="<?php echo $path ?>/assets/img/illustrations/3.avif" alt="Third slide" height="350px"/>
                         <div class="carousel-caption d-none d-md-block">
                         
                         </div>
