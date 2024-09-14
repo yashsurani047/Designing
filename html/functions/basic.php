@@ -832,9 +832,29 @@ function AdminNavbar($path)
    
 
     <ul class='navbar-nav flex-row align-items-center ms-auto'>
+    
+
+ <div class='btn-group' style='margin-right:50px;'>
+                      <button
+                        type='button'
+                        class='btn btn-primary dropdown-toggle'
+                        data-bs-toggle='dropdown'
+                        aria-expanded='false'
+                      >
+                        Profiles
+                      </button>
+                      <ul class='dropdown-menu'>
+                        <li><a class='dropdown-item' href='../Admin/ViewCompany.php'>View Company</a></li>
+                        <li><a class='dropdown-item' href='../Admin/ViewCollege.php'>View College</a></li>
+                        <li><a class='dropdown-item' href='../Admin/ViewStudent.php'>View Student</a></li>
+                        <li><a class='dropdown-item' href='../Admin/index.php'>View Admin</a></li>
+                        <li><a class='dropdown-item' href='../../index.php'>View Guest</a></li>
+                     
+                      
+                      </ul>
+                    </div>    
 
     <a class='nav-item me-5 desktop-nav ' href='$path/user/Admin/index.php'>Home</a>
-    <a class='nav-item me-5 desktop-nav ' href='$path/user/Admin/Job.php'>Apply To Job</a>
       <!-- Place this tag where you want the button to render. -->
      
       <!-- User -->
@@ -1064,30 +1084,32 @@ At PlacementPlace, we are dedicated to connecting you with the best companies in
   ";
 } // Checked - may be change
 
-function getAlert($user){
-  if($user == "Guest"){
-    $arr = array("","","");
+function getAlert($user)
+{
+  if ($user == "Guest") {
+    $arr = array("", "", "");
     return $arr;
   }
-  $arr = array("","","update");
-  $arr = array("","verify","");
+  $arr = array("", "", "update");
+  $arr = array("", "verify", "");
   //$arr = array("login","verify","update");
   return $arr;
 }
-function AddAlert($user){
-  if($user == ""){
+function AddAlert($user)
+{
+  if ($user == "") {
     return;
   }
   $alert = getAlert($user);
-  if($alert[0] == "login"){
+  if ($alert[0] == "login") {
     echo "
   <div class='alert alert-success alert-dismissible' role='alert'>
-  Hello USERNAME: ".$user.", You Logged in Successfully!
+  Hello USERNAME: " . $user . ", You Logged in Successfully!
   <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
 </div>
     ";
   }
-  if($alert[1] == "verify"){
+  if ($alert[1] == "verify") {
     echo "
 <div class='alert alert-danger alert-dismissible' role='alert'>
 Please Verify the Sensitive Information in Your Profile! <a href='Profile.php'>Click Here.</a>
@@ -1095,10 +1117,10 @@ Please Verify the Sensitive Information in Your Profile! <a href='Profile.php'>C
 </div>
     ";
   }
-  if($alert[2] == "update"){
+  if ($alert[2] == "update") {
     echo "
 <div class='alert alert-warning alert-dismissible' role='alert'>
-Please Update & Verify ".$user." Information in Your Profile! <a href='Profile.php'>Click Here.</a>
+Please Update & Verify " . $user . " Information in Your Profile! <a href='Profile.php'>Click Here.</a>
 <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
 </div>
     ";
