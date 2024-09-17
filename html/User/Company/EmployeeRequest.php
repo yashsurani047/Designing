@@ -31,43 +31,15 @@ startContainer($path, $user);
                       <tbody>
                         <tr>
                           <td>
-                            <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Angular Project</strong>
+                            <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Rajan Mehta</strong>
                           </td>
-                          <td>Albert Cook</td>
+                          <td>Marketing Management</td>
                           <td>
-                            <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                              <li
-                                data-bs-toggle="tooltip"
-                                data-popup="tooltip-custom"
-                                data-bs-placement="top"
-                                class="avatar avatar-xs pull-up"
-                                title="Lilian Fuller"
-                              >
-                                <img src="../assets/img/avatars/5.png" alt="Avatar" class="rounded-circle" />
-                              </li>
-                              <li
-                                data-bs-toggle="tooltip"
-                                data-popup="tooltip-custom"
-                                data-bs-placement="top"
-                                class="avatar avatar-xs pull-up"
-                                title="Sophia Wilkerson"
-                              >
-                                <img src="../assets/img/avatars/6.png" alt="Avatar" class="rounded-circle" />
-                              </li>
-                              <li
-                                data-bs-toggle="tooltip"
-                                data-popup="tooltip-custom"
-                                data-bs-placement="top"
-                                class="avatar avatar-xs pull-up"
-                                title="Christina Parker"
-                              >
-                                <img src="../assets/img/avatars/7.png" alt="Avatar" class="rounded-circle" />
-                              </li>
-                            </ul>
+                           Office-Regular
                           </td>
-                          <td><span class="badge bg-label-primary me-1">Active</span></td>
+                          <td>01/04/2025</td>
                           <td>
-                               
+                               4.5Lpa
                           </td>
                           <td>
                           <a class="btn btn-primary" href="ViewRequest.php">
@@ -76,42 +48,16 @@ startContainer($path, $user);
                           </td>
                         </tr>
                         <tr>
-                          <td><i class="fab fa-react fa-lg text-info me-3"></i> <strong>React Project</strong></td>
-                          <td>Barry Hunter</td>
+                          <td><i class="fab fa-react fa-lg text-info me-3"></i> <strong>Nayan Patoliya</strong></td>
+                          <td>Web Developer</td>
                           <td>
-                            <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                              <li
-                                data-bs-toggle="tooltip"
-                                data-popup="tooltip-custom"
-                                data-bs-placement="top"
-                                class="avatar avatar-xs pull-up"
-                                title="Lilian Fuller"
-                              >
-                                <img src="../assets/img/avatars/5.png" alt="Avatar" class="rounded-circle" />
-                              </li>
-                              <li
-                                data-bs-toggle="tooltip"
-                                data-popup="tooltip-custom"
-                                data-bs-placement="top"
-                                class="avatar avatar-xs pull-up"
-                                title="Sophia Wilkerson"
-                              >
-                                <img src="../assets/img/avatars/6.png" alt="Avatar" class="rounded-circle" />
-                              </li>
-                              <li
-                                data-bs-toggle="tooltip"
-                                data-popup="tooltip-custom"
-                                data-bs-placement="top"
-                                class="avatar avatar-xs pull-up"
-                                title="Christina Parker"
-                              >
-                                <img src="../assets/img/avatars/7.png" alt="Avatar" class="rounded-circle" />
-                              </li>
-                            </ul>
+                          Office-Regular
                           </td>
-                          <td><span class="badge bg-label-success me-1">Completed</span></td>
                           <td>
-
+                            01/09/2026
+                          </td>
+                          <td>
+                            20Lpa
                           </td>
                          
                           <td>
@@ -121,42 +67,14 @@ startContainer($path, $user);
                           </td>
                         </tr>
                         <tr>
-                          <td><i class="fab fa-vuejs fa-lg text-success me-3"></i> <strong>VueJs Project</strong></td>
-                          <td>Trevor Baker</td>
+                          <td><i class="fab fa-vuejs fa-lg text-success me-3"></i> <strong>Karan Savaliya</strong></td>
+                          <td>Hr Manager</td>
                           <td>
-                            <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                              <li
-                                data-bs-toggle="tooltip"
-                                data-popup="tooltip-custom"
-                                data-bs-placement="top"
-                                class="avatar avatar-xs pull-up"
-                                title="Lilian Fuller"
-                              >
-                                <img src="../assets/img/avatars/5.png" alt="Avatar" class="rounded-circle" />
-                              </li>
-                              <li
-                                data-bs-toggle="tooltip"
-                                data-popup="tooltip-custom"
-                                data-bs-placement="top"
-                                class="avatar avatar-xs pull-up"
-                                title="Sophia Wilkerson"
-                              >
-                                <img src="../assets/img/avatars/6.png" alt="Avatar" class="rounded-circle" />
-                              </li>
-                              <li
-                                data-bs-toggle="tooltip"
-                                data-popup="tooltip-custom"
-                                data-bs-placement="top"
-                                class="avatar avatar-xs pull-up"
-                                title="Christina Parker"
-                              >
-                                <img src="../assets/img/avatars/7.png" alt="Avatar" class="rounded-circle" />
-                              </li>
-                            </ul>
+                           Online-WFh
                           </td>
-                          <td><span class="badge bg-label-info me-1">Scheduled</span></td>
+                          <td>02/05/2024</td>
                           <td>
-
+                              2.3Lpa
                           </td>
                          
                           <td>
@@ -167,43 +85,17 @@ startContainer($path, $user);
                         </tr>
                         <tr>
                           <td>
-                            <i class="fab fa-bootstrap fa-lg text-primary me-3"></i> <strong>Bootstrap Project</strong>
+                            <i class="fab fa-bootstrap fa-lg text-primary me-3"></i> <strong>Yug Tarpara</strong>
                           </td>
-                          <td>Jerry Milton</td>
+                          <td>Marketing Hr</td>
                           <td>
-                            <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                              <li
-                                data-bs-toggle="tooltip"
-                                data-popup="tooltip-custom"
-                                data-bs-placement="top"
-                                class="avatar avatar-xs pull-up"
-                                title="Lilian Fuller"
-                              >
-                                <img src="../assets/img/avatars/5.png" alt="Avatar" class="rounded-circle" />
-                              </li>
-                              <li
-                                data-bs-toggle="tooltip"
-                                data-popup="tooltip-custom"
-                                data-bs-placement="top"
-                                class="avatar avatar-xs pull-up"
-                                title="Sophia Wilkerson"
-                              >
-                                <img src="../assets/img/avatars/6.png" alt="Avatar" class="rounded-circle" />
-                              </li>
-                              <li
-                                data-bs-toggle="tooltip"
-                                data-popup="tooltip-custom"
-                                data-bs-placement="top"
-                                class="avatar avatar-xs pull-up"
-                                title="Christina Parker"
-                              >
-                                <img src="../assets/img/avatars/7.png" alt="Avatar" class="rounded-circle" />
-                              </li>
-                            </ul>
+                           Office-Regular
                           </td>
-                          <td><span class="badge bg-label-warning me-1">Pending</span></td>
                           <td>
-
+                            04/04/2030
+                          </td>
+                          <td>
+                            1.7Lpa
                           </td>
                          
                         

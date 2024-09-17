@@ -40,7 +40,7 @@ startContainer($path, $user);
                            www.lanskart.com    
                           </td>
                           <td>
-                          <a class="btn btn-primary" href="../../Company/Profile.php">
+                          <a class="btn btn-primary" href="../../User/Company/Profile.php">
                                   View Details
                                 </a>
                           </td>
@@ -59,7 +59,7 @@ startContainer($path, $user);
                           </td>
                          
                           <td>
-                          <a class="btn btn-primary" href="../../Company/Profile.php">
+                          <a class="btn btn-primary" href="../../User/Company/Profile.php">
                                   View Details
                                 </a>
                           </td>
@@ -78,7 +78,7 @@ startContainer($path, $user);
                           </td>
                          
                           <td>
-                          <a class="btn btn-primary" href="../../Company/Profile.php">
+                          <a class="btn btn-primary" href="../../User/Company/Profile.php">
                                   View Details
                                 </a>
                           </td>
@@ -100,7 +100,7 @@ startContainer($path, $user);
                          
                         
                           <td>
-                          <a class="btn btn-primary" href="../../Company/Profile.php">
+                          <a class="btn btn-primary" href="../../User/Company/Profile.php">
                                   View Details
                                 </a>
                           </td>

@@ -424,7 +424,7 @@ function companyNavbar($path)
             <div class='dropdown-divider'></div>
           </li>
           <li>
-            <a class='dropdown-item' href='$path/collage/Profile.php'>
+            <a class='dropdown-item' href='$path/User/Company/Profile.php'>
               <i class='bx bx-user me-2'></i>
               <span class='align-middle'>My Profile</span>
             </a>
@@ -573,7 +573,7 @@ function collageNavbar($path)
             <div class='dropdown-divider'></div>
           </li>
           <li>
-            <a class='dropdown-item' href='$path/collage/Profile.php'>
+            <a class='dropdown-item' href='$path/User/collage/Profile.php'>
               <i class='bx bx-user me-2'></i>
               <span class='align-middle'>My Profile</span>
             </a>

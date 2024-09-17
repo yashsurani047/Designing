@@ -42,7 +42,7 @@ startContainer($path, $user);
                           RajanM01@msu.ac.in
                           </td>
                           <td>
-                          <a class="btn btn-primary" href="../../Student/Profile.php">
+                          <a class="btn btn-primary" href="../../User/Student/Profile.php">
                                   View Details
                                 </a>
                           </td>
@@ -62,7 +62,7 @@ startContainer($path, $user);
                           </td>
                          
                           <td>
-                          <a class="btn btn-primary" href="../../Student/Profile.php">
+                          <a class="btn btn-primary" href="../../User/Student/Profile.php">
                                   View Details
                                 </a>
                           </td>
@@ -84,7 +84,7 @@ startContainer($path, $user);
                           </td>
                          
                           <td>
-                          <a class="btn btn-primary" href="../../Student/Profile.php">
+                          <a class="btn btn-primary" href="../../User/Student/Profile.php">
                                   View Details
                                 </a>
                           </td>
@@ -109,7 +109,7 @@ startContainer($path, $user);
                          
                         
                           <td>
-                          <a class="btn btn-primary" href="../../Student/Profile.php">
+                          <a class="btn btn-primary" href="../../User/Student/Profile.php">
                                   View Details
                                 </a>
                           </td>
