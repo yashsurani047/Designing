@@ -874,8 +874,8 @@ function AdminNavbar($path)
                   </div>
                 </div>
                 <div class='flex-grow-1'>
-                  <span class='fw-semibold d-block'>Student Name</span>
-                  <small class='text-muted'>Student</small>
+                  <span class='fw-semibold d-block'>Admin Name</span>
+                  <small class='text-muted'>Yash<small>
                 </div>
               </div>
             </a>
@@ -884,7 +884,7 @@ function AdminNavbar($path)
             <div class='dropdown-divider'></div>
           </li>
           <li>
-            <a class='dropdown-item' href='$path/user/Student/Profile.php'>
+            <a class='dropdown-item' href='$path/User/Admin/Profile.php'>
               <i class='bx bx-user me-2'></i>
               <span class='align-middle'>My Profile</span>
             </a>
