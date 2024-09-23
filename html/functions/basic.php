@@ -1,7 +1,6 @@
 <?php
 
-function headTag($path)
-{
+function headTag($path) {
   echo "
     <head>
     <!-- Favicon -->
