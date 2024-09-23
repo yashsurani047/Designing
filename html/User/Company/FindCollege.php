@@ -10,10 +10,9 @@ startContainer($path, $user);
 
 <body>
 
-  <!-- Bordered Table -->
-  <div class="card" style="margin-left:35px;margin-right:35px;margin-top:35px;">
+<div class="card" style="margin-left:35px;margin-right:35px;margin-top:35px;">
                 <h5 class="card-header"></h5>
-                <h5 class="card-header">Current Employee</h5>
+                <h5 class="card-header">Available Colleges</h5>
 
                 <div class="card-body">
                   
@@ -21,195 +20,91 @@ startContainer($path, $user);
                     <table class="table table-bordered">
                      <thead>
                         <tr>
-                          <th>Employee Name</th>
-                          <th>Employee Role</th>
-                          <th>Employee Type</th>
-                          <th>Jioning Date</th>
-                          <th>Employee CTC</th>
+                          <th>College Name</th>
+                          <th>College / University</th>
+                          <th>TPO Head</th>
+                          <th>Contact</th>
+                          <th>Website Link</th>
                           <th>Details</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
                           <td>
-                            <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Angular Project</strong>
+                            <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>IIT - Delhi</strong>
                           </td>
-                          <td>Albert Cook</td>
+                          <td>IIT Institute</td>
                           <td>
-                            <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                              <li
-                                data-bs-toggle="tooltip"
-                                data-popup="tooltip-custom"
-                                data-bs-placement="top"
-                                class="avatar avatar-xs pull-up"
-                                title="Lilian Fuller"
-                              >
-                                <img src="../assets/img/avatars/5.png" alt="Avatar" class="rounded-circle" />
-                              </li>
-                              <li
-                                data-bs-toggle="tooltip"
-                                data-popup="tooltip-custom"
-                                data-bs-placement="top"
-                                class="avatar avatar-xs pull-up"
-                                title="Sophia Wilkerson"
-                              >
-                                <img src="../assets/img/avatars/6.png" alt="Avatar" class="rounded-circle" />
-                              </li>
-                              <li
-                                data-bs-toggle="tooltip"
-                                data-popup="tooltip-custom"
-                                data-bs-placement="top"
-                                class="avatar avatar-xs pull-up"
-                                title="Christina Parker"
-                              >
-                                <img src="../assets/img/avatars/7.png" alt="Avatar" class="rounded-circle" />
-                              </li>
-                            </ul>
-                          </td>
-                          <td><span class="badge bg-label-primary me-1">Active</span></td>
-                          <td>
-                               
+                             Sachin Bansal
                           </td>
                           <td>
-                          <a class="btn btn-primary" href="ViewCollege.php">
+                            9098765430
+                          </td>
+                          <td>
+                           www.iitdelhi.com    
+                          </td>
+                          <td>
+                          <a class="btn btn-primary" href="../../User/Company/ViewCollege.php">
                                   View Details
                                 </a>
                           </td>
                         </tr>
                         <tr>
-                          <td><i class="fab fa-react fa-lg text-info me-3"></i> <strong>React Project</strong></td>
-                          <td>Barry Hunter</td>
+                          <td><i class="fab fa-react fa-lg text-info me-3"></i> <strong>IIt-Bombay</strong></td>
+                          <td>IIt Bombay Institute</td>
                           <td>
-                            <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                              <li
-                                data-bs-toggle="tooltip"
-                                data-popup="tooltip-custom"
-                                data-bs-placement="top"
-                                class="avatar avatar-xs pull-up"
-                                title="Lilian Fuller"
-                              >
-                                <img src="../assets/img/avatars/5.png" alt="Avatar" class="rounded-circle" />
-                              </li>
-                              <li
-                                data-bs-toggle="tooltip"
-                                data-popup="tooltip-custom"
-                                data-bs-placement="top"
-                                class="avatar avatar-xs pull-up"
-                                title="Sophia Wilkerson"
-                              >
-                                <img src="../assets/img/avatars/6.png" alt="Avatar" class="rounded-circle" />
-                              </li>
-                              <li
-                                data-bs-toggle="tooltip"
-                                data-popup="tooltip-custom"
-                                data-bs-placement="top"
-                                class="avatar avatar-xs pull-up"
-                                title="Christina Parker"
-                              >
-                                <img src="../assets/img/avatars/7.png" alt="Avatar" class="rounded-circle" />
-                              </li>
-                            </ul>
+                          Binny Bansal
                           </td>
-                          <td><span class="badge bg-label-success me-1">Completed</span></td>
                           <td>
-
+                            9754546678
+                          </td>
+                          <td>
+                            www.iitbombay.com
                           </td>
                          
                           <td>
-                          <a class="btn btn-primary" href="ViewCollege.php">
+                          <a class="btn btn-primary" href="../../User/Company/ViewCollege.php">
                                   View Details
                                 </a>
                           </td>
                         </tr>
                         <tr>
-                          <td><i class="fab fa-vuejs fa-lg text-success me-3"></i> <strong>VueJs Project</strong></td>
-                          <td>Trevor Baker</td>
+                          <td><i class="fab fa-vuejs fa-lg text-success me-3"></i> <strong>IIt-Roorkee</strong></td>
+                          <td>IIt-Roorkee Institute</td>
                           <td>
-                            <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                              <li
-                                data-bs-toggle="tooltip"
-                                data-popup="tooltip-custom"
-                                data-bs-placement="top"
-                                class="avatar avatar-xs pull-up"
-                                title="Lilian Fuller"
-                              >
-                                <img src="../assets/img/avatars/5.png" alt="Avatar" class="rounded-circle" />
-                              </li>
-                              <li
-                                data-bs-toggle="tooltip"
-                                data-popup="tooltip-custom"
-                                data-bs-placement="top"
-                                class="avatar avatar-xs pull-up"
-                                title="Sophia Wilkerson"
-                              >
-                                <img src="../assets/img/avatars/6.png" alt="Avatar" class="rounded-circle" />
-                              </li>
-                              <li
-                                data-bs-toggle="tooltip"
-                                data-popup="tooltip-custom"
-                                data-bs-placement="top"
-                                class="avatar avatar-xs pull-up"
-                                title="Christina Parker"
-                              >
-                                <img src="../assets/img/avatars/7.png" alt="Avatar" class="rounded-circle" />
-                              </li>
-                            </ul>
+                            Piyush Bansal
                           </td>
-                          <td><span class="badge bg-label-info me-1">Scheduled</span></td>
                           <td>
-
+                            8756475645
+                          </td>
+                          <td>
+                            www.iitroorkee.com
                           </td>
                          
                           <td>
-                          <a class="btn btn-primary" href="ViewCollege.php">
+                          <a class="btn btn-primary" href="../../User/Company/ViewCollege.php">
                                   View Details
                                 </a>
                           </td>
                         </tr>
                         <tr>
                           <td>
-                            <i class="fab fa-bootstrap fa-lg text-primary me-3"></i> <strong>Bootstrap Project</strong>
+                            <i class="fab fa-bootstrap fa-lg text-primary me-3"></i> <strong>Lovely University</strong>
                           </td>
-                          <td>Jerry Milton</td>
+                          <td>Lovely University</td>
                           <td>
-                            <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                              <li
-                                data-bs-toggle="tooltip"
-                                data-popup="tooltip-custom"
-                                data-bs-placement="top"
-                                class="avatar avatar-xs pull-up"
-                                title="Lilian Fuller"
-                              >
-                                <img src="../assets/img/avatars/5.png" alt="Avatar" class="rounded-circle" />
-                              </li>
-                              <li
-                                data-bs-toggle="tooltip"
-                                data-popup="tooltip-custom"
-                                data-bs-placement="top"
-                                class="avatar avatar-xs pull-up"
-                                title="Sophia Wilkerson"
-                              >
-                                <img src="../assets/img/avatars/6.png" alt="Avatar" class="rounded-circle" />
-                              </li>
-                              <li
-                                data-bs-toggle="tooltip"
-                                data-popup="tooltip-custom"
-                                data-bs-placement="top"
-                                class="avatar avatar-xs pull-up"
-                                title="Christina Parker"
-                              >
-                                <img src="../assets/img/avatars/7.png" alt="Avatar" class="rounded-circle" />
-                              </li>
-                            </ul>
+                              Nikhil Kamath
                           </td>
-                          <td><span class="badge bg-label-warning me-1">Pending</span></td>
                           <td>
-
+                            8778565434
+                          </td>
+                          <td>
+                            www.lovelyuniversity.in
                           </td>
                          
                         
                           <td>
-                          <a class="btn btn-primary" href="ViewCollege.php">
+                          <a class="btn btn-primary" href="../../User/Company/ViewCollege.php">
                                   View Details
                                 </a>
                           </td>

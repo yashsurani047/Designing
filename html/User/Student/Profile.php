@@ -82,24 +82,26 @@ startContainer($path, $user);
                 <div class="card-body">
                   <form id="formAccountSettings" method="POST" onsubmit="return false">
                     <div class="row">
+                    <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-default-company">Company</label>
+                          <div class="col-sm-10">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="basic-default-company"
+                              placeholder="ACME Inc."
+                            />
+                          </div>
+                        </div>
                       <div class="mb-3 col-md-6">
-                       <div class="input-group input-group-merge">
-                       <span id="basic-icon-default-fullname2" class="input-group-text">
-                                <i class=""></i>
-                       </span>
                         <label for="firstName" class="form-label">First Name</label>
                         <input class="form-control" type="text" id="firstName" name="firstName" placeholder="Enter First Name" autofocus
                         />
-                       </div>
                       </div>
                       <div class="mb-3 col-md-6">
-                      <div class="input-group input-group-merge">
-                       <span id="basic-icon-default-fullname2" class="input-group-text">
-                                <i class=""></i>
                         <label for="lastName" class="form-label">Last Name</label>
                         <input class="form-control" type="text" name="lastName" id="lastName" placeholder="Enter Last Name"/>
-                      </div>
-</div>
+                    </div>
                       <div class="mb-3 col-md-6">
                         <label for="lastName" class="form-label">Father Name</label>
                         <input class="form-control" type="text" name="lastName" id="lastName" placeholder="Enter Father Name"/>
@@ -202,114 +204,87 @@ startContainer($path, $user);
                     </div>
                     <div class="card-body">
                       <form>
-                        <div class="mb-3">
-                          <label class="form-label" for="basic-icon-default-fullname">Enter Your 10th Persentage/CGPA</label>
-                          <div class="input-group input-group-merge">
-                            <span id="basic-icon-default-fullname2" class="input-group-text"
-                              ></span>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="basic-icon-default-fullname"
-                              placeholder=""
-                              aria-label=""
-                              aria-describedby="basic-icon-default-fullname2"
-                            />
-                          </div>
-                        </div>
-                        <div class="mb-3">
-                        <h6><label for="formFileMultiple" class="form-label">Upload 10th Marksheet</label></h6>
-                        <input class="form-control" type="file" id="formFileMultiple" multiple />
-                      </div>
-                        <div class="mb-3">
-                          <label class="form-label" for="basic-icon-default-company">Enter Your 12th Persentage/CGPA</label>
-                          <div class="input-group input-group-merge">
-                            <span id="basic-icon-default-company2" class="input-group-text"
-                              ></span>
-                            <input
-                              type="text"
-                              id="basic-icon-default-company"
-                              class="form-control"
-                              placeholder=""
-                              aria-label="ACME Inc."
-                              aria-describedby="basic-icon-default-company2"
-                            />
-                          </div>
-                        </div>
-                        <div class="mb-3">
-                        <h6><label for="formFileMultiple" class="form-label">Upload 12th Marksheet</label></h6>
-                        <input class="form-control" type="file" id="formFileMultiple" multiple />
-                      </div>
-                        <div class="mb-3">
-                          <label class="form-label" for="basic-icon-default-email">Enter Your Graduation Qulifications</label>
-                          <div class="input-group input-group-merge">
-                            <span class="input-group-text"></span>
-                            <input
-                              type="text"
-                              id="basic-icon-default-email"
-                              class="form-control"
-                              placeholder=""
-                              aria-label=""
-                              aria-describedby="basic-icon-default-email2"
-                            />
-                          
-                          </div>
-                        </div>
-
-                        <div class="mb-3">
-                          <label class="form-label" for="basic-icon-default-phone">Enter Your Graduation Persentage/CGPA </label>
-                          <div class="input-group input-group-merge">
-                            <span id="basic-icon-default-phone2" class="input-group-text"
-                              ></span>
-                            <input
-                              type="text"
-                              id="basic-icon-default-phone"
-                              class="form-control phone-mask"
-                              placeholder=""
-                              aria-label=""
-                              aria-describedby="basic-icon-default-phone2"
-                            />
-                          </div>
-                        </div>
-                        <div class="mb-3">
-                        <h6><label for="formFileMultiple" class="form-label">Upload Graduation Marksheet</label></h6>
-                        <input class="form-control" type="file" id="formFileMultiple" multiple />
-                      </div>
-                        <div class="mb-3">
-                          <label class="form-label" for="basic-icon-default-email">Enter Your Post Graduation Qulifications</label>
-                          <div class="input-group input-group-merge">
-                            <span class="input-group-text"></span>
-                            <input
-                              type="text"
-                              id="basic-icon-default-email"
-                              class="form-control"
-                              placeholder=""
-                              aria-label=""
-                              aria-describedby="basic-icon-default-email2"
-                            />
-                          
-                          </div>
-                        </div>
-
-                        <div class="mb-3">
-                          <label class="form-label" for="basic-icon-default-phone">Enter Your Post-Graduation Persentage/CGPA </label>
-                          <div class="input-group input-group-merge">
-                            <span id="basic-icon-default-phone2" class="input-group-text"
-                              ></span>
-                            <input
-                              type="text"
-                              id="basic-icon-default-phone"
-                              class="form-control phone-mask"
-                              placeholder=""
-                              aria-label=""
-                              aria-describedby="basic-icon-default-phone2"
-                            />
-                          </div>
-                        </div>
-                        <div class="mb-3">
-                        <h6><label for="formFileMultiple" class="form-label">Upload Post-Graduation Marksheet</label></h6>
-                        <input class="form-control" type="file" id="formFileMultiple" multiple />
-                      </div>
+                      <div class="mb-3 row">
+  <!-- Label aligned to the left of the text input -->
+  <label class="col-sm-2 col-form-label" for="basic-default-name">Upload 10th Marksheet</label>
+  
+  <div class="col-sm-10">
+    <div class="input-group">
+      <!-- Text Input Field -->
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter Your Total Marks"
+        aria-label="Recipient's username with two button addons"
+      />
+      <!-- Button 1 -->
+      <input value="Upload" class="form-control" id="formFileMultiple" type="file">
+      <!-- Button 2 -->
+      <button class="btn btn-outline-primary" type="button">Upload</button>
+    </div>
+  </div>
+</div>
+<div class="mb-3 row">
+  <!-- Label aligned to the left of the text input -->
+  <label class="col-sm-2 col-form-label" for="basic-default-name">Upload 12th Marksheet</label>
+  
+  <div class="col-sm-10">
+    <div class="input-group">
+      <!-- Text Input Field -->
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter Your Total Marks"
+        aria-label="Recipient's username with two button addons"
+      />
+      <!-- Button 1 -->
+      <input value="Upload" class="form-control" id="formFileMultiple" type="file">
+      <!-- Button 2 -->
+      <button class="btn btn-outline-primary" type="button">Upload</button>
+    </div>
+  </div>
+</div>  
+      
+<div class="mb-3 row">
+  <!-- Label aligned to the left of the text input -->
+  <label class="col-sm-2 col-form-label" for="basic-default-name">Upload Your Graduation Qulification Marksheet</label>
+  
+  <div class="col-sm-10">
+    <div class="input-group">
+      <!-- Text Input Field -->
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter Your Graduation Persentage/CGPA "
+        aria-label="Recipient's username with two button addons"
+      />
+      <!-- Button 1 -->
+      <input value="Upload" class="form-control" id="formFileMultiple" type="file">
+      <!-- Button 2 -->
+      <button class="btn btn-outline-primary" type="button">Upload</button>
+    </div>
+  </div>
+</div>
+<div class="mb-3 row">
+  <!-- Label aligned to the left of the text input -->
+  <label class="col-sm-2 col-form-label" for="basic-default-name">Upload Your Post Graduation Qulification Marksheet</label>
+  
+  <div class="col-sm-10">
+    <div class="input-group">
+      <!-- Text Input Field -->
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter Your Post Graduation Persentage/CGPA "
+        aria-label="Recipient's username with two button addons"
+      />
+      <!-- Button 1 -->
+      <input value="Upload" class="form-control" id="formFileMultiple" type="file">
+      <!-- Button 2 -->
+      <button class="btn btn-outline-primary" type="button">Upload</button>
+    </div>
+  </div>
+</div>
                         <button type="submit" class="btn btn-primary">Send</button>
                       </form>
                     </div>

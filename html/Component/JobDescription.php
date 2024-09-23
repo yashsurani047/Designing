@@ -147,24 +147,14 @@
                     <br>
                     <br>
                     <!-- Buttons -->
-                    <center>
-                        <!-- for student  -->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalScrollable">Next</button>
-                        <span class="badge bg-info">Already Applied</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalScrollable">Request for Withdraw Registration</button>
-                        <br><br>
+                    
 
                         <!-- for Collage -->
                         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalScrollable">Approve</button>
                         <button type="button" class="btn btn-danger">Deny</button>
                         <br><br>
-
-                        <!-- For Company  -->
-                        <button type="button" class="btn btn-warning">Update</button>
-                        <button type="button" class="btn btn-secondary">Cancel</button>
-                        <button type="button" class="btn btn-danger">Close Job Drive</button>
-                        <?php include "./TnC.php"; ?>
-                    </center>
+                        <?php include "../Student/TnC.php"; ?>
+                  
                 </form>
             </div>
         </div>

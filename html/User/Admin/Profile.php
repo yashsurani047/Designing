@@ -1,6 +1,6 @@
 <?php
 $path = "../..";
-$user = "Guest";
+$user = "Admin";
 
 require "$path/functions/basic.php";
 startContainer($path, $user);

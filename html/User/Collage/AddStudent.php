@@ -45,6 +45,10 @@ startContainer($path, $user);
               <input type="text" class="form-control" id="organization" name="organization" placeholder="MCA" />
             </div>
             <div class="mb-3 col-md-6">
+              <label for="organization" class="form-label">Enrollment No.</label>
+              <input type="text" class="form-control" id="organization" name="organization" placeholder="MCA" />
+            </div>
+            <div class="mb-3 col-md-6">
               <label class="form-label" for="phoneNumber">Phone Number</label>
               <div class="input-group input-group-merge">
                 <span class="input-group-text">IN (+91)</span>

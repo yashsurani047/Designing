@@ -62,6 +62,17 @@ function headTag($path)
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src='https://buttons.github.io/buttons.js'></script>
 
+    <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJTYo2MsMefpH84eiEFBzHgIhC9H7PRZ8mEcfM/sFJpDYLj5' crossorigin='anonymous'></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-smHYkd38cqh8yg8pP+RZTyk84PzvBvR1zIvIVLDg6TA11UyV8Viw7moJo4Wl30J2' crossorigin='anonymous'></script>
+
+<link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ775/zr03cJIHq5qvIF5t47OVeF5XaXIMr' crossorigin='anonymous'>
+
+<script src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJTYo2MsMefpH84eiEFBzHgIhC9H7PRZ8mEcfM/sFJpDYLj5' crossorigin='anonymous'></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-smHYkd38cqh8yg8pP+RZTyk84PzvBvR1zIvIVLDg6TA11UyV8Viw7moJo4Wl30J2' crossorigin='anonymous'></script>
+
+
 </head>
 <style>
         .error {
@@ -413,7 +424,7 @@ function companyNavbar($path)
             <div class='dropdown-divider'></div>
           </li>
           <li>
-            <a class='dropdown-item' href='$path/collage/Profile.php'>
+            <a class='dropdown-item' href='$path/User/Company/Profile.php'>
               <i class='bx bx-user me-2'></i>
               <span class='align-middle'>My Profile</span>
             </a>
@@ -562,7 +573,7 @@ function collageNavbar($path)
             <div class='dropdown-divider'></div>
           </li>
           <li>
-            <a class='dropdown-item' href='$path/collage/Profile.php'>
+            <a class='dropdown-item' href='$path/User/collage/Profile.php'>
               <i class='bx bx-user me-2'></i>
               <span class='align-middle'>My Profile</span>
             </a>
@@ -821,9 +832,29 @@ function AdminNavbar($path)
    
 
     <ul class='navbar-nav flex-row align-items-center ms-auto'>
+    
+
+ <div class='btn-group' style='margin-right:50px;'>
+                      <button
+                        type='button'
+                        class='btn btn-primary dropdown-toggle'
+                        data-bs-toggle='dropdown'
+                        aria-expanded='false'
+                      >
+                        Profiles
+                      </button>
+                      <ul class='dropdown-menu'>
+                        <li><a class='dropdown-item' href='../Admin/ViewCompany.php'>View Company</a></li>
+                        <li><a class='dropdown-item' href='../Admin/ViewCollege.php'>View College</a></li>
+                        <li><a class='dropdown-item' href='../Admin/ViewStudent.php'>View Student</a></li>
+                        <li><a class='dropdown-item' href='../Admin/index.php'>View Admin</a></li>
+                        <li><a class='dropdown-item' href='../../index.php'>View Guest</a></li>
+                     
+                      
+                      </ul>
+                    </div>    
 
     <a class='nav-item me-5 desktop-nav ' href='$path/user/Admin/index.php'>Home</a>
-    <a class='nav-item me-5 desktop-nav ' href='$path/user/Admin/Job.php'>Apply To Job</a>
       <!-- Place this tag where you want the button to render. -->
      
       <!-- User -->
@@ -843,8 +874,8 @@ function AdminNavbar($path)
                   </div>
                 </div>
                 <div class='flex-grow-1'>
-                  <span class='fw-semibold d-block'>Student Name</span>
-                  <small class='text-muted'>Student</small>
+                  <span class='fw-semibold d-block'>Admin Name</span>
+                  <small class='text-muted'>Yash<small>
                 </div>
               </div>
             </a>
@@ -853,7 +884,7 @@ function AdminNavbar($path)
             <div class='dropdown-divider'></div>
           </li>
           <li>
-            <a class='dropdown-item' href='$path/user/Student/Profile.php'>
+            <a class='dropdown-item' href='$path/User/Admin/Profile.php'>
               <i class='bx bx-user me-2'></i>
               <span class='align-middle'>My Profile</span>
             </a>
@@ -1053,30 +1084,32 @@ At PlacementPlace, we are dedicated to connecting you with the best companies in
   ";
 } // Checked - may be change
 
-function getAlert($user){
-  if($user == "Guest"){
-    $arr = array("","","");
+function getAlert($user)
+{
+  if ($user == "Guest") {
+    $arr = array("", "", "");
     return $arr;
   }
-  $arr = array("","","update");
-  $arr = array("","verify","");
+  $arr = array("", "", "update");
+  $arr = array("", "verify", "");
   //$arr = array("login","verify","update");
   return $arr;
 }
-function AddAlert($user){
-  if($user == ""){
+function AddAlert($user)
+{
+  if ($user == "") {
     return;
   }
   $alert = getAlert($user);
-  if($alert[0] == "login"){
+  if ($alert[0] == "login") {
     echo "
   <div class='alert alert-success alert-dismissible' role='alert'>
-  Hello USERNAME: ".$user.", You Logged in Successfully!
+  Hello USERNAME: " . $user . ", You Logged in Successfully!
   <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
 </div>
     ";
   }
-  if($alert[1] == "verify"){
+  if ($alert[1] == "verify") {
     echo "
 <div class='alert alert-danger alert-dismissible' role='alert'>
 Please Verify the Sensitive Information in Your Profile! <a href='Profile.php'>Click Here.</a>
@@ -1084,10 +1117,10 @@ Please Verify the Sensitive Information in Your Profile! <a href='Profile.php'>C
 </div>
     ";
   }
-  if($alert[2] == "update"){
+  if ($alert[2] == "update") {
     echo "
 <div class='alert alert-warning alert-dismissible' role='alert'>
-Please Update & Verify ".$user." Information in Your Profile! <a href='Profile.php'>Click Here.</a>
+Please Update & Verify " . $user . " Information in Your Profile! <a href='Profile.php'>Click Here.</a>
 <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
 </div>
     ";
