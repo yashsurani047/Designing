@@ -1,4 +1,5 @@
 <?php
+USE function\Database;
 
 function headTag($path) {
   echo "
@@ -1127,6 +1128,11 @@ Please Update & Verify " . $user . " Information in Your Profile! <a href='Profi
 }
 function startContainer($path, $user)
 {
+  if(isset($_SESSION['tempdata']['status'])){
+    $status = $_SESSION['tempdata']['status'];
+    unset($_SESSION["tempdata"]["status"]);
+    echo "<script>alert('Status : $status')</script>";
+  }
   echo "
   <!DOCTYPE html>
   </head>
@@ -1158,4 +1164,12 @@ function endContainer($path, $nofooter = null)
   </body>
   </html>
   ";
+}
+
+function back(){
+  echo "<script>window.history.back()</script>";
+  echo "<script>window.history.back()</script>";  
+}
+function redirect($url){
+  header("location:$url");  
 }
