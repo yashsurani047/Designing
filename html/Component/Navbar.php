@@ -1,6 +1,12 @@
 <?php
-$Userbtn = "";
-if(isset($_SESSION['Username'])){
+$Userbtn = "
+<li class='nav-item me-5 desktop-nav'>
+    <a type='button' class='btn btn-primary desktop-nav' href='$path/Authentication/'>
+      <i class='bx bx-log-in-circle desktop-nav '></i>Login/Register
+    </a>
+  </li>
+";
+if(isset($_SESSION['Email'])){
   $Userbtn = "
   <!-- User -->
       <li class='nav-item navbar-dropdown dropdown-user dropdown'>
@@ -68,11 +74,7 @@ if(isset($_SESSION['Username'])){
   <li><a class='nav-item me-5 desktop-nav' href='$path/index.php'>Home</a></li>
   <li><a class='nav-item me-5 desktop-nav' href='$path/AboutUs.php'>About Us</a></li>
   <li><a class='nav-item me-5 desktop-nav' href='$path/ContactUs.php'>Contact Us</a></li>
-  <li class='nav-item me-5 desktop-nav'>
-    <a type='button' class='btn btn-primary desktop-nav' href='$path/Authentication/'>
-      <i class='bx bx-log-in-circle desktop-nav '></i>Login/Register
-    </a>
-  </li>
+  $Userbtn;
   ";
   $CompanyMenu = "
   <li><a class='nav-item me-5 desktop-nav ' href='$path/user/Company/index.php'>Home</a></li>
