@@ -149,7 +149,7 @@
                     <!-- Buttons -->
                     
 
-                        <!-- for Collage -->
+                        <!-- for College -->
                         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalScrollable">Approve</button>
                         <button type="button" class="btn btn-danger">Deny</button>
                         <br><br>

@@ -1,8 +1,7 @@
 <?php
 $path = "..";
-$user = "Student";
+require_once "$path/Function/Basic.php";
 
-require "$path/functions/basic.php";
 startContainer($path, "");
 ?>
 <main>
@@ -22,26 +21,28 @@ startContainer($path, "");
               </a>
             </div>
             <!-- /Logo -->
-            <h4 class="mb-2"><strong><?php echo $user; ?></strong></h4>
             <h4 class="mb-2">Your Journey Begins Here 🚀</h4>
             <p class="mb-4">Where Education Meets Opportunity!</p>
 
-            <form class="mb-3" method="GET" action="<?php echo $path ?>/Database/Submit.php" >
-              <center>
-                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                  <input type="radio" class="btn-check" name="Usertype" value="Student" id="Student" autocomplete="off" required />
-                  <label class="btn btn-outline-primary" for="Student"><i class='bx bxs-user'></i> Student</label>
-                  <input type="radio" class="btn-check" name="Usertype" value="Collage" id="Collage" autocomplete="off" />
-                  <label class="btn btn-outline-primary" for="Collage"><i class='bx bxs-graduation'></i> Collage</label>
-                  <input type="radio" class="btn-check" name="Usertype" value="Company" id="Company" autocomplete="off" />
-                  <label class="btn btn-outline-primary" for="Company"><i class='bx bxs-buildings'></i> Company</label>
-                </div>
-              </center>
-              <div class="mb-3"></div>
+            <form class="mb-3" method="POST" action="<?php echo $path?>/Function/Submit.php" >
+              <div class="mb-3">
+                <center>
+                  <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" name="Usertype" value="Student" id="Student" autocomplete="off" />
+                    <label class="btn btn-outline-primary" for="Student"><i class='bx bxs-user'></i> Student</label>
+                    <input type="radio" class="btn-check" name="Usertype" id="College" value="Collage" autocomplete="off" />
+                    <label class="btn btn-outline-primary" for="College"><i class='bx bxs-graduation'></i>
+                      College</label>
+                    <input type="radio" class="btn-check" name="Usertype" id="Company" value="Company" autocomplete="off" />
+                    <label class="btn btn-outline-primary" for="Company"><i class='bx bxs-buildings'></i>
+                      Company</label>
+                  </div>
+                </center>
+              </div>
               <div class="mb-3">
                 <label for="Username" class="form-label">Username</label>
                 <div class="input-group input-group-merge">
-                  <input type="text" class="form-control" name="Username" id="Username" placeholder="Enter your username" autofocus />
+                  <input type="text" class="form-control" id="Username" name="Username" placeholder="Enter your username" autofocus />
                   <span class="input-group-text cursor-pointer"><i class="bx bx-check"></i><i
                       class="bx bx-x"></i></span>
                 </div>
@@ -59,7 +60,7 @@ startContainer($path, "");
               <div class="mb-3 form-password-toggle">
                 <label class="form-label" for="Password">Password</label>
                 <div class="input-group input-group-merge">
-                  <input type="password" id="Password" name="Password1" class="form-control"
+                  <input type="password" id="Password" class="form-control" name="Password1"
                     placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                     aria-describedby="password" />
                   <span class="input-group-text cursor-pointer"><i class="bx bx-check"></i><i
@@ -70,7 +71,7 @@ startContainer($path, "");
               <div class="mb-3 form-password-toggle">
                 <label class="form-label" for="ConfirmPassword">Confirm Password</label>
                 <div class="input-group input-group-merge">
-                  <input type="password" id="ConfirmPassword" name="Password2" class="form-control"
+                  <input type="password" id="ConfirmPassword" class="form-control" name="Password2"
                     placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                     aria-describedby="ConfirmPassword" />
                   <span class="input-group-text cursor-pointer"><i class="bx bx-check"></i><i
@@ -89,7 +90,7 @@ startContainer($path, "");
                 </div>
                 <span id="termsError" class="error"></span>
               </div>
-              <input class="btn btn-primary d-grid w-100" type="submit" name="submit" value="Register" />
+              <input class="btn btn-primary d-grid w-100" type="submit" name="submit" value="Register"/>
             </form>
             <br>
             <p class="text-center">

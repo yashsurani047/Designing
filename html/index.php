@@ -1,8 +1,7 @@
 <?php
 $path = ".";
 $user = "Guest";
-
-require "$path/functions/basic.php";
+require_once("Function/Basic.php");
 startContainer($path, $user);
 ?>
 <main>
@@ -14,7 +13,7 @@ startContainer($path, $user);
 	                        <p class="hero-paragraph">"PlacementPlus streamlines the placement process, connecting students, colleges, and companies effortlessly. We ensure smooth recruitment, making talent discovery and career growth easier for all.</p>
 	                        
 							<div class="hero-cta">
-								<a class="button button-primary" href="Authentication/Collage">Want to Companies for Students?</a>
+								<a class="button button-primary" href="Authentication/College">Want to Companies for Students?</a>
 							</div>
 							<br>
 							<div class="hero-cta">

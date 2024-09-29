@@ -1,12 +1,10 @@
 <?php
 $path = "..";
 
-require "$path/functions/basic.php";
+require_once "$path/Function/Basic.php";
 startContainer($path, "");
 ?>
 <main>
-
-
     <div class="container-xxl">
         <div class="authentication-wrapper authentication-basic container-p-y">
             <div class="authentication-inner">
@@ -68,39 +66,35 @@ startContainer($path, "");
                             </a>
                         </div>
                         <!-- /Logo -->
-                        <h4 class="mb-2"><strong>Welcome Back! 👋</strong></h4>
+                        <h4 class="mb-2">Welcome to Sneat! 👋</h4>
                         <p class="mb-4">Please sign-in to your account</p>
 
-                        <form id="loginForm" class="mb-3" action="<?php echo $path ?>/Database/Submit.php" method="GET"
-                            onsubmit="return validateForm()">
-                            <center>
-                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                    <input type="radio" class="btn-check" name="Usertype" id="Student"
-                                        autocomplete="off" required />
-                                    <label class="btn btn-outline-primary" for="Student"><i class='bx bxs-user'></i>
-                                        Student</label>
-                                    <input type="radio" class="btn-check" name="Usertype" id="Collage"
-                                        autocomplete="off" />
-                                    <label class="btn btn-outline-primary" for="Collage"><i
-                                            class='bx bxs-graduation'></i> Collage</label>
-                                    <input type="radio" class="btn-check" name="Usertype" id="Company"
-                                        autocomplete="off" />
-                                    <label class="btn btn-outline-primary" for="Company"><i
-                                            class='bx bxs-buildings'></i> Company</label>
-                                </div>
-                            </center>
-                            <div class="mb-3"></div>
+                        <form id="loginForm" class="mb-3" action="<?php echo $path?>/Function/Submit.php" method="POST" onclick="return validateForm();">
+                            <!-- <div class="mb-3">
+                                <center>
+                                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                      <input type="radio" class="btn-check" name="Usertype" id="Student" autocomplete="off" />
+                                      <label class="btn btn-outline-primary" for="Student"><i class='bx bxs-user'></i> Student</label>
+                                      <input type="radio" class="btn-check" name="Usertype" id="College" autocomplete="off" />
+                                      <label class="btn btn-outline-primary" for="College"><i class='bx bxs-graduation'></i> College</label>
+                                      <input type="radio" class="btn-check" name="Usertype" id="Company" autocomplete="off" />
+                                      <label class="btn btn-outline-primary" for="Company"><i class='bx bxs-buildings'></i> Company</label>
+                                    </div>
+                                </center>
+                            </div> -->
                             <div class="mb-3">
                                 <div class="input-group">
                                     <button class="btn btn-outline-primary dropdown-toggle" type="button"
                                         data-bs-toggle="dropdown" aria-expanded="false">
                                         Email
                                     </button>
-                                    <ul class="dropdown-menu" style="">
+                                    <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="javascript:void(0);">Username</a></li>
                                     </ul>
-                                    <input type="email" class="form-control" aria-label="Text input with dropdown button" placeholder="Enter your email" name="email" autofocus required />
+                                    <input type="text" class="form-control" id="email" name="Email"
+                                        aria-label="Text input with dropdown button" placeholder="Enter your email or username" autofocus/>
                                 </div>
+                                <span id="emailError" class="error"></span>
                             </div>
                             <div class="mb-3 form-password-toggle">
                                 <div class="d-flex justify-content-between">
@@ -110,14 +104,15 @@ startContainer($path, "");
                                     </a>
                                 </div>
                                 <div class="input-group input-group-merge">
-                                    <input type="password" id="password" class="form-control" name="password"
-                                        placeholder="•••••••••••••••" aria-describedby="password" required />
+                                    <input type="password" id="password" class="form-control" name="Password"
+                                        placeholder="•••••••••••••••" aria-describedby="password" />
                                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                                 </div>
                                 <span id="passwordError" class="error"></span>
                             </div>
                             <div class="mb-3">
-                                <input class="btn btn-primary d-grid w-100" type="submit" name="submit" value="Login" />
+                                    <input type="submit" class="btn btn-primary d-grid w-100" type="submit" name="submit" value="Login">
+                                </a>
                             </div>
                         </form>
 

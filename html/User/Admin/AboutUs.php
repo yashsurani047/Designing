@@ -8,11 +8,7 @@
 </head>
 <body>
    
-   <header>
-          <!--  Header Starts here-->
-  <?php include $_SERVER['DOCUMENT_ROOT'] . '/Project/Designing/html/Partial/Header.php';?>
-    <!-- Header Ends Here -->   
-   </header>
+<?php require_once "$path/Function/Basic.php"; ?>
         <section class="about-section">
             <h1>About Us</h1>
             <p>At Placement Plus, our mission is to provide the best solutions for your business growth. Our platform offers a wide range of tools and services to help you succeed in the competitive market.</p>
@@ -20,8 +16,5 @@
             <p>Join us today and take your business to the next level with Placement Plus!</p>
         </section>
 
-    <!--  Footer Starts here-->
-        <?php include $_SERVER['DOCUMENT_ROOT'] . '/Project/Designing/html/Partial/Footer.php';?>
-    <!-- Footer Ends Here --> 
 </body>
 </html>

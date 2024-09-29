@@ -1,8 +1,7 @@
 <?php
 $path = "..";
-$user = "Student";
 
-require "$path/functions/basic.php";
+require_once "$path/Function/Basic.php";
 startContainer($path, "");
 ?>
 <main>
@@ -75,7 +74,6 @@ startContainer($path, "");
                 </a>
               </div>
               <!-- /Logo -->
-              <h4 class="mb-2"><strong><?php echo $user; ?></strong></h4>
               <h4 class="mb-2">Forgot Password? 🔒</h4>
               <p class="mb-4">Enter your email and we'll send you instructions to reset your password</p>
               <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
