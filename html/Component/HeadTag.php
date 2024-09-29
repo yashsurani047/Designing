@@ -11,6 +11,10 @@
 
     <!-- Icons. Uncomment required icon fonts -->
     <link rel='stylesheet' href='<?php echo $path ?>/assets/vendor/fonts/boxicons.css' />
+    
+    <!-- CDNs-->
+    <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css' />
+    <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css' />
 
     <!-- Core CSS -->
     <link rel='stylesheet' href='<?php echo $path ?>/assets/vendor/css/core.css' class='template-customizer-core-css' />
