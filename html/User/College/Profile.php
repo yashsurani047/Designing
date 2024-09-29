@@ -126,9 +126,7 @@ startContainer($path, $user);
                       <option value="pt">Sanskrit</option>
                     </select>
                   </div>
-
-
-                </div>
+                 </div>
                 <div class="col-sm-10">
                   <button type="submit" class="btn btn-secondary">Edit</button>
                   <button type="submit" class="btn btn-primary">Update</button>

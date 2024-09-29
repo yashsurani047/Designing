@@ -1,8 +1,10 @@
 <?php
 $path = "..";
 $user = "Guest";
+header("location:login.php"); exit();
 
-require "$path/functions/basic.php";
+require_once "$path/Function/Basic.php";
+
 startContainer($path, $user);
 ?>
 <main>

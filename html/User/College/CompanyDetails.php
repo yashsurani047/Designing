@@ -1,11 +1,11 @@
 <?php
-$path = ".";
-$user = "Guest";
+$path = "../..";
+$user = "College";
 
 require_once "$path/Function/Basic.php";
 startContainer($path, $user);
 ?>
 <main>
-    <h1><center>This is Guest About Page Page</center></h1>
+    <?php include "$path/Component/JobDescription.php"; ?>
 </main>
 <?php endContainer($path); ?>
