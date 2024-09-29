@@ -144,3 +144,4 @@ At PlacementPlace, we are dedicated to connecting you with the best companies in
     <!-- Copyright -->
   </footer>
   <!-- Footer Ends Here -->
+  <script src='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js'></script>
