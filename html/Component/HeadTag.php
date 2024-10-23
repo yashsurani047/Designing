@@ -83,8 +83,9 @@
     <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'
         integrity='sha384-smHYkd38cqh8yg8pP+RZTyk84PzvBvR1zIvIVLDg6TA11UyV8Viw7moJo4Wl30J2'
         crossorigin='anonymous'></script>
-
-
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 </head>
 <style>
     .error {

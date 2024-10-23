@@ -3,7 +3,47 @@ $path = "../..";
 $user = "Company";
 
 require_once "$path/Function/Basic.php";
+require_once "$path/Function/Database.php";
 startContainer($path, $user);
+
+$db = new Database();
+$profile = $db->Execute("select * from companyprofile where User_Id = " . $_SESSION['Userid']);
+$profile2 = $db->Execute("select * from companyprofile2 where User_Id = " . $_SESSION['Userid']);
+if ($profile != null) {
+  $Company_Name = $profile["Company_Name"];
+  $Company_URL = $profile["Company_URL"];
+  $Company_Address = $profile["Company_Address"];
+  $Contact_Information = $profile["Contact_Information"];
+  $Industry_Sector = $profile["Industry_Sector"];
+  $Company_Overview = $profile["Company_Overview"];
+  $Top_Client = $profile["Top_Client"];
+  $Company_Award = $profile["Company_Award"];
+  $Language = $profile["Language"];
+} else {
+  $Company_Name = "";
+  $Company_URL = "";
+  $Company_Address = "";
+  $Contact_Information = "";
+  $Industry_Sector = "";
+  $Company_Overview = "";
+  $Top_Clients = "";
+  $Company_Award = "";
+  $Language = "";
+}
+if ($profile2 != null) {
+  $Job_Location = $profile2["Job_Location"];
+  $Eligibility_Criteria = $profile2["Eligibility_Criteria"];
+  $Selection_Process = $profile2["Selection_Process"];
+  $HR_Name = $profile2["HR_Name"];
+  $HR_Contact = $profile2["HR_Contact"];
+} else {
+  $Job_Location = "";
+  $Eligibility_Criteria = "";
+  $Selection_Process = "";
+  $HR_Name = "";
+  $HR_Contact = "";
+}
+
 ?>
 
 <body>
@@ -18,18 +58,17 @@ startContainer($path, $user);
             <span class="badge rounded-pill badge-center h-px-20 w-px-20 bg-label-danger">3</span>
           </button>
         </li>
-        <li class="nav-item  m-3">
+        <!-- <li class="nav-item  m-3">
           <button type="button" class="nav-link text-primary" role="tab" data-bs-toggle="tab"
             data-bs-target="#navs-justified-profile" aria-controls="navs-justified-profile" aria-selected="false">
             <i class="bx bxs-graduation"></i> Job and Placement Details
-
           </button>
-        </li>
+        </li> -->
         <li class="nav-item  m-3">
           <button type="button" class="nav-link text-primary" role="tab" data-bs-toggle="tab"
             data-bs-target="#navs-justified-messages" aria-controls="navs-justified-messages" aria-selected="false">
 
-            <i class="tf-icons bx bx-link"></i> Placement and Contact Information
+            <i class="tf-icons bx bx-link"></i> Recruitment and Contact Information
 
           </button>
         </li>
@@ -60,149 +99,84 @@ startContainer($path, $user);
             </div>
             <hr class="my-0" />
             <div class="card-body">
-              <form id="formAccountSettings" method="POST" onsubmit="return false">
+              <form id="formAccountSettings" method="POST" method="POST"
+                action="<?php echo $path ?>/Function/submit.php">
                 <div class="row">
 
                   <div class="mb-3 col-md-6">
-                    <label for="firstName" class="form-label">Company Name
+                    <label for="Company_Name" class="form-label">Company Name
                     </label>
-                    <input class="form-control" type="text" id="firstName" name="Company Name"
-                      placeholder="Company Name" autofocus />
+                    <input class="form-control" type="text" id="Company_Name" name="Company_Name"
+                      value="<?php echo $Company_Name ?>" placeholder="Company Name" autofocus />
                   </div>
                   <div class="mb-3 col-md-6">
-                    <label for="lastName" class="form-label">Company Address
-
+                    <label for="Company_URL" class="form-label">Company URL
                     </label>
-                    <input class="form-control" type="text" name="lastName" id="lastName"
-                      placeholder="Company Address" />
+                    <input class="form-control" type="text" id="Company_URL" name="Company_URL"
+                      value="<?php echo $Company_URL ?>" placeholder="Company URL" autofocus />
                   </div>
                   <div class="mb-3 col-md-6">
-                    <label for="lastName" class="form-label">Contact Information
+                    <label for="Company_Address" class="form-label">Company Address
                     </label>
-                    <input class="form-control" type="text" name="lastName" id="lastName" placeholder="Enter Contact Information
-" />
+                    <input class="form-control" type="text" name="Company_Address" id="Company_Address"
+                      value="<?php echo $Company_Address ?>" placeholder="Company Address" />
                   </div>
                   <div class="mb-3 col-md-6">
-                    <label class="form-label" for="phoneNumber">Industry Sector
+                    <label for="Contact_Information" class="form-label">Contact Information
+                    </label>
+                    <input class="form-control" type="text" name="Contact_Information" id="Contact_Information"
+                      value="<?php echo $Contact_Information ?>" placeholder="Enter Contact Information" />
+                  </div>
+                  <div class="mb-3 col-md-6">
+                    <label class="form-label" for="Industry_Sector">Industry Sector
                     </label>
                     <div class="input-group input-group-merge">
-
-                      <input type="text" id="phoneNumber" name="phoneNumber" class="form-control"
-                        placeholder="Industry Sector" />
+                      <input type="text" id="Industry_Sector" name="Industry_Sector" class="form-control"
+                        value="<?php echo $Industry_Sector ?>" placeholder="Industry Sector" />
                     </div>
                   </div>
                   <div class="mb-3 col-md-6">
-                    <label for="email" class="form-label">Company Overview
+                    <label for="Company_Overview" class="form-label">Company Overview
                     </label>
-                    <input class="form-control" type="text" id="" name="" placeholder="Company Overview
-" />
+                    <input class="form-control" type="text" id="Company_Overview" name="Company_Overview"
+                      value="<?php echo $Company_Overview ?>" placeholder="Company Overview" />
                   </div>
                   <div class="mb-3 col-md-6">
-                    <label for="organization" class="form-label">Top Clients or Partners
+                    <label for="Top_Client" class="form-label">Top Clients or Partners
                     </label>
-                    <input type="text" class="form-control" id="organization" name="organization" placeholder="Top Clients or Partners
-" />
+                    <input type="text" class="form-control" id="Top_Client" name="Top_Client"
+                      value="<?php echo $Top_Client ?>" placeholder="Top CLient or Partners" />
                   </div>
                   <div class="mb-3 col-md-6">
-                    <label class="form-label" for="">Company Achievements and Awards
+                    <label class="form-label" for="Company_Award">Company Achievements and Awards
                     </label>
                     <div class="input-group input-group-merge">
                       <span class="input-group-text"></span>
-                      <input type="text" id="Company Achievements and Awards
-" name="Company Achievements and Awards
-" class="form-control" placeholder="Company Achievements and Awards
-" />
+                      <input type="text" id="Company_Award" name="Company_Award" class="form-control"
+                        value="<?php echo $Company_Award ?>" placeholder="Company Achievements and Awards" />
                     </div>
                   </div>
 
 
                   <div class="mb-3 col-md-6">
                     <label for="language" class="form-label">Language</label>
-                    <select id="language" class="select2 form-select">
+                    <select id="language" class="select2 form-select" name="Language">
                       <option value="">Select Language</option>
-                      <option value="en">English</option>
-                      <option value="fr">Gujarati</option>
-                      <option value="de">Hindi</option>
-                      <option value="pt">Sanskrit</option>
+                      <option value="English">English</option>
+                      <option value="Gujarati">Gujarati</option>
+                      <option value="Hindi">Hindi</option>
+                      <option value="Sanskrit">Sanskrit</option>
                     </select>
                   </div>
-
-
                 </div>
                 <div class="col-sm-10">
-                  <button type="submit" class="btn btn-secondary">Edit</button>
-                  <button type="submit" class="btn btn-primary">Update</button>
+                  <input type="hidden" class="btn btn-primary me-2" name="submit" value="Profile">
+                  <button type="submit" class="btn btn-primary me-2">Save Changes</button>
+                  <button type="button" class="btn btn-secondary" onclick="return window.history.go(-1)">Back</button>
                 </div>
               </form>
             </div>
             <!-- /Account -->
-          </div>
-        </div>
-
-        <div class="tab-pane fade" id="navs-justified-profile" role="tabpanel">
-          <div class="card">
-            <!-- Notifications -->
-            <div class="col-xl">
-              <div class="card mb-4">
-                <form>
-                  <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">Job and Placement Details
-                    </h5>
-                    <small class="text-muted float-end"></small>
-                  </div>
-                  <div class="card-body">
-                    <div class="row mb-3">
-                      <label class="col-sm-2 col-form-label" for="basic-default-name">Available Roles for Placement
-                      </label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="basic-default-name" placeholder="" />
-                      </div>
-                    </div>
-                    <div class="row mb-3">
-                      <label class="col-sm-2 col-form-label" for="basic-default-company">Job Location
-                      </label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="basic-default-company" placeholder="" />
-                      </div>
-                    </div>
-                    <div class="row mb-3">
-                      <label class="col-sm-2 col-form-label" for="basic-default-email">Eligibility Criteria
-                      </label>
-                      <div class="col-sm-10">
-                        <div class="input-group input-group-merge">
-                          <input type="text" id="basic-default-email" class="form-control" placeholder=""
-                            aria-label="john.doe" aria-describedby="basic-default-email2" />
-
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row mb-3">
-                      <label class="col-sm-2 col-form-label" for="basic-default-phone">Recruitment Process
-                      </label>
-                      <div class="col-sm-10">
-                        <input type="text" id="basic-default-phone" class="form-control phone-mask" placeholder=""
-                          aria-label="658 799 8941" aria-describedby="basic-default-phone" />
-                      </div>
-                    </div>
-                    <div class="row mb-3">
-                      <label class="col-sm-2 col-form-label" for="basic-default-message">Compensation Details
-                      </label>
-                      <div class="col-sm-10">
-                        <textarea id="basic-default-message" class="form-control" placeholder=""
-                          aria-label="Hi, Do you have a moment to talk Joe?"
-                          aria-describedby="basic-icon-default-message2"></textarea>
-                      </div>
-                    </div>
-                    <div class="row justify-content-end">
-                      <div class="col-sm-10">
-                        <button type="submit" class="btn btn-secondary">Edit</button>
-                        <button type="submit" class="btn btn-primary">Update</button>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-              </form>
-            </div>
           </div>
         </div>
         <div class="tab-pane fade" id="navs-justified-messages" role="tabpanel">
@@ -210,48 +184,72 @@ startContainer($path, $user);
             <!-- Notifications -->
             <div class="col-xl">
               <div class="card mb-4">
-                <form>
+                <form action="<?php echo $path ?>/Function/submit.php" method="post">
                   <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">Placement and Contact Information
+                    <h5 class="mb-0">Recruitment Information
                     </h5>
                     <small class="text-muted float-end"></small>
                   </div>
                   <div class="card-body">
                     <div class="row mb-3">
-                      <label class="col-sm-2 col-form-label" for="basic-default-name">Internship Opportunities
-
+                      <label class="col-sm-2 col-form-label" for="basic-default-company">Job Location
                       </label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="basic-default-name" placeholder="" />
+                        <input type="text" class="form-control" id="basic-default-company"
+                          value="<?php echo $Job_Location ?>" placeholder="Job Location" name="Job_Location" />
                       </div>
                     </div>
                     <div class="row mb-3">
-                      <label class="col-sm-2 col-form-label" for="basic-default-company">Company Representative for
-                        Placement
-
+                      <label class="col-sm-2 col-form-label" for="basic-default-email">Eligibility Criteria
                       </label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="basic-default-company" placeholder="" />
+                        <div class="input-group input-group-merge">
+                          <input type="text" id="basic-default-email" class="form-control"
+                            placeholder="Eligibility Criteria" value="<?php echo $Eligibility_Criteria ?>"
+                            aria-label="john.doe" aria-describedby="basic-default-email2" name="Eligibility_Criteria" />
+                        </div>
                       </div>
                     </div>
                     <div class="row mb-3">
-                      <label class="col-sm-2 col-form-label" for="basic-default-email">Employee Testimonials or Success
-                        Stories
+                      <label class="col-sm-2 col-form-label" for="basic-default-selectionprocess">Selection Process
+                      </label>
+                      <div class="col-sm-10">
+                        <input type="text" id="basic-default-selectionprocess" class="form-control phone-mask"
+                          placeholder="Selection Process" value="<?php echo $Selection_Process ?>"
+                          aria-label="658 799 8941" aria-describedby="basic-default-selectionprocess"
+                          name="Selection_Process" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-header d-flex align-items-center justify-content-between">
+                    <h5 class="mb-0">Contact Information
+                    </h5>
+                    <small class="text-muted float-end"></small>
+                  </div>
+                  <div class="card-body">
+                    <div class="row mb-3">
+                      <label class="col-sm-2 col-form-label" for="basic-default-hrname">HR Name
+                      </label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="basic-default-hrname" placeholder="" name="HR_Name"
+                          value="<?php echo $HR_Name ?>" />
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label class="col-sm-2 col-form-label" for="basic-default-hrnumber">HR Contact
                       </label>
                       <div class="col-sm-10">
                         <div class="input-group input-group-merge">
                           <input type="text" id="basic-default-email" class="form-control" placeholder=""
-                            aria-label="john.doe" aria-describedby="basic-default-email2" />
-
+                            name="HR_Contact" value="<?php echo $HR_Contact ?>" aria-label="john.doe"
+                            aria-describedby="basic-default-email2" />
                         </div>
                       </div>
                     </div>
-                    <div class="row justify-content-end">
-                      <div class="col-sm-10">
-                        <button type="submit" class="btn btn-secondary">Edit</button>
-                        <button type="submit" class="btn btn-primary">Update</button>
-                      </div>
-
+                    <div class="col-sm-10">
+                      <input type="hidden" class="btn btn-primary me-2" name="submit" value="Profile2">
+                      <button type="submit" class="btn btn-primary me-2">Save Changes</button>
+                      <button type="button" class="btn btn-secondary" onclick="return window.history.go(-1)">Back</button>
                     </div>
                   </div>
               </div>
@@ -261,6 +259,7 @@ startContainer($path, $user);
         </div>
       </div>
     </div>
+  </div>
   </div>
   </>
 

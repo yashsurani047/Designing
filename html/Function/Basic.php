@@ -1,5 +1,7 @@
 <?php
-
+if(empty($path)){
+    $path = "..";
+}
 include_once("$path/Component/container.php");
 include_once("$path/Component/Alert.php");
 include_once("$path/Component/table.php");
@@ -11,10 +13,9 @@ $host = $_SERVER['HTTP_HOST'];
 $filename = $_SERVER['SCRIPT_NAME'];
 $url = $protocol . $host . $filename;
 
-
 if(isset($_SESSION['Usertype'])){
     // Use strpos to check if the Usertype is in the URL
-    if (strpos($url, "User/".$_SESSION['Usertype']."/") || strpos($url, "Function/Basic") || strpos($url, "Function/Submit") || $_SESSION['Usertype'] == "Admin") {
+    if (strpos($url, "User/".$_SESSION['Usertype']."/") || strpos($url, "user/".$_SESSION['Usertype']."/") || strpos($url, "Function") || strpos($url, "Profile") || $_SESSION['Usertype'] == "Admin") {
         // Only Access in own User Type, Function(Basic, Submit), Admins
     }
     else{

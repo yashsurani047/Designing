@@ -34,7 +34,7 @@ class Database extends Basic{
     public function GetConn(){
         return $this->conn;
     }
-    public function Execute($query, $id = 0) {
+    public function Execute($query, $id = 0) { // ID is for Update, Delete & Select Only
         $data = mysqli_query($this->conn, $query);
         
         if ($data) {
@@ -42,7 +42,14 @@ class Database extends Basic{
             if (stripos($query, 'SELECT') === 0) {
                 // For SELECT queries, check if there are results
                 if (mysqli_num_rows($data) > 0) {
-                    return mysqli_fetch_all($data, MYSQLI_ASSOC); // Fetch all results
+                    if (mysqli_num_rows($data) == 1) {
+                        // Otherwise, fetch a single result
+                        return mysqli_fetch_array($data, MYSQLI_ASSOC); // Fetch a single result
+                    } else {
+                        // If the query is not empty, fetch all results
+                        return mysqli_fetch_all($data, MYSQLI_ASSOC); // Fetch all results
+                    }
+                    
                 } else {
                     return null; // No results found
                 }
@@ -65,8 +72,8 @@ class Database extends Basic{
             return false;
         }
     }
-       
-    public function insert($query, $id = 0){
+    
+    public function insert($query, $id = 0){ //only pass query no need ID
         $result = $this->Execute($query, $id);
         if($result){
             return mysqli_insert_id($this->conn);
@@ -111,6 +118,10 @@ class Database extends Basic{
     
         return false; // No rows found
     }
+    public function selectAll($table) {
+        $query = "SELECT * FROM `$table`";
+        return $this->Execute($query);
+    }
     
 
     public function CheckUser($Email, $Password = null) {
@@ -150,6 +161,17 @@ class Database extends Basic{
         } else {
             return false; // No user found
         }
+    }
+    public function beginTransaction() {
+        mysqli_begin_transaction($this->conn);
+    }
+    
+    public function commit() {
+        mysqli_commit($this->conn);
+    }
+    
+    public function rollback() {
+        mysqli_rollback($this->conn);
     }
     
 }

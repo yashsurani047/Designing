@@ -145,3 +145,5 @@ At PlacementPlace, we are dedicated to connecting you with the best companies in
   </footer>
   <!-- Footer Ends Here -->
   <script src='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js'></script>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">

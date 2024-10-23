@@ -78,26 +78,27 @@ if(isset($_SESSION['Email'])){
   ";
   $CompanyMenu = "
   <li><a class='nav-item me-5 desktop-nav ' href='$path/user/Company/index.php'>Home</a></li>
-  <li><a class='nav-item me-5 desktop-nav ' href='$path/user/Company/FindCollege.php'>Find College</a></li>
+  <li><a class='nav-item me-5 desktop-nav ' href='$path/user/Company/FindCollage.php'>Find Collage</a></li>
+  <li><a class='nav-item me-5 desktop-nav ' href='$path/user/Company/JobDrive.php'>Jobs</a></li>
   <li><a class='nav-item me-5 desktop-nav ' href='$path/user/Company/EmployeeRequest.php'>Employee requests</a></li>
   $Userbtn;
   ";
 
-  $CollegeMenu = "
-  <li><a class='nav-item me-5 desktop-nav ' href='$path/user/college/index.php'>Home</a></li>
-  <li><a class='nav-item me-5 desktop-nav ' href='$path/user/college/StudentList.php'>Students</a></li>
-  <li><a class='nav-item me-5 desktop-nav ' href='$path/user/college/JobDrive.php'>Job Drive</a></li>
+  $CollageMenu = "
+  <li><a class='nav-item me-5 desktop-nav ' href='$path/user/Collage/index.php'>Home</a></li>
+  <li><a class='nav-item me-5 desktop-nav ' href='$path/user/Collage/StudentList.php'>Students</a></li>
+  <li><a class='nav-item me-5 desktop-nav ' href='$path/user/Collage/JobDrive.php'>Job Drive</a></li>
   $Userbtn;
   ";
   $StudentMenu = "
   <li><a class='nav-item me-5 desktop-nav ' href='$path/user/Student/index.php'>Home</a></li>
-  <li><a class='nav-item me-5 desktop-nav ' href='$path/user/Student/Job.php'>Apply To Job</a></li>
-  <li><a class='nav-item me-5 desktop-nav ' href='$path/user/Student/Appliedjob.php'>Already Applied</a></li>
+  <li><a class='nav-item me-5 desktop-nav ' href='$path/user/Student/JobDrive.php'>Apply To Job</a></li>
+  <li><a class='nav-item me-5 desktop-nav ' href='$path/user/Student/AppliedJobDrive.php'>Already Applied</a></li>
   $Userbtn;
   ";
   $AdminMenu = "
   <li><a class='dropdown-item' href='../Admin/ViewCompany.php'>View Company</a></li>
-  <li><a class='dropdown-item' href='../Admin/ViewCollege.php'>View College</a></li>
+  <li><a class='dropdown-item' href='../Admin/ViewCollage.php'>View Collage</a></li>
   <li><a class='dropdown-item' href='../Admin/ViewStudent.php'>View Student</a></li>
   <li><a class='dropdown-item' href='../Admin/index.php'>View Admin</a></li>
   <li><a class='dropdown-item' href='../../index.php'>View Guest</a></li>
@@ -112,8 +113,8 @@ if(isset($_SESSION['Email'])){
   else if($user == "Company"){
     $menu = $CompanyMenu;
   }
-  else if($user == "College"){
-    $menu = $CollegeMenu;
+  else if($user == "Collage"){
+    $menu = $CollageMenu;
   }
   else if($user == "Student"){
     $menu = $StudentMenu;

@@ -1,0 +1,7 @@
+{
+    "require": {
+        "mpdf/mpdf": "*",
+        "dompdf/dompdf": "*",
+        "phpmailer/phpmailer": "*"
+    }
+}
