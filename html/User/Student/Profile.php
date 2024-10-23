@@ -20,8 +20,7 @@ if ($profile != null) {
   $State = $profile["State"];
   $Zip_Code = $profile["Zip_Code"];
   $Language = $profile["Language"];
-}
-else{
+} else {
   $First_Name = "";
   $Last_Name = "";
   $Father_Name = "";
@@ -67,24 +66,97 @@ else{
             <h5 class="card-header">Profile Details</h5>
             <!-- Account -->
             <div class="card-body">
-              <div class="d-flex align-items-start align-items-sm-center gap-4">
-                <img src="<?php echo $path ?>/assets/img/avatars/1.png" alt="user-avatar" class="d-block rounded"
-                  height="100" width="100" id="uploadedAvatar" />
-                <div class="button-wrapper">
-                  <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
-                    <span class="d-none d-sm-block">Upload new photo</span>
-                    <i class="bx bx-upload d-block d-sm-none"></i>
-                    <input type="file" id="upload" class="account-file-input" hidden accept="image/png, image/jpeg" />
-                  </label>
-                  <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
-                    <i class="bx bx-reset d-block d-sm-none"></i>
-                    <span class="d-none d-sm-block">Reset</span>
-                  </button>
+  <?php
+  $db = new Database();
 
-                  <p class="text-muted mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
-                </div>
-              </div>
-            </div>
+  // Default image path
+  $defaultAvatar = 'Profile/1.png'; // Update this path according to your project structure
+  
+  // Check if the user is logged in by checking if 'Email' is set in the session
+  if (isset($_SESSION['Email'])) {
+    $userEmail = $_SESSION['Email'];
+
+    // Fetch the user details from the users table, including the profile picture
+    $query = "SELECT Id, Image FROM users WHERE Email = '$userEmail'";
+    $user = $db->fetch($query);
+
+    if ($user && isset($user['Id'])) {
+      $userId = $user['Id']; // Assign the user's Id from the users table
+      
+      // Check if a profile picture exists in the users table and if the file exists on the server
+      if (!empty($user['Image']) && file_exists($user['Image'])) {
+        $userAvatar = $user['Image'];
+      } else {
+        // Use default avatar if no image is uploaded or the image file doesn't exist
+        $userAvatar = $defaultAvatar;
+      }
+    } else {
+      echo "User not found in the users table.";
+      exit;
+    }
+  } else {
+    // If user is not logged in, redirect to login or show an error
+    echo "User not logged in.";
+    exit;
+  }
+
+  // Handle the file upload when the form is submitted
+  if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['profile_pic'])) {
+    $image = $_FILES['profile_pic'];
+
+    // Validate the file type and size
+    $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+    if (!in_array($image['type'], $allowedTypes) || $image['size'] > 800000) {
+      $error = "Invalid file type or size.";
+    } else {
+      // Define the upload directory and file path
+      $uploadDir = 'Profile/';
+      $fileName = basename($image['name']);
+      $uploadFile = $uploadDir . $fileName;
+
+      // Create the upload directory if it doesn't exist
+      if (!is_dir($uploadDir)) {
+        mkdir($uploadDir, 0755, true);
+      }
+
+      // Move the uploaded file to the server
+      if (move_uploaded_file($image['tmp_name'], $uploadFile)) {
+        // Update the user's profile picture path in the users table
+        $query = "UPDATE users SET Image = '$uploadFile' WHERE Id = '$userId'";
+        if ($db->update($query)) {
+          // Refresh the page to show the new image
+          $basic->success("Profile Photo Updated!");
+        } else {
+          $error = "Failed to update profile picture in the database.";
+        }
+      } else {
+        $error = "Failed to upload the file.";
+      }
+    }
+  }
+  ?>
+  <!-- Display the profile picture -->
+  <img src="<?php echo $userAvatar; ?>" alt="Profile Picture"
+    style="border-radius: 50%; border:solid blue; " width="150" height="150">
+
+  <!-- File upload form -->
+  <form method="POST" enctype="multipart/form-data">
+    <label for="profile_pic">Choose Profile Picture:</label>
+    <input type="file" name="profile_pic" id="profile_pic" required>
+    <button type="submit" class="btn btn-primary">Upload</button>
+  </form>
+
+  <!-- Display any errors -->
+  <?php if (isset($error)): ?>
+    <p style="color: red;"><?php echo $error; ?></p>
+  <?php endif; ?>
+
+  <!-- Display success message -->
+  <?php if (isset($_GET['upload_success'])): ?>
+    <p style="color: green;">Profile picture updated successfully!</p>
+  <?php endif; ?>
+</div>
+
             <hr class="my-0" />
             <div class="card-body">
               <form id="formAccountSettings" method="POST" action="<?php echo $path ?>/Function/submit.php">
@@ -93,60 +165,65 @@ else{
                   </div>
                   <div class="mb-3 col-md-6">
                     <label for="First_Name" class="form-label">First Name</label>
-                    <input class="form-control" type="text" id="First_Name" name="First_Name" value="<?php echo $First_Name ?>"
-                      placeholder="Enter First Name" autofocus />
+                    <input class="form-control" type="text" id="First_Name" name="First_Name"
+                      value="<?php echo $First_Name ?>" placeholder="Enter First Name" autofocus />
                   </div>
                   <div class="mb-3 col-md-6">
                     <label for="Last_Name" class="form-label">Last Name</label>
-                    <input class="form-control" type="text" id="Last_Name" name="Last_Name" value="<?php echo $Last_Name ?>"
-                      placeholder="Enter Last Name" />
+                    <input class="form-control" type="text" id="Last_Name" name="Last_Name"
+                      value="<?php echo $Last_Name ?>" placeholder="Enter Last Name" />
                   </div>
                   <div class="mb-3 col-md-6">
                     <label for="Father_Name" class="form-label">Father Name</label>
-                    <input class="form-control" type="text" id="Father_Name" name="Father_Name" value="<?php echo $Father_Name ?>"
-                      placeholder="Enter Father Name" />
+                    <input class="form-control" type="text" id="Father_Name" name="Father_Name"
+                      value="<?php echo $Father_Name ?>" placeholder="Enter Father Name" />
                   </div>
                   <div class="mb-3 col-md-6">
                     <label class="form-label" for="Parent_Number">Parents Number</label>
                     <div class="input-group input-group-merge">
                       <span class="input-group-text">IN (+91)</span>
-                      <input type="text" id="Parent_Number" name="Parent_Number" class="form-control" value="<?php echo $Parent_Number ?>"
-                        placeholder="90********" />
+                      <input type="text" id="Parent_Number" name="Parent_Number" class="form-control"
+                        value="<?php echo $Parent_Number ?>" placeholder="90********" />
                     </div>
                   </div>
                   <div class="mb-3 col-md-6">
                     <label for="Email" class="form-label">E-mail</label>
-                    <input class="form-control" type="text" id="Email" name="Email" placeholder="example@gmail.com" value="<?php echo $Email ?>" />
+                    <input class="form-control" type="text" id="Email" name="Email" placeholder="example@gmail.com"
+                      value="<?php echo $Email ?>" />
                   </div>
                   <div class="mb-3 col-md-6">
                     <label for="Stream" class="form-label">Stream</label>
-                    <input type="text" class="form-control" id="Stream" name="Stream" placeholder="MCA" value="<?php echo $Stream ?>" />
+                    <input type="text" class="form-control" id="Stream" name="Stream" placeholder="MCA"
+                      value="<?php echo $Stream ?>" />
                   </div>
                   <div class="mb-3 col-md-6">
                     <label class="form-label" for="Phone_Number">Phone Number</label>
                     <div class="input-group input-group-merge">
                       <span class="input-group-text">IN (+91)</span>
-                      <input type="text" id="Phone_Number" name="Phone_Number" class="form-control" value="<?php echo $Phone_Number ?>"
-                        placeholder="90********" />
+                      <input type="text" id="Phone_Number" name="Phone_Number" class="form-control"
+                        value="<?php echo $Phone_Number ?>" placeholder="90********" />
                     </div>
                   </div>
                   <div class="mb-3 col-md-6">
                     <label for="Address" class="form-label">Address</label>
-                    <input type="text" class="form-control" id="Address" name="Address" placeholder="Address" value="<?php echo $Address ?>" />
+                    <input type="text" class="form-control" id="Address" name="Address" placeholder="Address"
+                      value="<?php echo $Address ?>" />
                   </div>
                   <div class="mb-3 col-md-6">
                     <label for="State" class="form-label">State</label>
-                    <input class="form-control" type="text" id="State" name="State" placeholder="Gujarat" value="<?php echo $State ?>" />
+                    <input class="form-control" type="text" id="State" name="State" placeholder="Gujarat"
+                      value="<?php echo $State ?>" />
                   </div>
                   <div class="mb-3 col-md-6">
                     <label for="Zip_Code" class="form-label">Zip Code</label>
-                    <input type="text" class="form-control" id="Zip_Code" name="Zip_Code" placeholder="360002" value="<?php echo $Zip_Code ?>"
-                      maxlength="6" />
+                    <input type="text" class="form-control" id="Zip_Code" name="Zip_Code" placeholder="360002"
+                      value="<?php echo $Zip_Code ?>" maxlength="6" />
                   </div>
 
                   <div class="mb-3 col-md-6">
                     <label for="Language" class="form-label">Language</label>
-                    <select id="Language" class="select2 form-select" name="Language" selected = "<?php echo $Language ?>">
+                    <select id="Language" class="select2 form-select" name="Language"
+                      selected="<?php echo $Language ?>">
                       <option value="">Select Language</option>
                       <option value="en" selected>English</option>
                       <option value="fr">Gujarati</option>
@@ -174,7 +251,7 @@ else{
                   <h5 class="mb-0">Qulifications</h5>
                 </div>
                 <div class="card-body">
-                  <form action="<?php echo $path?>/Function/Submit.php" method="post">
+                  <form action="<?php echo $path ?>/Function/Submit.php" method="post">
                     <div class="mb-3 row">
                       <!-- Label aligned to the left of the text input -->
                       <label class="col-sm-2 col-form-label" for="basic-default-name">Upload 10th Marksheet</label>
@@ -192,7 +269,8 @@ else{
                     </div>
                     <div class="mb-3 row">
                       <!-- Label aligned to the left of the text input -->
-                      <label class="col-sm-2 col-form-label" for="basic-default-name">Upload 12th/Diploma Marksheet</label>
+                      <label class="col-sm-2 col-form-label" for="basic-default-name">Upload 12th/Diploma
+                        Marksheet</label>
                       <div class="col-sm-10">
                         <div class="input-group">
                           <!-- Text Input Field -->
@@ -214,8 +292,8 @@ else{
                       <div class="col-sm-10">
                         <div class="input-group">
                           <!-- Text Input Field -->
-                          <input type="text" class="form-control" placeholder="Enter Your Graduation Persentage/CGPA" name="UG"
-                            aria-label="Recipient's username with two button addons" />
+                          <input type="text" class="form-control" placeholder="Enter Your Graduation Persentage/CGPA"
+                            name="UG" aria-label="Recipient's username with two button addons" />
                           <!-- Button 1 -->
                           <input value="Upload" class="form-control" id="formFileMultiple" type="file" name="UG_File">
                           <!-- Button 2 -->
@@ -244,7 +322,8 @@ else{
                     <div class="mt-2">
                       <input type="hidden" class="btn btn-primary me-2" name="submit" value="Profile2">
                       <button type="submit" class="btn btn-primary me-2">Save Changes</button>
-                    <button type="button" class="btn btn-secondary" onclick="return window.history.go(-1)">Back</button>  
+                      <button type="button" class="btn btn-secondary"
+                        onclick="return window.history.go(-1)">Back</button>
                     </div>
                   </form>
                 </div>

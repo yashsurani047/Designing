@@ -40,24 +40,97 @@ startContainer($path, $user);
             <h5 class="card-header">Profile Details</h5>
             <!-- Account -->
             <div class="card-body">
-              <div class="d-flex align-items-start align-items-sm-center gap-4">
-                <img src="<?php echo $path ?>/assets/img/avatars/1.png" alt="user-avatar" class="d-block rounded"
-                  height="100" width="100" id="uploadedAvatar" />
-                <div class="button-wrapper">
-                  <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
-                    <span class="d-none d-sm-block">Upload new photo</span>
-                    <i class="bx bx-upload d-block d-sm-none"></i>
-                    <input type="file" id="upload" class="account-file-input" hidden accept="image/png, image/jpeg" />
-                  </label>
-                  <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
-                    <i class="bx bx-reset d-block d-sm-none"></i>
-                    <span class="d-none d-sm-block">Reset</span>
-                  </button>
+              <?php
+              $db = new Database();
 
-                  <p class="text-muted mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
-                </div>
-              </div>
+              // Default image path
+              $defaultAvatar = 'Profile/1.png'; // Update this path according to your project structure
+              
+              // Check if the user is logged in by checking if 'Email' is set in the session
+              if (isset($_SESSION['Email'])) {
+                $userEmail = $_SESSION['Email'];
+
+                // Fetch the user details from the users table, including the profile picture
+                $query = "SELECT Id, Image FROM users WHERE Email = '$userEmail'";
+                $user = $db->fetch($query);
+
+                if ($user && isset($user['Id'])) {
+                  $userId = $user['Id']; // Assign the user's Id from the users table
+              
+                  // Check if a profile picture exists in the users table and if the file exists on the server
+                  if (!empty($user['Image']) && file_exists($user['Image'])) {
+                    $userAvatar = $user['Image'];
+                  } else {
+                    // Use default avatar if no image is uploaded or the image file doesn't exist
+                    $userAvatar = $defaultAvatar;
+                  }
+                } else {
+                  echo "User not found in the users table.";
+                  exit;
+                }
+              } else {
+                // If user is not logged in, redirect to login or show an error
+                echo "User not logged in.";
+                exit;
+              }
+
+              // Handle the file upload when the form is submitted
+              if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['profile_pic'])) {
+                $image = $_FILES['profile_pic'];
+
+                // Validate the file type and size
+                $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+                if (!in_array($image['type'], $allowedTypes) || $image['size'] > 800000) {
+                  $error = "Invalid file type or size.";
+                } else {
+                  // Define the upload directory and file path
+                  $uploadDir = 'Profile/';
+                  $fileName = basename($image['name']);
+                  $uploadFile = $uploadDir . $fileName;
+
+                  // Create the upload directory if it doesn't exist
+                  if (!is_dir($uploadDir)) {
+                    mkdir($uploadDir, 0755, true);
+                  }
+
+                  // Move the uploaded file to the server
+                  if (move_uploaded_file($image['tmp_name'], $uploadFile)) {
+                    // Update the user's profile picture path in the users table
+                    $query = "UPDATE users SET Image = '$uploadFile' WHERE Id = '$userId'";
+                    if ($db->update($query)) {
+                      // Refresh the page to show the new image
+                      $basic->success("Profile Photo Updated!");
+                    } else {
+                      $error = "Failed to update profile picture in the database.";
+                    }
+                  } else {
+                    $error = "Failed to upload the file.";
+                  }
+                }
+              }
+              ?>
+              <!-- Display the profile picture -->
+              <img src="<?php echo $userAvatar; ?>" alt="Profile Picture"
+                style="border-radius: 50%; border:solid blue; " width="150" height="150">
+
+              <!-- File upload form -->
+              <form method="POST" enctype="multipart/form-data">
+                <label for="profile_pic">Choose Profile Picture:</label>
+                <input type="file" name="profile_pic" id="profile_pic" required>
+                <button type="submit" class="btn btn-primary">Upload</button>
+              </form>
+
+              <!-- Display any errors -->
+              <?php if (isset($error)): ?>
+                <p style="color: red;"><?php echo $error; ?></p>
+              <?php endif; ?>
+
+              <!-- Display success message -->
+              <?php if (isset($_GET['upload_success'])): ?>
+                <p style="color: green;">Profile picture updated successfully!</p>
+              <?php endif; ?>
             </div>
+
             <hr class="my-0" />
             <div class="card-body">
               <form id="formAccountSettings" method="POST">
@@ -132,7 +205,7 @@ startContainer($path, $user);
                       <option value="pt">Sanskrit</option>
                     </select>
                   </div>
-                 </div>
+                </div>
                 <div class="col-sm-10">
                   <button type="submit" class="btn btn-secondary">Edit</button>
                   <button type="submit" class="btn btn-primary">Update</button>
