@@ -135,6 +135,99 @@ if ($profile != null) {
     }
   }
   ?>
+  <?php
+$servername = "localhost"; // Database server
+$username = "root"; // Database username
+$password = ""; // Database password
+$dbname = "placementplus"; // Database name
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+?>
+<?php
+// Include the database connection file
+
+// Directory to upload files
+$uploadDirectory = 'Student/Documents/';
+
+// Check if the 'uploadSSC' button is clicked
+if (isset($_POST['uploadSSC'])) {
+    // Handle 10th Marksheet upload
+    $tenthFile = $uploadDirectory . basename($_FILES['SSC_File']['name']);
+    
+    if (move_uploaded_file($_FILES['SSC_File']['tmp_name'], $tenthFile)) {
+        $sql = "UPDATE studentprofile SET Tenth='$tenthFile' WHERE id=1"; // Adjust 'id=1' to your condition
+        if (mysqli_query($conn, $sql)) {
+            echo "10th Marksheet uploaded successfully.";
+        } else {
+            echo "Error: " . mysqli_error($conn);
+        }
+    } else {
+        echo "Failed to upload 10th Marksheet.";
+    }
+}
+
+// Check if the 'uploadHSC' button is clicked
+if (isset($_POST['uploadHSC'])) {
+    // Handle 12th Marksheet upload
+    $twelfthFile = $uploadDirectory . basename($_FILES['HSC_File']['name']);
+    
+    if (move_uploaded_file($_FILES['HSC_File']['tmp_name'], $twelfthFile)) {
+        $sql = "UPDATE studentprofile SET Twelth='$twelfthFile' WHERE id=1"; // Adjust 'id=1' to your condition
+        if (mysqli_query($conn, $sql)) {
+            echo "12th Marksheet uploaded successfully.";
+        } else {
+            echo "Error: " . mysqli_error($conn);
+        }
+    } else {
+        echo "Failed to upload 12th Marksheet.";
+    }
+}
+
+// Check if the 'uploadUG' button is clicked
+if (isset($_POST['uploadUG'])) {
+    // Handle Graduation Marksheet upload
+    $ugFile = $uploadDirectory . basename($_FILES['UG_File']['name']);
+    
+    if (move_uploaded_file($_FILES['UG_File']['tmp_name'], $ugFile)) {
+        $sql = "UPDATE studentprofile SET Ug='$ugFile' WHERE id=1"; // Adjust 'id=1' to your condition
+        if (mysqli_query($conn, $sql)) {
+            echo "Graduation Marksheet uploaded successfully.";
+        } else {
+            echo "Error: " . mysqli_error($conn);
+        }
+    } else {
+        echo "Failed to upload Graduation Marksheet.";
+    }
+}
+
+// Check if the 'uploadPG' button is clicked
+if (isset($_POST['uploadPG'])) {
+    // Handle Post Graduation Marksheet upload
+    $pgFile = $uploadDirectory . basename($_FILES['PG_File']['name']);
+    
+    if (move_uploaded_file($_FILES['PG_File']['tmp_name'], $pgFile)) {
+        $sql = "UPDATE studentprofile SET Pg='$pgFile' WHERE id=1"; // Adjust 'id=1' to your condition
+        if (mysqli_query($conn, $sql)) {
+            echo "Post Graduation Marksheet uploaded successfully.";
+        } else {
+            echo "Error: " . mysqli_error($conn);
+        }
+    } else {
+        echo "Failed to upload Post Graduation Marksheet.";
+    }
+}
+
+// Close the database connection
+mysqli_close($conn);
+?>
+
+
   <!-- Display the profile picture -->
   <img src="<?php echo $userAvatar; ?>" alt="Profile Picture"
     style="border-radius: 50%; border:solid blue; " width="150" height="150">
@@ -243,93 +336,62 @@ if ($profile != null) {
           </div>
         </div>
         <div class="tab-pane fade" id="navs-justified-profile" role="tabpanel">
-          <div class="card">
-            <!-- Notifications -->
-            <div class="col-xl">
-              <div class="card mb-4">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                  <h5 class="mb-0">Qulifications</h5>
+        <div class="card-body">
+    <form action="<?php echo $path ?>/Function/Submit.php" method="post" enctype="multipart/form-data">
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label" for="basic-default-name">Upload 10th Marksheet</label>
+            <div class="col-sm-10">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Enter Your Total Marks" name="SSC" />
+                    <input class="form-control" id="formFileMultiple" type="file" name="SSC_File">
+                    <!-- Upload button for 10th Marksheet -->
+                    <button class="btn btn-outline-primary" type="submit" name="uploadSSC">Upload 10th Marksheet</button>
                 </div>
-                <div class="card-body">
-                  <form action="<?php echo $path ?>/Function/Submit.php" method="post">
-                    <div class="mb-3 row">
-                      <!-- Label aligned to the left of the text input -->
-                      <label class="col-sm-2 col-form-label" for="basic-default-name">Upload 10th Marksheet</label>
-                      <div class="col-sm-10">
-                        <div class="input-group">
-                          <!-- Text Input Field -->
-                          <input type="text" class="form-control" placeholder="Enter Your Total Marks" name="SSC"
-                            aria-label="Recipient's username with two button addons" />
-                          <!-- Button 1 -->
-                          <input value="Upload" class="form-control" id="formFileMultiple" type="file" name="SSC_File">
-                          <!-- Button 2 -->
-                          <button class="btn btn-outline-primary" type="button">Upload</button>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="mb-3 row">
-                      <!-- Label aligned to the left of the text input -->
-                      <label class="col-sm-2 col-form-label" for="basic-default-name">Upload 12th/Diploma
-                        Marksheet</label>
-                      <div class="col-sm-10">
-                        <div class="input-group">
-                          <!-- Text Input Field -->
-                          <input type="text" class="form-control" placeholder="Enter Your Total Marks" name="HSC"
-                            aria-label="Recipient's username with two button addons" />
-                          <!-- Button 1 -->
-                          <input value="Upload" class="form-control" id="formFileMultiple" type="file" name="HSC_File">
-                          <!-- Button 2 -->
-                          <button class="btn btn-outline-primary" type="button">Upload</button>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="mb-3 row">
-                      <!-- Label aligned to the left of the text input -->
-                      <label class="col-sm-2 col-form-label" for="basic-default-name">Upload Your Graduation
-                        Qulification Marksheet</label>
-
-                      <div class="col-sm-10">
-                        <div class="input-group">
-                          <!-- Text Input Field -->
-                          <input type="text" class="form-control" placeholder="Enter Your Graduation Persentage/CGPA"
-                            name="UG" aria-label="Recipient's username with two button addons" />
-                          <!-- Button 1 -->
-                          <input value="Upload" class="form-control" id="formFileMultiple" type="file" name="UG_File">
-                          <!-- Button 2 -->
-                          <button class="btn btn-outline-primary" type="button">Upload</button>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="mb-3 row">
-                      <!-- Label aligned to the left of the text input -->
-                      <label class="col-sm-2 col-form-label" for="basic-default-name">Upload Your Post Graduation
-                        Qulification Marksheet</label>
-
-                      <div class="col-sm-10">
-                        <div class="input-group">
-                          <!-- Text Input Field -->
-                          <input type="text" class="form-control"
-                            placeholder="Enter Your Post Graduation Persentage/CGPA" name="PG"
-                            aria-label="Recipient's username with two button addons" />
-                          <!-- Button 1 -->
-                          <input value="Upload" class="form-control" id="formFileMultiple" type="file" name="PG_File">
-                          <!-- Button 2 -->
-                          <button class="btn btn-outline-primary" type="button">Upload</button>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="mt-2">
-                      <input type="hidden" class="btn btn-primary me-2" name="submit" value="Profile2">
-                      <button type="submit" class="btn btn-primary me-2">Save Changes</button>
-                      <button type="button" class="btn btn-secondary"
-                        onclick="return window.history.go(-1)">Back</button>
-                    </div>
-                  </form>
-                </div>
-              </div>
             </div>
-          </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label" for="basic-default-name">Upload 12th/Diploma Marksheet</label>
+            <div class="col-sm-10">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Enter Your Total Marks" name="HSC" />
+                    <input class="form-control" id="formFileMultiple" type="file" name="HSC_File">
+                    <!-- Upload button for 12th/Diploma Marksheet -->
+                    <button class="btn btn-outline-primary" type="submit" name="uploadHSC">Upload 12th Marksheet</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label" for="basic-default-name">Upload Graduation Marksheet</label>
+            <div class="col-sm-10">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Enter Your Graduation Percentage/CGPA" name="UG" />
+                    <input class="form-control" id="formFileMultiple" type="file" name="UG_File">
+                    <!-- Upload button for Graduation Marksheet -->
+                    <button class="btn btn-outline-primary" type="submit" name="uploadUG">Upload Graduation Marksheet</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label" for="basic-default-name">Upload Post Graduation Marksheet</label>
+            <div class="col-sm-10">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Enter Your Post Graduation Percentage/CGPA" name="PG" />
+                    <input class="form-control" id="formFileMultiple" type="file" name="PG_File">
+                    <!-- Upload button for Post Graduation Marksheet -->
+                    <button class="btn btn-outline-primary" type="submit" name="uploadPG">Upload Post Graduation Marksheet</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-2">
+            <button type="button" class="btn btn-secondary" onclick="return window.history.go(-1)">Back</button>
+        </div>
+    </form>
+</div>
+
         </div>
         <div class="tab-pane fade" id="navs-justified-messages" role="tabpanel">
           <div class="row">
