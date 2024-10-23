@@ -2,6 +2,10 @@
 $path = "../..";
 $user = "Admin";
 require_once "$path/Function/Basic.php";
+require_once "$path/Function/Database.php";
+$db = new Database();
+$students = $db->Execute("select * from studentprofile");
+
 startContainer($path, $user);
 ?>
 
@@ -16,103 +20,31 @@ startContainer($path, $user);
                      <thead>
                         <tr>
                           <th>Student Name</th>
-                          <th>College/university Name</th>
+                          <th>Father Name</th>
                           <th>Student Branch</th>
-                          <th>Student Batch</th>
                           <th>Contact</th>
                           <th>Student Email</th>
+                          <th>State</th>
                           <th>Details</th>
                         </tr>
                       </thead>
                       <tbody>
+                        <?php foreach($students as $stud){
+                          ?>
                         <tr>
                           <td>
-                            <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Rajan Mehta</strong>
+                            <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong><?php echo $stud['First_Name']." ".$stud['Last_Name'] ?></strong>
                           </td>
-                          <td>M.S.U Baroda</td>
-                          <td>B.Tech</td>
+                          <td><?php echo $stud['Father_Name'] ?></td>
+                          <td><?php echo $stud['Stream'] ?></td>
+                          <td><?php echo $stud['Phone_Number'] ?></td>
+                          <td><?php echo $stud['Email'] ?></td>
+                          <td><?php echo $stud['State'] ?></td>
                           <td>
-                            1-Semester
-                          </td>
-                          <td>
-                            9098765430
-                          </td>
-                          <td>
-                          RajanM01@msu.ac.in
-                          </td>
-                          <td>
-                          <a class="btn btn-primary" href="../../User/Student/Profile.php">
-                                  View Details
-                                </a>
+                          <a class="btn btn-primary" href="../../User/Student/Profile.php?Id=<?php echo $stud['User_Id'] ?>">View Details</a>
                           </td>
                         </tr>
-                        <tr>
-                          <td><i class="fab fa-react fa-lg text-info me-3"></i> <strong>Yash Soni</strong></td>
-                          <td>Ahmedabad University</td>
-                          <td>M.Pharm</td>
-                          <td>
-                           3-Semester
-                          </td>
-                          <td>
-                            9754546678
-                          </td>
-                          <td>
-                            ysoni@ahu.ac.in
-                          </td>
-                         
-                          <td>
-                          <a class="btn btn-primary" href="../../User/Student/Profile.php">
-                                  View Details
-                                </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td><i class="fab fa-vuejs fa-lg text-success me-3"></i> <strong>Krina Patel</strong></td>
-                          <td>  Karnavati University</td>
-                          <td>
-                          B.sc-Micro
-                          </td>
-                          <td>
-                          4-Semester
-                          </td>
-                          <td>
-                            9056575748
-                          </td>
-                          <td>
-                           krina@kau.ac.in
-                          </td>
-                         
-                          <td>
-                          <a class="btn btn-primary" href="../../User/Student/Profile.php">
-                                  View Details
-                                </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <i class="fab fa-bootstrap fa-lg text-primary me-3"></i> <strong>Mihir Dobariya</strong>
-                          </td>
-                          <td>Nirma University</td>
-                          <td>
-                             MCA
-                          </td>
-                          <td>
-                            6-Semester
-                          </td>
-                          <td>
-                            8909876543
-                          </td>
-                          <td>
-                           mihird@nirma.adu.in
-                          </td>
-                         
-                        
-                          <td>
-                          <a class="btn btn-primary" href="../../User/Student/Profile.php">
-                                  View Details
-                                </a>
-                          </td>
-                        </tr>
+                        <?php } ?>
                       </tbody>
                     </table>
                   </div>

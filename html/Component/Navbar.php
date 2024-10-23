@@ -41,9 +41,8 @@ if(isset($_SESSION['Email'])){
             </a>
           </li>
           <li>
-            <a class='dropdown-item' href='#'>
-              <i class='bx bx-cog me-2'></i>
-              <span class='align-middle'>Settings</span>
+            <a class='dropdown-item' href='../Setting.php'>
+              <i class='bx bx-cog me-2'></i>Settings</span>
             </a>
           </li>
           <li>
@@ -77,8 +76,8 @@ if(isset($_SESSION['Email'])){
   $Userbtn;
   ";
   $CompanyMenu = "
-  <li><a class='nav-item me-5 desktop-nav ' href='$path/user/Company/index.php'>Home</a></li>
-  <li><a class='nav-item me-5 desktop-nav ' href='$path/user/Company/FindCollage.php'>Find Collage</a></li>
+  <li><a class='nav-item me-5 desktop-nav ' href='$path/user/Company/index.php'>Home</a></li> <!--
+  <li><a class='nav-item me-5 desktop-nav ' href='$path/user/Company/FindCollage.php'>Find Collage</a></li> --> 
   <li><a class='nav-item me-5 desktop-nav ' href='$path/user/Company/JobDrive.php'>Jobs</a></li>
   <li><a class='nav-item me-5 desktop-nav ' href='$path/user/Company/EmployeeRequest.php'>Employee requests</a></li>
   $Userbtn;
@@ -97,8 +96,8 @@ if(isset($_SESSION['Email'])){
   $Userbtn;
   ";
   $AdminMenu = "
-  <li><a class='dropdown-item' href='../Admin/ViewCompany.php'>View Company</a></li>
-  <li><a class='dropdown-item' href='../Admin/ViewCollage.php'>View Collage</a></li>
+  <li><a class='dropdown-item' href='../Admin/ViewCompany.php'>View Company</a></li> <!--
+  <li><a class='dropdown-item' href='../Admin/ViewCollage.php'>View Collage</a></li> -->
   <li><a class='dropdown-item' href='../Admin/ViewStudent.php'>View Student</a></li>
   <li><a class='dropdown-item' href='../Admin/index.php'>View Admin</a></li>
   <li><a class='dropdown-item' href='../../index.php'>View Guest</a></li>

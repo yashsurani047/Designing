@@ -13,7 +13,6 @@ $job = $db->Execute($sql);
 $Jobowner = $db->Execute("select * from companyprofile where User_Id = ".$job['User_Id']);
 
 $Is_Edit = $_SESSION['Userid'] == $job['User_Id'];
-echo $_SESSION['Userid']." AND  Job_Id = ".$_GET['Job_Id'];
 if($_GET['Job_Id'] != null){
        
 }
@@ -57,63 +56,63 @@ if($_GET['Job_Id'] != null){
                                 <label class="form-label" for="basic-icon-default-company">Job Profile</label>
                                 <div class="input-group input-group-merge">
                                     <input type="text" id="basic-icon-default-company" class="form-control"
-                                        name="Job_Profile" value="Marketing Agent" />
+                                        name="Job_Profile" value="<?php echo $job['Job_Profile']?>" />
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="basic-icon-default-fullname">CTC</label>
                                 <div class="input-group input-group-merge">
                                     <input type="text" class="form-control" id="basic-icon-default-fullname"
-                                        name="CTC" value="17Lpa" />
+                                        name="CTC" value="<?php echo $job['CTC']?>" />
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="basic-icon-default-company">Job Location</label>
                                 <div class="input-group input-group-merge">
                                     <input type="text" id="basic-icon-default-company" class="form-control"
-                                        name="Job_Location" value="Marketing Agent" />
+                                        name="Job_Location" value="<?php echo $job['Job_Location'] ?>" />
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="basic-icon-default-company">Internship</label>
                                 <div class="input-group input-group-merge">
                                     <input type="text" id="basic-icon-default-company" class="form-control"
-                                        name="Internship" value="Online/Offline" />
+                                        name="Internship" value="<?php echo $job['Internship'] ?>" />
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="basic-icon-default-fullname">Stipend</label>
                                 <div class="input-group input-group-merge">
                                     <input type="text" class="form-control" id="basic-icon-default-fullname"
-                                        name="Stipend" value="45 Thousand" />
+                                        name="Stipend" value="<?php echo $job['Stipend'] ?>" />
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="basic-icon-default-fullname">Selection Process</label>
                                 <div class="input-group input-group-merge">
                                     <input type="text" class="form-control" id="basic-icon-default-fullname"
-                                        name="Selection_Process" value="Offline-4(round)" />
+                                        name="Selection_Process" value="<?php echo $job['Selection_Process'] ?>" />
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="Bond">Bond</label>
                                 <div class="input-group input-group-merge">
                                     <input type="text" id="Bond" class="form-control"
-                                        name="Bond" value="3 Year" />
+                                        name="Bond" value="<?php echo $job['Bond'] ?>" />
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="Term">Terms of Bond</label>
                                 <div class="input-group input-group-merge">
                                     <input type="text" id="Term" class="form-control"
-                                        name="Term" value="2 Salary as Cheque" />
+                                        name="Term" value="<?php echo $job['Term'] ?>" />
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="Date_Of_Joining">Date of Joining</label>
                                 <div class="input-group input-group-merge">
                                     <input type="text" id="Date_Of_Joining" class="form-control"
-                                        name="Date_Of_Joining" value="Will be Declared Soon" />
+                                        name="Date_Of_Joining" value="<?php echo $job['Date_Of_Joining'] ?>" />
                                 </div>
                             </div>
                         </div>
@@ -143,7 +142,7 @@ if($_GET['Job_Id'] != null){
                             <div class="mb-3">
                                 <label class="form-label" for="dateTime">Date and Time</label>
                                 <div class="input-group input-group-merge">
-                                    <input type="text" class="form-control" id="dateTime" name="DateTime" value="Will be Declared Soon"
+                                    <input type="text" class="form-control" id="dateTime" name="DateTime" value="<?php echo $job['DateTime'] ?>"
                                         />
                                 </div>
                             </div>
@@ -155,28 +154,39 @@ if($_GET['Job_Id'] != null){
                             <br>
                             <div class="mb-3">
                                 <label class="form-label" for="Batch">Batch</label>
-                                <input type="text" class="form-control" id="Batch" name="Batch" value="2024-25" />
+                                <input type="text" class="form-control" id="Batch" name="Batch" value="<?php echo $job['Batch'] ?>" />
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="Eligible_Course">Eligible Courses</label>
                                 <input type="text" class="form-control" id="Eligible_Course" name="Eligible_Course"
-                                    value="B.Tech – EE, ME, CE/IT, CV, MBA/BBA & MCA/BCA" />
+                                    value="<?php echo $job['Eligible_Course'] ?>" />
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="eligibleCourses">Registration</label>
                                 <input type="text" class="form-control" id="eligibleCourses" name="Due_Date"
-                                    value="Latest by : 12/08/2024 (Mon,Tues,Wednes,Thurs,Fri Saturday) Time – 10:00 AM"
-                                    />
+                                    value="<?php echo $job['Due_Date'] ?>"/>
                             </div>
                         </div>
-
                     </div>
-
                     <br>
                     <br>
                      <!-- for College -->
-                     <button class="btn btn-success">Save Changes</button>
-                        <button class="btn btn-danger" onclick="showNormal()">Cancel</button>
+                        <input type="hidden" name="Job_Id" value="<?php echo $job['Id']?>">
+                        <input type="hidden" class="btn btn-success" name="submit" value="AddJob">
+                        <?php 
+                        if(!isset($job['Id'])){
+                            ?>
+                            <input type="submit" class="btn btn-success" value="Post Now">
+                            <?php
+                        }
+                        else{
+                            ?>
+                            <input type="submit" class="btn btn-success" value="Update Job Details">
+                            <?php
+                        }
+                        ?>
+                        <button type="button" class="btn btn-danger" onclick="return window.history.go(-1)">Cancel</button>
+                        <br><br>
                         <script>
                             function showEdit() {
                                 document.getElementById('jobDescription').style.display = 'none';

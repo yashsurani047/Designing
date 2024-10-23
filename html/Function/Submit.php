@@ -177,7 +177,6 @@ class Submit
         else{
             $basic->error("Email not found",$basic->getRoot()."/Authentication/ForgetPassword.php");
         }
-
     }
     function ChangePass(){
         $userid = $_SESSION['TokenUserId'];
@@ -282,22 +281,58 @@ class Submit
         $user = $_SESSION['Usertype'];
         $userID = $_SESSION['Userid'];
 
-        if($user == "Company"){
-            $Job_Id = $_POST["Job_Id"] ?? null;
-            $Job_Profile = $_POST["Job_Profile"];
-            $CTC = $_POST["CTC"];
-            $Job_Location = $_POST["Job_Location"];
-            $Internship = $_POST["Internship"];
-            $Stipend = $_POST["Stipend"];
-            $Selection_Process = $_POST["Selection_Process"];
-            $Bond = $_POST["Bond"];
-            $Term = $_POST["Term"];
-            $Date_Of_Joining = $_POST["Date_Of_Joining"];
-            $Venue = $_POST["Venue"];
-            $DateTime = $_POST["DateTime"];
-            $Batch = $_POST["Batch"];
-            $Eligible_Course = $_POST["Eligible_Course"];
-            $Due_Date = $_POST["Due_Date"];
+        if($user == "Company"){$Job_Id = $_POST["Job_Id"] ?? null;
+            $Job_Profile = $_POST["Job_Profile"] ?? null;
+            $CTC = $_POST["CTC"] ?? null;
+            $Job_Location = $_POST["Job_Location"] ?? null;
+            $Internship = $_POST["Internship"] ?? null;
+            $Stipend = $_POST["Stipend"] ?? null;
+            $Selection_Process = $_POST["Selection_Process"] ?? null;
+            $Bond = $_POST["Bond"] ?? null;
+            $Term = $_POST["Term"] ?? null;
+            $Date_Of_Joining = $_POST["Date_Of_Joining"] ?? null;
+            $Venue = $_POST["Venue"] ?? null;
+            $DateTime = $_POST["DateTime"] ?? null;
+            $Batch = $_POST["Batch"] ?? null;
+            $Eligible_Course = $_POST["Eligible_Course"] ?? null;
+            $Due_Date = $_POST["Due_Date"] ?? null;
+            
+            // Collect all required fields to validate
+            $requiredFields = [
+                'Job_Profile' => $Job_Profile,
+                'CTC' => $CTC,
+                'Job_Location' => $Job_Location,
+                'Internship' => $Internship,
+                'Stipend' => $Stipend,
+                'Selection_Process' => $Selection_Process,
+                'Bond' => $Bond,
+                'Term' => $Term,
+                'Date_Of_Joining' => $Date_Of_Joining,
+                'Venue' => $Venue,
+                'DateTime' => $DateTime,
+                'Batch' => $Batch,
+                'Eligible_Course' => $Eligible_Course,
+                'Due_Date' => $Due_Date,
+            ];
+            
+            // Check for empty fields
+            $errors = [];
+            foreach ($requiredFields as $field => $value) {
+                if (empty($value)) {
+                    $errors[] = $field;
+                }
+            }
+            
+            // If there are errors, return them
+            if (!empty($errors)) {
+                $errorMessage = implode(", ", $errors);
+                $basic = new Basic();
+                $basic->error("Please fill in the following fields: " . $errorMessage, 1);
+                return;
+            }
+            
+            // Proceed with your code if there are no errors
+            
 
             if (self::$db->Execute("SELECT * FROM jobs WHERE Id = '$Job_Id'") != null) {
                 // Update existing record

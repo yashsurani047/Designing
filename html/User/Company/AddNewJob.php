@@ -46,6 +46,36 @@ if ($profile2 != null) {
 }
 
 ?>
+<datalist id="Venue">
+    <option value="Will be Declared Soon">
+</datalist>
+<datalist id="Date_Of_Joining">
+    <option value="Will be Declared Soon">
+</datalist>
+<datalist id="DateTime">
+    <option value="Will be Declared Soon">
+</datalist>
+<datalist id="Selection_Process">
+    <option value="Pre-Placement Talk">
+    <option value="Aptitude Test">
+    <option value="Technical Round">
+    <option value="Group Discussion">
+    <option value="HR Round">
+</datalist>
+<datalist id="Eligible_Course">
+    <option value="B. Tech - CE">
+    <option value="B. Tech - IT">
+    <option value="B. Tech - ME">
+    <option value="B. Tech - EE">
+    <option value="B. Tech - CV">
+    <option value="MCA">
+    <option value="BCA">
+    <option value="BBA">
+    <option value="MBA">
+</datalist>
+
+
+
 <main>
     <!-- Main Content Starts Here -->
 <div class="col-xl" style="margin-top: 30px; margin-left: 30px; margin-right: 30px;">
@@ -85,63 +115,63 @@ if ($profile2 != null) {
                                 <label class="form-label" for="basic-icon-default-company">Job Profile</label>
                                 <div class="input-group input-group-merge">
                                     <input type="text" id="basic-icon-default-company" class="form-control"
-                                        name="Job_Profile" value="Marketing Agent" />
+                                        name="Job_Profile" />
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="basic-icon-default-fullname">CTC</label>
                                 <div class="input-group input-group-merge">
                                     <input type="text" class="form-control" id="basic-icon-default-fullname"
-                                        name="CTC" value="17Lpa" />
+                                        name="CTC" />
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="basic-icon-default-company">Job Location</label>
                                 <div class="input-group input-group-merge">
                                     <input type="text" id="basic-icon-default-company" class="form-control"
-                                        name="Job_Location" value="Marketing Agent" />
+                                        name="Job_Location" />
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="basic-icon-default-company">Internship</label>
                                 <div class="input-group input-group-merge">
                                     <input type="text" id="basic-icon-default-company" class="form-control"
-                                        name="Internship" value="Online/Offline" />
+                                        name="Internship"/>
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="basic-icon-default-fullname">Stipend</label>
                                 <div class="input-group input-group-merge">
                                     <input type="text" class="form-control" id="basic-icon-default-fullname"
-                                        name="Stipend" value="45 Thousand" />
+                                        name="Stipend"/>
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="basic-icon-default-fullname">Selection Process</label>
                                 <div class="input-group input-group-merge">
                                     <input type="text" class="form-control" id="basic-icon-default-fullname"
-                                        name="Selection_Process" value="Offline-4(round)" />
+                                        name="Selection_Process" list="Selection_Process" />
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="Bond">Bond</label>
                                 <div class="input-group input-group-merge">
                                     <input type="text" id="Bond" class="form-control"
-                                        name="Bond" value="3 Year" />
+                                        name="Bond"/>
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="Term">Terms of Bond</label>
                                 <div class="input-group input-group-merge">
                                     <input type="text" id="Term" class="form-control"
-                                        name="Term" value="2 Salary as Cheque" />
+                                        name="Term" />
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="Date_Of_Joining">Date of Joining</label>
                                 <div class="input-group input-group-merge">
                                     <input type="text" id="Date_Of_Joining" class="form-control"
-                                        name="Date_Of_Joining" value="Will be Declared Soon" />
+                                        name="Date_Of_Joining" list="Date_Of_Joining" />
                                 </div>
                             </div>
                         </div>
@@ -163,7 +193,7 @@ if ($profile2 != null) {
                             <div class="mb-3">
                                 <label class="form-label" for="venue">Venue</label>
                                 <div class="input-group input-group-merge">
-                                    <input type="text" class="form-control" id="venue" name="Venue" value="Will be Declared Soon"
+                                    <input type="text" class="form-control" id="venue" name="Venue" list="Venue"
                                         />
                                 </div>
                             </div>
@@ -171,7 +201,7 @@ if ($profile2 != null) {
                             <div class="mb-3">
                                 <label class="form-label" for="dateTime">Date and Time</label>
                                 <div class="input-group input-group-merge">
-                                    <input type="text" class="form-control" id="dateTime" name="DateTime" value="Will be Declared Soon"
+                                    <input type="text" class="form-control" id="dateTime" name="DateTime" list="DateTime"
                                         />
                                 </div>
                             </div>
@@ -183,17 +213,16 @@ if ($profile2 != null) {
                             <br>
                             <div class="mb-3">
                                 <label class="form-label" for="Batch">Batch</label>
-                                <input type="text" class="form-control" id="Batch" name="Batch" value="2024-25" />
+                                <input type="text" class="form-control" id="Batch" name="Batch" />
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="Eligible_Course">Eligible Courses</label>
                                 <input type="text" class="form-control" id="Eligible_Course" name="Eligible_Course"
-                                    value="B.Tech – EE, ME, CE/IT, CV, MBA/BBA & MCA/BCA" />
+                                    list="Eligible_Course" />
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="eligibleCourses">Registration</label>
                                 <input type="text" class="form-control" id="eligibleCourses" name="Due_Date"
-                                    value="Latest by : 12/08/2024 (Mon,Tues,Wednes,Thurs,Fri Saturday) Time – 10:00 AM"
                                     />
                             </div>
                         </div>
