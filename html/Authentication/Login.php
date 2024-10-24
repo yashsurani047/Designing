@@ -122,6 +122,9 @@ startContainer($path, "");
                                 <span>Create an account</span>
                             </a>
                         </p>
+                        <p class="text-center">
+                            <a href="./verify.php"><span>Verify Your Account</span></a>
+                        </p>
                     </div>
                 </div>
                 <!-- /Register -->

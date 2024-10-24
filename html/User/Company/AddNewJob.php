@@ -6,10 +6,19 @@ require_once "$path/Function/Basic.php";
 require_once "$path/Function/Database.php";
 startContainer($path, $user);
 $basic  = new Basic($path);
-
 $db = new Database();
-$profile = $db->Execute("select * from companyprofile where User_Id = " . $_SESSION['Userid']);
-$profile2 = $db->Execute("select * from companyprofile2 where User_Id = " . $_SESSION['Userid']);
+
+$Jobowner = $db->Execute_One("select * from companyprofile where User_Id = $_SESSION[Userid] ");
+$flag = 0;
+if(!isset($Jobowner['Company_Name'])){
+    $flag = 1;
+}
+if($flag){
+    $basic->error("First Update the Profile",1);
+}
+
+$profile = $db->Execute_One("select * from companyprofile where User_Id = " . $_SESSION['Userid']);
+$profile2 = $db->Execute_One("select * from companyprofile2 where User_Id = " . $_SESSION['Userid']);
 if ($profile != null) {
   $Company_Name = $profile["Company_Name"];
   $Company_URL = $profile["Company_URL"];

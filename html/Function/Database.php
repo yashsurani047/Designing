@@ -72,6 +72,82 @@ class Database extends Basic{
             return false;
         }
     }
+    public function Execute_All($query, $id = 0) { // ID is for Update, Delete & Select Only
+        $data = mysqli_query($this->conn, $query);
+        
+        if ($data) {
+            // Check SELECT statement
+            if (stripos($query, 'SELECT') === 0) {
+                // For SELECT queries, check if there are results
+                if (mysqli_num_rows($data) > 0) {
+                    if (mysqli_num_rows($data) == 1) {
+                        // Otherwise, fetch a single result
+                        return mysqli_fetch_all($data, MYSQLI_ASSOC); // Fetch a single result
+                    } else {
+                        // If the query is not empty, fetch all results
+                        return mysqli_fetch_all($data, MYSQLI_ASSOC); // Fetch all results
+                    }
+                    
+                } else {
+                    return null; // No results found
+                }
+            } else {
+                // For INSERT, UPDATE, DELETE queries
+                if (stripos($query, 'INSERT') === 0) {
+                    // Return the last inserted ID
+                    if($id != 0){
+                        return mysqli_insert_id($this->conn);
+                    }
+                    else{
+                        return true;
+                    }
+                } else {
+                    // For UPDATE or DELETE, just return true
+                    return true;
+                }
+            }
+        } else {
+            return false;
+        }
+    }
+    public function Execute_One($query, $id = 0) { // ID is for Update, Delete & Select Only
+        $data = mysqli_query($this->conn, $query);
+        
+        if ($data) {
+            // Check SELECT statement
+            if (stripos($query, 'SELECT') === 0) {
+                // For SELECT queries, check if there are results
+                if (mysqli_num_rows($data) > 0) {
+                    if (mysqli_num_rows($data) == 1) {
+                        // Otherwise, fetch a single result
+                        return mysqli_fetch_array($data, MYSQLI_ASSOC); // Fetch a single result
+                    } else {
+                        // If the query is not empty, fetch all results
+                        return mysqli_fetch_array($data, MYSQLI_ASSOC); // Fetch all results
+                    }
+                    
+                } else {
+                    return null; // No results found
+                }
+            } else {
+                // For INSERT, UPDATE, DELETE queries
+                if (stripos($query, 'INSERT') === 0) {
+                    // Return the last inserted ID
+                    if($id != 0){
+                        return mysqli_insert_id($this->conn);
+                    }
+                    else{
+                        return true;
+                    }
+                } else {
+                    // For UPDATE or DELETE, just return true
+                    return true;
+                }
+            }
+        } else {
+            return false;
+        }
+    }
     
     public function insert($query, $id = 0){ //only pass query no need ID
         $result = $this->Execute($query, $id);

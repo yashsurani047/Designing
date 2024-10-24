@@ -11,6 +11,35 @@ if(isset($_GET['Token'])){
     header("location:ChangePassword.php");
 }
 else{
-    header("location:../");
+    ?>
+    <form action="" method="post">
+        Email : <input type="text" name="Email" placeholder="Enter Email"><br>
+        OTP : <input type="text" name="OTP" placeholder="Enter OTP"><br>
+        <input type="hidden" name="submit" value="OTP">
+        <input type="submit" value="Verify OTP">
+    </form>
+
+    <form action="" method="post">
+        Email : <input type="text" name="Email" placeholder="Enter Email"><br>
+        <input type="hidden" name="submit" value="GetOTP">
+        <input type="submit" value="Get OTP">
+    </form>
+    <?php
+}
+if(isset($_GET['OTP'])){
+    $Email = $_POST['Email'];
+    $OTP = $_POST['OTP'];
+    $user = $db->fetch("select * from OTP where Email = '$Email' AND  OTP = '$OTP'");
+    if($user){
+        $verify = $db->Execute("update Users set verified = 1 ");
+        $basic->success("Invalid OTP",$basic->getRoot()."/Authentication/Login.php");
+    }
+    else{
+        $basic->error("Invalid OTP",2);
+    }
+}
+if(isset($_POST['GetOTP'])){
+    echo $Email = $_POST['Email'];
+    $basic->SentOTPEmail($Email);
 }
 ?>

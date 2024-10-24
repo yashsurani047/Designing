@@ -4,7 +4,7 @@ $user = "Admin";
 require_once "$path/Function/Basic.php";
 require_once "$path/Function/Database.php";
 $db = new Database();
-$companies = $db->Execute("select * from companyprofile p1 inner join companyprofile2 p2  on p1.User_Id = p2.User_Id ");
+$companies = $db->Execute_All("select * from companyprofile p1 inner join companyprofile2 p2  on p1.User_Id = p2.User_Id ");
 startContainer($path, $user);
 ?>
 
@@ -24,7 +24,7 @@ startContainer($path, $user);
                           <th>Hr Name</th>
                           <th>HR Contact</th>
                           <th>Website Link</th>
-                          <th>Details</th>
+                          <!-- <th>Details</th> -->
                         </tr>
                       </thead>
                       <tbody>
@@ -40,11 +40,8 @@ startContainer($path, $user);
                           <td><?php echo $company['HR_Name'] ?></td>
                           <td><?php echo $company['HR_Contact'] ?></td>
                           <td><a href="http://<?php echo $company['Company_URL'] ?>" title="<?php echo $company['Company_URL'] ?>">GOTO Web</a></td>
-                          <td>
-                          <a class="btn btn-primary" href="../../User/Company/Profile.php?Id=<?php echo $company['User_Id']?>">
-                                  View Details
-                                </a>
-                          </td>
+                          <td><a href="./Operation.php?Com_Id=<?php echo $company['User_Id'] ?>">Delete</a></td>
+                          <!-- <td><a class="btn btn-primary" href="../../User/Company/Profile.php?Id=<?php echo $company['User_Id']?>">View Details</a></td> -->
                         </tr>
                         <?php
                         }

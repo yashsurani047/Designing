@@ -44,7 +44,7 @@ if(isset($_SESSION['Email'])){
             <a class='dropdown-item' href='../Setting.php'>
               <i class='bx bx-cog me-2'></i>Settings</span>
             </a>
-          </li>
+          </li> <!--
           <li>
             <a class='dropdown-item' href='#'>
               <span class='d-flex align-items-center align-middle'>
@@ -53,7 +53,7 @@ if(isset($_SESSION['Email'])){
                 <span class='flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20'>4</span>
               </span>
             </a>
-          </li>
+          </li> -->
           <li>
             <div class='dropdown-divider'></div>
           </li>

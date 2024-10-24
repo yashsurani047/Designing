@@ -4,7 +4,7 @@ $user = "Admin";
 require_once "$path/Function/Basic.php";
 require_once "$path/Function/Database.php";
 $db = new Database();
-$students = $db->Execute("select * from studentprofile");
+$students = $db->Execute_All("select * from studentprofile");
 
 startContainer($path, $user);
 ?>
@@ -25,7 +25,7 @@ startContainer($path, $user);
                           <th>Contact</th>
                           <th>Student Email</th>
                           <th>State</th>
-                          <th>Details</th>
+                          <!-- <th>Details</th> -->
                         </tr>
                       </thead>
                       <tbody>
@@ -40,9 +40,7 @@ startContainer($path, $user);
                           <td><?php echo $stud['Phone_Number'] ?></td>
                           <td><?php echo $stud['Email'] ?></td>
                           <td><?php echo $stud['State'] ?></td>
-                          <td>
-                          <a class="btn btn-primary" href="../../User/Student/Profile.php?Id=<?php echo $stud['User_Id'] ?>">View Details</a>
-                          </td>
+                          <!-- <td><a class="btn btn-primary" href="../../User/Student/Profile.php?Id=<?php echo $stud['User_Id'] ?>">View Details</a></td> -->
                         </tr>
                         <?php } ?>
                       </tbody>

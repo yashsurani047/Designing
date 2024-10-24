@@ -41,6 +41,7 @@ class Submit
         elseif ($_POST["submit"] == "AddJob") $this->JobDrive();
         elseif ($_POST["submit"] == "ForgotPass") $this->ForgotPass();
         elseif ($_POST["submit"] == "ChangePass") $this->ChangePass();
+        elseif ($_POST["submit"] == "Apply") $this->Apply();
         exit();
     }
     function programGet(){
@@ -57,6 +58,9 @@ class Submit
         if ($Password1 == $Password2) {
             if (self::$db->CheckUser($Email) == false) {
                 if(self::$db->insert("insert into Users (Usertype,Email,Password) values('$Usertype','$Email','$Password1')")){
+                    $OTP = random_int(100000,999999);
+                    self::$db->Execute("insert into otp (Email,OTP) values('$Email',$OTP)");
+                    self::$basic->SentOTPEmail($Email,1);
                     self::$basic->success("User Registered Successfully",self::$basic->getRoot()."/Authentication");
                 }
                 else{
@@ -143,7 +147,7 @@ class Submit
 
             // Recipient email and message details
             $toEmail = $Email; // Recipient email
-            $subject = 'Verification Link of your Placement Plus Account'; // Email subject
+            $subject = 'Verification Link for Change Password of Your Placement Plus Account'; // Email subject
             $message = $basic->getRoot()."/Authentication/verify.php?Token=".$Token; // Email message body
 
             // Create a new PHPMailer instance
@@ -188,9 +192,11 @@ class Submit
         $basic->success("Password Changed Successfully",$basic->getRoot()."/Authentication/Login.php");
     }
     function Profile(){
+        $basic = new Basic();
         $user = $_SESSION['Usertype'];
         $userID = $_SESSION['Userid'];
         if($user == "Student"){
+            $flag = 0;
             $First_Name = $_POST["First_Name"];
             $Last_Name = $_POST["Last_Name"];
             $Father_Name = $_POST["Father_Name"];
@@ -202,7 +208,6 @@ class Submit
             $State = $_POST["State"];
             $Zip_Code = $_POST["Zip_Code"];
             $Language = $_POST["Language"];
-            
             if(self::$db->Execute("select * from studentprofile where User_Id = '$userID'") != null) {
                 $query = "UPDATE studentprofile SET First_Name = '$First_Name', Last_Name = '$Last_Name',
                 Father_Name = '$Father_Name', Parent_Number = '$Parent_Number',
@@ -211,6 +216,60 @@ class Submit
                 Language = '$Language' WHERE User_ID = '$userID'";
             }
             else{
+                $flag = 0; // Initialize flag
+                $missedData = []; // Initialize missed data array
+                // Check each field and add to missedData if empty
+                if (empty($First_Name)) {
+                    $missedData[] = 'First_Name';
+                    $flag = 1;
+                }
+                if (empty($Last_Name)) {
+                    $missedData[] = 'Last_Name';
+                    $flag = 1;
+                }
+                if (empty($Father_Name)) {
+                    $missedData[] = 'Father_Name';
+                    $flag = 1;
+                }
+                if (empty($Parent_Number)) {
+                    $missedData[] = 'Parent_Number';
+                    $flag = 1;
+                }
+                if (empty($Email)) {
+                    $missedData[] = 'Email';
+                    $flag = 1;
+                }
+                if (empty($Stream)) {
+                    $missedData[] = 'Stream';
+                    $flag = 1;
+                }
+                if (empty($Phone_Number)) {
+                    $missedData[] = 'Phone_Number';
+                    $flag = 1;
+                }
+                if (empty($Address)) {
+                    $missedData[] = 'Address';
+                    $flag = 1;
+                }
+                if (empty($State)) {
+                    $missedData[] = 'State';
+                    $flag = 1;
+                }
+                if (empty($Zip_Code)) {
+                    $missedData[] = 'Zip_Code';
+                    $flag = 1;
+                }
+                if (empty($Language)) {
+                    $missedData[] = 'Language';
+                    $flag = 1;
+                }
+
+                // Convert missedData array to a string
+                $missedDataString = implode(', ', $missedData);
+       
+                if($flag){
+                    $basic->error("Data Missing : $missedDataString ",$basic->getRoot()."/User/Student/Profile.php");
+                }
                 $query = "insert into studentprofile values(default,'$userID','$First_Name','$Last_Name','$Father_Name','$Parent_Number','$Email','$Stream','$Phone_Number','$Address','$State',$Zip_Code,'$Language',default)";
             }
         }
@@ -234,6 +293,34 @@ class Submit
 
             }
             else{
+                // Collect form data into an associative array
+                $companyData = [
+                    'Company_Name' => $_POST["Company_Name"],
+                    'Company_URL' => $_POST["Company_URL"],
+                    'Company_Address' => $_POST["Company_Address"],
+                    'Contact_Information' => $_POST["Contact_Information"],
+                    'Industry_Sector' => $_POST["Industry_Sector"],
+                    'Company_Overview' => $_POST["Company_Overview"],
+                    'Top_Client' => $_POST["Top_Client"],
+                    'Company_Award' => $_POST["Company_Award"],
+                    'Language' => $_POST["Language"]
+                ];
+
+                $missedData = []; // Initialize missed data array
+
+                // Check each field and add to missedData if empty
+                foreach ($companyData as $fieldName => $fieldValue) {
+                    if (empty($fieldValue)) {
+                        $missedData[] = $fieldName;
+                    }
+                }
+
+                // Convert missedData array to a string
+                if (!empty($missedData)) {
+                    $missedDataString = implode(', ', $missedData);
+                    $basic->error("Data Missing: $missedDataString", $basic->getRoot()."/User/Company/Profile.php");
+                }
+
                 $query = "INSERT INTO companyprofile VALUES (default, '$userID', '$Company_Name', '$Company_URL' 
                 '$Company_Address', '$Contact_Information', '$Industry_Sector', 
                 '$Company_Overview', '$Top_Client', '$Company_Award', '$Language',default)";
@@ -264,8 +351,32 @@ class Submit
                 Job_Location = '$Job_Location', Eligibility_Criteria = '$Eligibility_Criteria', Selection_Process = '$Selection_Process', 
                 HR_Name = '$HR_Name', HR_Contact = '$HR_Contact' WHERE User_ID = '$userID'";
             } else {
-                // Insert query
-                $query = "INSERT INTO companyprofile2 VALUES (default, '$userID', '$Job_Location', '$Eligibility_Criteria', '$Selection_Process', '$HR_Name', '$HR_Contact', default)";
+                // Collect job-related form data into an associative array
+                $basic = new Basic();
+                $jobData = [
+                    'Job_Location' => $_POST["Job_Location"],
+                    'Eligibility_Criteria' => $_POST["Eligibility_Criteria"],
+                    'Selection_Process' => $_POST["Selection_Process"],
+                    'HR_Name' => $_POST["HR_Name"],
+                    'HR_Contact' => $_POST["HR_Contact"]
+                ];
+
+                $missedData = []; // Initialize missed data array
+
+                // Check each field and add to missedData if empty
+                foreach ($jobData as $fieldName => $fieldValue) {
+                    if (empty($fieldValue)) {
+                        $missedData[] = $fieldName;
+                    }
+                }
+
+                // Convert missedData array to a string
+                if (!empty($missedData)) {
+                    $missedDataString = implode(', ', $missedData);
+                    $basic->error("Data Missing: $missedDataString", 1);
+                }else{
+                    $query = "INSERT INTO companyprofile2 VALUES (default, '$userID', '$Job_Location', '$Eligibility_Criteria', '$Selection_Process', '$HR_Name', '$HR_Contact', default)";
+                }
             }
         }
         
@@ -369,6 +480,17 @@ class Submit
             }
             self::$basic->redirect(self::$basic->getRoot()."/User/$user/JobDrive.php");
         }
+    }
+    function Apply(){
+        $db = new Database();
+        $basic = new Basic();
+        // echo "Job Id : ".$Job_Id = $_POST['Job_Id'];
+        // echo "<br>User ID : ".$userID = $_SESSION['Userid'];
+        
+        echo "<br><br>Processing Applying...";
+        
+        $db->Execute("insert into Applied (User_Id, Job_Id) values($_SESSION[Userid],$_POST[Job_Id])");
+        $basic->success("Job Applied Successfully",2);
     }
 }
 

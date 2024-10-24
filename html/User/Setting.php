@@ -13,7 +13,7 @@ include "../Function/Database.php";
 $db = new Database();
 
 $user = $db->fetch("select * from Users where Id = '$_SESSION[Userid]'");
-var_dump($user);
+// var_dump($user);
 
 $oldPass = $_POST['oldPass'];
 $newPass = $_POST['newPass1'];

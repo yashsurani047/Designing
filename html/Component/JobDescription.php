@@ -7,15 +7,21 @@ $basic  = new Basic($path);
 
 $db = new Database();
 $sql = "select * from Jobs where Id = ".$_GET['Job_Id'];
-$job = $db->Execute($sql);
-$Jobowner = $db->Execute("select * from companyprofile where User_Id = ".$job['User_Id']);
+$job = $db->Execute_One($sql);
+$Jobowner = $db->Execute_One("select * from companyprofile where User_Id = $job[User_Id]");
 
 $Is_Edit = $_SESSION['Userid'] == $job['User_Id'];
 $Is_Collage  = $_SESSION['Usertype'] == "Collage";
 $Is_Student  = $_SESSION['Usertype'] == "Student";
-$Is_Circulated  = $db->Execute("select * from Circulated where User_Id = ".$_SESSION['Userid']." AND  Job_Id = ".$_GET['Job_Id']) != null? true:false;
-$Is_Applied  = $db->Execute("select * from Applied where User_Id = ".$_SESSION['Userid']." AND  Job_Id = ".$_GET['Job_Id']) != null? true:false;
+$Is_Company  = $_SESSION['Usertype'] == "Company";
+if($Is_Company){
+    $Is_Circulated  = $db->Execute("select * from Circulated where User_Id = ".$_SESSION['Userid']." AND  Job_Id = ".$_GET['Job_Id']) != null? true:false;
+}
+if($Is_Student){
+    $Is_Applied  = $db->Execute("select * from Applied where User_Id = ".$_SESSION['Userid']." AND  Job_Id = ".$_GET['Job_Id']) != null? true:false;
+}
 // echo $_SESSION['Userid']." AND  Job_Id = ".$_GET['Job_Id'];
+
 ?>
     <style>
         body {
@@ -181,12 +187,21 @@ $Is_Applied  = $db->Execute("select * from Applied where User_Id = ".$_SESSION['
                             ?>
                             <form action="<?php echo $path?>/Function/Submit.php" method="post">
                                 <input type="hidden" class="btn btn-info" name="submit" value="ApplyJob">
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalScrollable">Approve</button>
+                                <input type="hidden" class="btn btn-info" name="Job_Id" value="<?php echo $_GET['Job_Id'] ?>">
+                                <button type="submit" class="btn btn-success" name = "submit" value="Apply">Apply Job</button>
+                                <!-- <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalScrollable">Apply Job</button> -->
                             </form>
-                            <?php include "$path/User/Student/TnC.php";
+                            <?php //include "$path/User/Student/TnC.php";
                         }
                     }
                     ?>
+                    
+                    <script>
+                            function showEdit() {
+                                document.getElementById('jobDescription').style.display = 'none';
+                                document.getElementById('jobDescriptionEdit').style.display = 'block';
+                            }
+                        </script>
                 <br>
                 <button type="button" class="btn btn-danger" onclick="window.location.href='JobDrive.php';">Back</button>
                 </div>
@@ -194,4 +209,4 @@ $Is_Applied  = $db->Execute("select * from Applied where User_Id = ".$_SESSION['
             </div>
             </div>
         </div>
-    </div>
+    </div>\

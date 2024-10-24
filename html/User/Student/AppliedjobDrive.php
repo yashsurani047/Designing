@@ -6,6 +6,6 @@ require_once "$path/Function/Basic.php";
 startContainer($path, $user);
 ?>
 <main>
-  <?php AppliedJobList($user); ?>
+  <?php JobList($user,$path,"applied"); ?>
 </main>
 <?php endContainer($path); ?>

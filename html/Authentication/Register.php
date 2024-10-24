@@ -30,9 +30,8 @@ startContainer($path, "");
                   <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                     <input type="radio" class="btn-check" name="Usertype" value="Student" id="Student" autocomplete="off" />
                     <label class="btn btn-outline-primary" for="Student"><i class='bx bxs-user'></i> Student</label>
-                    <input type="radio" class="btn-check" name="Usertype" id="College" value="Collage" autocomplete="off" />
-                    <label class="btn btn-outline-primary" for="College"><i class='bx bxs-graduation'></i>
-                      College</label>
+                    <!-- <input type="radio" class="btn-check" name="Usertype" id="College" value="Collage" autocomplete="off" /> -->
+                    <!-- <label class="btn btn-outline-primary" for="College"><i class='bx bxs-graduation'></i>College</label> -->
                     <input type="radio" class="btn-check" name="Usertype" id="Company" value="Company" autocomplete="off" />
                     <label class="btn btn-outline-primary" for="Company"><i class='bx bxs-buildings'></i>
                       Company</label>
@@ -82,11 +81,8 @@ startContainer($path, "");
 
               <div class="mb-3">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" />
-                  <label class="form-check-label" for="terms-conditions">
-                    I agree to
-                    <a href="javascript:void(0);">privacy policy & terms</a>
-                  </label>
+                  <!-- <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" /> -->
+                  <!-- <label class="form-check-label" for="terms-conditions">I agree to<a href="javascript:void(0);">privacy policy & terms</a></label> -->
                 </div>
                 <span id="termsError" class="error"></span>
               </div>

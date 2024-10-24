@@ -7,7 +7,7 @@ require_once "$path/Function/Database.php";
 startContainer($path, $user);
 
 $db = new Database();
-$profile = $db->Execute("select * from studentprofile where User_Id = " . $_SESSION['Userid']);
+$profile = $db->Execute_One("select * from studentprofile where User_Id = " . $_SESSION['Userid']);
 if ($profile != null) {
   $First_Name = $profile["First_Name"];
   $Last_Name = $profile["Last_Name"];
@@ -43,16 +43,17 @@ if ($profile != null) {
         <li class="nav-item m-3">
           <button type="button" class="nav-link active text-primary" role="tab" data-bs-toggle="tab"
             data-bs-target="#navs-justified-home" aria-controls="navs-justified-home" aria-selected="true">
-            <i class="bx bxs-user-detail display-6"></i> Basic Information
-            <span class="badge rounded-pill badge-center h-px-20 w-px-20 bg-label-danger">3</span>
+            <!-- <i class="bx bxs-user-detail display-6"></i> Basic Information -->
+            <i class="bx bxs-user-detail display-6"></i> Student Information
+            <!-- <span class="badge rounded-pill badge-center h-px-20 w-px-20 bg-label-danger">3</span> -->
           </button>
         </li>
-        <li class="nav-item  m-3">
+        <!-- <li class="nav-item  m-3">
           <button type="button" class="nav-link text-primary" role="tab" data-bs-toggle="tab"
             data-bs-target="#navs-justified-profile" aria-controls="navs-justified-profile" aria-selected="false">
             <i class="bx bxs-graduation"></i> Qulifications
           </button>
-        </li>
+        </li> -->
         <!-- <li class="nav-item  m-3">
           <button type="button" class="nav-link text-primary" role="tab" data-bs-toggle="tab"
             data-bs-target="#navs-justified-messages" aria-controls="navs-justified-messages" aria-selected="false">

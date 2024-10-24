@@ -3,7 +3,12 @@ $path = "../..";
 $user = "Company";
 
 require_once "$path/Function/Basic.php";
+require_once "$path/Function/Database.php";
 startContainer($path, $user);
+
+$db = new Database();
+
+
 ?>
 
 <div class="tab-content">

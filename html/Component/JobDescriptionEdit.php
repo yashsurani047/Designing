@@ -6,10 +6,10 @@ require_once "$path/Function/Database.php";
 $basic  = new Basic($path);
 
 $db = new Database();
-$profile = $db->Execute("select * from companyprofile where User_Id = " . $_SESSION['Userid']);
+$profile = $db->Execute_One("select * from companyprofile where User_Id = " . $_SESSION['Userid']);
 
 $sql = "select * from Jobs where Id = ".$_GET['Job_Id'];
-$job = $db->Execute($sql);
+$job = $db->Execute_One($sql);
 $Jobowner = $db->Execute("select * from companyprofile where User_Id = ".$job['User_Id']);
 
 $Is_Edit = $_SESSION['Userid'] == $job['User_Id'];
