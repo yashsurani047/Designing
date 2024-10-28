@@ -179,7 +179,7 @@ class Submit
             }
         }
         else{
-            $basic->error("Email not found",$basic->getRoot()."/Authentication/ForgetPassword.php");
+            // $basic->error("Email not found",$basic->getRoot()."/Authentication/ForgetPassword.php");
         }
     }
     function ChangePass(){

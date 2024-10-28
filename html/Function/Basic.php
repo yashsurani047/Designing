@@ -1,6 +1,7 @@
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+
 if(empty($path)){
     $path = "..";
 }
@@ -149,66 +150,40 @@ class Basic{
     public function partial($path,$filename){
         include_once "$path/Partial/$filename";
     }
-    public function SentOTPEmail($Email, $first = 0){
-        $db = new Database();
-        $basic = new Basic();
-        if($first == 0){
-            $Email = $_POST['Email'];
-        }
-        $user = $db->Execute("select * from Users where Email = '$Email'; ");
-        $Is_User = $Email == $user['Email']; //check its user or not
-        if($Is_User){
-            $Token = random_int(10000,99999);
-            if($db->fetch("select Email from forgot where Email = '$Email'")){
-                $data = $db->Execute("update forgot set Pass = '$Token'");
-            }
-            else{
-                $data = $db->Execute("insert into forgot (Email, Pass) values ('$Email','$Token');");
-            }
-            // Configuration
-            $smtpHost = 'smtp.gmail.com'; // SMTP server
-            $smtpPort = 587; // SMTP port
-            $smtpUser = 'facehidegaming@gmail.com'; // SMTP username
-            $smtpPass = 'ctzmjwujvphcfubw'; // SMTP password
-            $fromEmail = 'facehidegaming@gmail.com'; // Sender email
-            $fromName = 'Placement Plus'; // Sender name
+    public function SentEmail($toEmail,$subject,$message){
+        $smtpHost = 'smtp.gmail.com'; // SMTP server
+        $smtpPort = 587; // SMTP port
+        $smtpUser = 'facehidegaming@gmail.com'; // SMTP username
+        $smtpPass = 'ctzmjwujvphcfubw'; // SMTP password
+        $fromEmail = 'facehidegaming@gmail.com'; // Sender email
+        $fromName = 'Placement Plus'; // Sender name
 
-            // Recipient email and message details
-            $toEmail = $Email; // Recipient email
-            $subject = 'Verification Link for Change Password of Your Placement Plus Account'; // Email subject
-            $message = $basic->getRoot()."/Authentication/verify.php?Token=".$Token; // Email message body
+        // Create a new PHPMailer instance
+        $mail = new PHPMailer(true);
 
-            // Create a new PHPMailer instance
-            $mail = new PHPMailer(true);
+        try {
+            // Server settings
+            $mail->isSMTP();                                        // Set mailer to use SMTP
+            $mail->Host = $smtpHost;                               // Specify main and backup SMTP servers
+            $mail->SMTPAuth = true;                               // Enable SMTP authentication
+            $mail->Username = $smtpUser;                          // SMTP username
+            $mail->Password = $smtpPass;                          // SMTP password
+            $mail->SMTPSecure = 'tls';                            // Enable TLS encryption
+            $mail->Port = $smtpPort;                              // TCP port to connect to
 
-            try {
-                // Server settings
-                $mail->isSMTP();                                        // Set mailer to use SMTP
-                $mail->Host = $smtpHost;                               // Specify main and backup SMTP servers
-                $mail->SMTPAuth = true;                               // Enable SMTP authentication
-                $mail->Username = $smtpUser;                          // SMTP username
-                $mail->Password = $smtpPass;                          // SMTP password
-                $mail->SMTPSecure = 'tls';                            // Enable TLS encryption
-                $mail->Port = $smtpPort;                              // TCP port to connect to
+            // Recipients
+            $mail->setFrom($fromEmail, $fromName);
+            $mail->addAddress($toEmail);                          // Add a recipient
 
-                // Recipients
-                $mail->setFrom($fromEmail, $fromName);
-                $mail->addAddress($toEmail);                          // Add a recipient
+            // Content
+            $mail->isHTML(false);                                  // Set email format to plain text
+            $mail->Subject = $subject;
+            $mail->Body    = $message;
 
-                // Content
-                $mail->isHTML(false);                                  // Set email format to plain text
-                $mail->Subject = $subject;
-                $mail->Body    = $message;
-
-                $mail->send();
-                $basic->error("Email sent successfully",$basic->getRoot()."/Authentication/Login.php");
-            } catch (Exception $e) {
-                $basic->error("Email sending failed: {$mail->ErrorInfo}",$basic->getRoot()."/Authentication/Login   .php");
-            }
-        }
-        else{
-            $basic->success("Email",$basic->getRoot()."/Authentication/Login.php");
-            // $basic->error("Email not found",$basic->getRoot()."/Authentication/ForgetPassword.php");
+            $mail->send();
+            return true;
+        } catch (Exception $e) {
+            return false;
         }
     }
 }

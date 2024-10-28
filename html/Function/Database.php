@@ -44,7 +44,7 @@ class Database extends Basic{
                 if (mysqli_num_rows($data) > 0) {
                     if (mysqli_num_rows($data) == 1) {
                         // Otherwise, fetch a single result
-                        return mysqli_fetch_all($data, MYSQLI_ASSOC); // Fetch a single result
+                        return mysqli_fetch_array($data, MYSQLI_ASSOC); // Fetch a single result
                     } else {
                         // If the query is not empty, fetch all results
                         return mysqli_fetch_all($data, MYSQLI_ASSOC); // Fetch all results
