@@ -11,14 +11,14 @@ class Submit
     {
         require_once self::$path."/Function/Basic.php";
         require_once self::$path."/Function/Database.php";
+        self::$basic = new Basic();
+        self::$db = new Database();
         // Include PHPMailer classes
         require self::$path.'/PHPMailer/Exception.php';
         require self::$path.'/PHPMailer/PHPMailer.php';
         require self::$path.'/PHPMailer/SMTP.php';
 
         if (session_status() !== PHP_SESSION_ACTIVE) session_start();
-        self::$basic = new Basic();
-        self::$db = new Database();
 
         if (!isset($_POST['submit'])) {
             if(!isset($_GET['submit'])){
@@ -56,7 +56,7 @@ class Submit
         $Password2 = $_POST['Password2'] ?? null; if (!$Password2) { self::$basic->alert("Please Provide Confirm Password!", 1); return; }
         
         if ($Password1 == $Password2) {
-            if (self::$db->CheckUser($Email) == false) {
+            if (self::$db->fetch("select * from Users where Email = '$Email'") == false) {
                 if(self::$db->insert("insert into Users (Usertype,Email,Password) values('$Usertype','$Email','$Password1')")){
                     $OTP = random_int(100000,999999);
                     self::$db->Execute("insert into otp (Email,OTP) values('$Email',$OTP)");
@@ -74,11 +74,12 @@ class Submit
         }
     }
     function Login(){
-        echo "w";
         $Email = $_POST['Email'] ?? null; if (!$Email) { self::$basic->alert("Please Provide Email!", 1); return; }
         $Password = $_POST['Password'] ?? null; if (!$Password) { self::$basic->alert("Please Provide Password!", 1); return; }
 
-        $result = self::$db->CheckUser($Email, $Password);
+        // $result = self::$db->CheckUser($Email, $Password);
+        $result = self::$db->Execute("select * from Users where Email='$Email' and Password='$Password'");
+
         if ($result == true) {
             if (filter_var($Email, FILTER_VALIDATE_EMAIL)) {
                 $UserDB = self::$db->fetch("select * from Users where Email = '$Email'; ");
@@ -127,12 +128,12 @@ class Submit
         $db = new Database();
         $basic = new Basic();
         $Email = $_POST['Email'];
-        $user = $db->Execute("select * from Users where Email = '$Email'; ");
+        $user = $db->fetch("select * from Users where Email = '$Email'; ");
         $Is_User = $Email == $user['Email']; //check its user or not
         if($Is_User){
             $Token = random_int(10000,99999);
             if($db->fetch("select Email from forgot where Email = '$Email'")){
-                $data = $db->Execute("update forgot set Pass = '$Token'");
+                $data = $db->fetch("update forgot set Pass = '$Token'");
             }
             else{
                 $data = $db->Execute("insert into forgot (Email, Pass) values ('$Email','$Token');");

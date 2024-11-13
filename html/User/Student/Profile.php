@@ -7,7 +7,7 @@ require_once "$path/Function/Database.php";
 startContainer($path, $user);
 
 $db = new Database();
-$profile = $db->Execute_One("select * from studentprofile where User_Id = " . $_SESSION['Userid']);
+$profile = $db->fetch("select * from studentprofile where User_Id = " . $_SESSION['Userid']);
 if ($profile != null) {
   $First_Name = $profile["First_Name"];
   $Last_Name = $profile["Last_Name"];
@@ -319,10 +319,10 @@ mysqli_close($conn);
                     <select id="Language" class="select2 form-select" name="Language"
                       selected="<?php echo $Language ?>">
                       <option value="">Select Language</option>
-                      <option value="en" selected>English</option>
-                      <option value="fr">Gujarati</option>
-                      <option value="de">Hindi</option>
-                      <option value="pt">Sanskrit</option>
+                      <option value="English" selected>English</option>
+                      <option value="Gujarati">Gujarati</option>
+                      <option value="Hindi">Hindi</option>
+                      <option value="Sanskrit">Sanskrit</option>
                     </select>
                   </div>
                 </div>

@@ -5,8 +5,7 @@
   require_once "$path/Function/Basic.php";
   require_once "$path/Function/Database.php";
   $db = new Database();
-  $user1 = $db->Execute("select * from Users where Id =$_SESSION[Userid]");
-
+  $user1 = $db->fetch("select * from Users where Id = $_SESSION[Userid]");
   startContainer($path, $user);
   ?>
   <div class="container-xxl flex-grow-1 container-p-y">
@@ -18,7 +17,7 @@
             <div class="col-sm-7">
               <div class="card-body">
 
-                <h5 class="card-title text-primary">Good Morning/Afternoon/Evening! <?php echo $user1[0]["Username"] ?></h5>
+                <h5 class="card-title text-primary">Good Morning/Afternoon/Evening! <?php echo $user1["Username"] ?></h5>
                 <p class="mb-4">
                   You have done <span class="fw-bold">72%</span> more sales today. Check your new badge in
                   your profile.
@@ -101,9 +100,9 @@
               </div>
               <div class="col-md-7">
                 <div class="card-body">
-                  <h5 class="card-title"><?php echo $user1[0]["Username"] ?></h5>
+                  <h5 class="card-title"><?php echo $user1["Username"] ?></h5>
                   <p class="card-text">
-                  <?php echo $user1[0]["Username"] ?> is a leading IT company specializing in innovative software solutions and digital
+                  <?php echo $user1["Username"] ?> is a leading IT company specializing in innovative software solutions and digital
                     transformation services. With a focus on delivering cutting-edge technology, the company caters to a
                     wide range of industries to drive business efficiency and growth.
                   </p>

@@ -93,6 +93,7 @@ if(isset($_SESSION['Email'])){
   <li><a class='nav-item me-5 desktop-nav ' href='$path/user/Student/index.php'>Home</a></li>
   <li><a class='nav-item me-5 desktop-nav ' href='$path/user/Student/JobDrive.php'>Apply To Job</a></li>
   <li><a class='nav-item me-5 desktop-nav ' href='$path/user/Student/AppliedJobDrive.php'>Already Applied</a></li>
+  <li><a class='nav-item me-5 desktop-nav ' href='$path/user/Student/Preparation.php'>Preparation</a></li>
   $Userbtn;
   ";
   $AdminMenu = "

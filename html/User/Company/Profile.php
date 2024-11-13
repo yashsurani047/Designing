@@ -7,8 +7,8 @@ require_once "$path/Function/Database.php";
 startContainer($path, $user);
 
 $db = new Database();
-$profile = $db->Execute_One("select * from companyprofile where User_Id = " . $_SESSION['Userid']);
-$profile2 = $db->Execute_One("select * from companyprofile2 where User_Id = " . $_SESSION['Userid']);
+$profile = $db->fetch("select * from companyprofile where User_Id = " . $_SESSION['Userid']);
+$profile2 = $db->fetch("select * from companyprofile2 where User_Id = " . $_SESSION['Userid']);
 if ($profile != null) {
   $Company_Name = $profile["Company_Name"];
   $Company_URL = $profile["Company_URL"];

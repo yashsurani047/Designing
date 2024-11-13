@@ -1,11 +1,10 @@
 <?php
+
 $path = "../..";
 $user = "Student";
-
-require_once "$path/Function/Basic.php";
+include_once "$path/Function/Basic.php";
+require_once "$path/Component/table.php";
 startContainer($path, $user);
-?>
-<main>
-  <?php JobList($user,$path,"available"); ?>
-</main>
-<?php endContainer($path); ?>
+$th = new TableHelper();
+$th->table("Users" , "select Id, Job_Profile, CTC, Internship, Bond, Eligible_Course from Jobs", 1, 1, 1);
+endContainer($path);
