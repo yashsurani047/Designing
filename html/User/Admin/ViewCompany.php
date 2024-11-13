@@ -12,6 +12,7 @@ $th->table("Available Companies" , "select p1.User_Id, Company_Name, Industry_Se
 // $th->table("Users" , "select Id, Usertype,Email,Password,Created_at from Users", 1, 1, 1);
  endContainer($path); ?>
 
+
 <?php
 $path = "../..";
 $user = "Admin";
