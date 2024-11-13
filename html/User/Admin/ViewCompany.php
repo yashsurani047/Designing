@@ -4,6 +4,20 @@ $user = "Admin";
 require_once "$path/Function/Basic.php";
 require_once "$path/Function/Database.php";
 $db = new Database();
+$students = $db->Execute_All("select * from studentprofile");
+
+startContainer($path, $user);
+$th = new TableHelper();
+$th->table("Available Companies" , "select p1.User_Id, Company_Name, Industry_Sector, Company_Address, HR_Name, HR_Contact, Company_URL from companyprofile p1 inner join companyprofile2 p2  on p1.User_Id = p2.User_Id", 0, 1, 1);
+// $th->table("Users" , "select Id, Usertype,Email,Password,Created_at from Users", 1, 1, 1);
+ endContainer($path); ?>
+
+<?php
+$path = "../..";
+$user = "Admin";
+require_once "$path/Function/Basic.php";
+require_once "$path/Function/Database.php";
+$db = new Database();
 $companies = $db->Execute_All("select * from companyprofile p1 inner join companyprofile2 p2  on p1.User_Id = p2.User_Id ");
 startContainer($path, $user);
 ?>

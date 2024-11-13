@@ -1,6 +1,6 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
 
 if(empty($path)){
     $path = "..";
@@ -149,42 +149,6 @@ class Basic{
     }
     public function partial($path,$filename){
         include_once "$path/Partial/$filename";
-    }
-    public function SentEmail($toEmail,$subject,$message){
-        $smtpHost = 'smtp.gmail.com'; // SMTP server
-        $smtpPort = 587; // SMTP port
-        $smtpUser = 'facehidegaming@gmail.com'; // SMTP username
-        $smtpPass = 'ctzmjwujvphcfubw'; // SMTP password
-        $fromEmail = 'facehidegaming@gmail.com'; // Sender email
-        $fromName = 'Placement Plus'; // Sender name
-
-        // Create a new PHPMailer instance
-        $mail = new PHPMailer(true);
-
-        try {
-            // Server settings
-            $mail->isSMTP();                                        // Set mailer to use SMTP
-            $mail->Host = $smtpHost;                               // Specify main and backup SMTP servers
-            $mail->SMTPAuth = true;                               // Enable SMTP authentication
-            $mail->Username = $smtpUser;                          // SMTP username
-            $mail->Password = $smtpPass;                          // SMTP password
-            $mail->SMTPSecure = 'tls';                            // Enable TLS encryption
-            $mail->Port = $smtpPort;                              // TCP port to connect to
-
-            // Recipients
-            $mail->setFrom($fromEmail, $fromName);
-            $mail->addAddress($toEmail);                          // Add a recipient
-
-            // Content
-            $mail->isHTML(false);                                  // Set email format to plain text
-            $mail->Subject = $subject;
-            $mail->Body    = $message;
-
-            $mail->send();
-            return true;
-        } catch (Exception $e) {
-            return false;
-        }
-    }
+    }   
 }
 

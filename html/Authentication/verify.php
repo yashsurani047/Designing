@@ -1,6 +1,6 @@
 <?php
-include "../Function/Basic.php";
-include "../Function/Database.php";
+include_once "../Function/Basic.php";
+include_once "../Function/Database.php";
 $db = new Database();
 if(isset($_GET['Token'])){
     $Token = $_GET['Token'];
@@ -14,17 +14,31 @@ else{
     ?>
     <form action="" method="post">
         Email : <input type="text" name="Email" placeholder="Enter Email"><br>
-        OTP : <input type="text" name="OTP" placeholder="Enter OTP"><br>
-        <input type="hidden" name="submit" value="OTP">
-        <input type="submit" value="Verify OTP">
+        OTP : <input type="text" name="Token" placeholder="Enter OTP"><br>
+        <button type="submit" value="VerifyOTP">Verify OTP</button>
     </form>
 
     <form action="" method="post">
         Email : <input type="text" name="Email" placeholder="Enter Email"><br>
         <input type="hidden" name="submit" value="GetOTP">
-        <input type="submit" value="Get OTP">
+        <button type="submit" value="GetOTP">Get OTP</button>
     </form>
     <?php
+}
+if(isset($_POST['submit'])){
+    $submit = $_POST["submit"];
+    if($submit == "GetOTP"){
+        $Email = $_POST['Email'];
+        $db->SentOTPEmail($Email);       
+    }
+    else if($submit == "VerifyOTP"){
+        $Token = $_POST['Token'];
+        
+        $forget = $db->fetch("select Email from forgot where Pass = '$Token'");
+        $user = $db->fetch("select Id from Users where Email = '$forget[Email]'");
+        echo $_SESSION['TokenUserId'] = $user['Id'];
+        header("location:ChangePassword.php");
+    }
 }
 if(isset($_GET['OTP'])){
     $Email = $_POST['Email'];
@@ -37,9 +51,5 @@ if(isset($_GET['OTP'])){
     else{
         $basic->error("Invalid OTP",2);
     }
-}
-if(isset($_POST['GetOTP'])){
-    echo $Email = $_POST['Email'];
-    $basic->SentOTPEmail($Email);
 }
 ?>
