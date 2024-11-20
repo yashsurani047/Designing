@@ -104,20 +104,20 @@ class Database extends Basic {
 
         try {
             // Server settings
-            $mail->isSMTP();                                        // Set mailer to use SMTP
-            $mail->Host = $smtpHost;                               // Specify main and backup SMTP servers
-            $mail->SMTPAuth = true;                               // Enable SMTP authentication
-            $mail->Username = $smtpUser;                          // SMTP username
-            $mail->Password = $smtpPass;                          // SMTP password
-            $mail->SMTPSecure = 'tls';                            // Enable TLS encryption
-            $mail->Port = $smtpPort;                              // TCP port to connect to
+            $mail->isSMTP();                      // Set mailer to use SMTP
+            $mail->Host = $smtpHost;              // Specify main and backup SMTP servers
+            $mail->SMTPAuth = true;               // Enable SMTP authentication
+            $mail->Username = $smtpUser;          // SMTP username
+            $mail->Password = $smtpPass;          // SMTP password
+            $mail->SMTPSecure = 'tls';            // Enable TLS encryption
+            $mail->Port = $smtpPort;              // TCP port to connect to
 
             // Recipients
             $mail->setFrom($fromEmail, $fromName);
-            $mail->addAddress($toEmail);                          // Add a recipient
+            $mail->addAddress($toEmail);          // Add a recipient
 
             // Content
-            $mail->isHTML(false);                                  // Set email format to plain text
+            $mail->isHTML(false);                 // Set email format to plain text
             $mail->Subject = $subject;
             $mail->Body    = $message;
 
@@ -128,14 +128,39 @@ class Database extends Basic {
         }
     }
     public function SentOTPEmail($Email){
-        $Token = random_int(10000,99999);
-        if($this->fetch("select Email from forgot where Email = '$Email'")){
-            $data = $this->Execute("update forgot set Pass = '$Token'");
+        // Validate the email format first
+        if (!filter_var($Email, FILTER_VALIDATE_EMAIL)) {
+            // If email format is invalid, return an error message
+            self::error("Invalid email format");
+            return false;
         }
-        else{
-            $data = $this->Execute("insert into forgot (Email, Pass) values ('$Email','$Token');");
+    
+        // Check if the email exists in the database
+        $emailCheck = $this->fetch("select Email from Users where Email = '$Email'");
+        
+        if (!$emailCheck) {
+            // If email is not found in the database, return an error
+            self::error("Email not found");
+            return false;
         }
-        $this->SentEmail($Email, "Verification Link of your Placement Plus Account", "OTP : $Token \n\n".$this->getRoot()."/Authentication/verify.php?Token=".$Token);
+    
+        // Generate a random OTP
+        $Token = random_int(10000, 99999);
+    
+        // If the email exists, update or insert the OTP in the database
+        if ($this->fetch("select Email from otp where Email = '$Email'")) {
+            $data = $this->Execute("update otp set OTP = '$Token' where Email = '$Email'");
+        } else {
+            $data = $this->Execute("insert into otp (Email, Pass) values ('$Email', '$Token')");
+        }
+    
+        // Send the OTP email
+        if ($this->SentEmail($Email, "Verification Link of your Placement Plus Account", "OTP: $Token \n\n" . $this->getRoot() . "/Authentication/verify.php?Token=" . $Token)) {
+            self::success("Email was sent successfully");
+        } else {
+            self::error("Email was not sent, Facing an Error");
+        }
     }
+    
 }
 ?>

@@ -1,5 +1,5 @@
 <?php
-$path = "../..";
+$path = "..";
 
 require_once "$path/Function/Basic.php";
 require_once "$path/Function/Database.php";
@@ -15,10 +15,10 @@ $Is_Collage  = $_SESSION['Usertype'] == "Collage";
 $Is_Student  = $_SESSION['Usertype'] == "Student";
 $Is_Company  = $_SESSION['Usertype'] == "Company";
 if($Is_Company){
-    $Is_Circulated  = $db->Execute("select * from Circulated where User_Id = ".$_SESSION['Userid']." AND  Job_Id = ".$_GET['Job_Id']) != null? true:false;
+    $Is_Circulated  = $db->fetch("select * from Circulated where User_Id = ".$_SESSION['Userid']." AND  Job_Id = ".$_GET['Job_Id']) != null? true:false;
 }
 if($Is_Student){
-    $Is_Applied  = $db->Execute("select * from Applied where User_Id = ".$_SESSION['Userid']." AND  Job_Id = ".$_GET['Job_Id']) != null? true:false;
+    $Is_Applied  = $db->fetch("select * from Applied where User_Id = ".$_SESSION['Userid']." AND  Job_Id = ".$_GET['Job_Id']) != null? true:false;
 }
 // echo $_SESSION['Userid']." AND  Job_Id = ".$_GET['Job_Id'];
 
@@ -203,7 +203,7 @@ if($Is_Student){
                             }
                         </script>
                 <br>
-                <button type="button" class="btn btn-danger" onclick="window.location.href='JobDrive.php';">Back</button>
+                <button type="button" class="btn btn-danger" onclick="window.history.go(-1)">Back</button>
                 </div>
               </div>
             </div>

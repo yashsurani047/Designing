@@ -4,6 +4,7 @@ $user = "Student";
 
 require_once "$path/Function/Basic.php";
 require_once "$path/Function/Database.php";
+if(!isset($_SESSION["Userid"])) $basic->alert("First Logined In",$path);
 startContainer($path, $user);
 
 $db = new Database();

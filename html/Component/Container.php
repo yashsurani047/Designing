@@ -1,5 +1,5 @@
 <?php
-function startContainer($path, $user){
+function startContainer($path, $user = null){
     ?>
  <!DOCTYPE html>
   </head>

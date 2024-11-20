@@ -18,7 +18,7 @@ $url = $protocol . $host . $filename;
 
 if(isset($_SESSION['Usertype'])){
     // Use strpos to check if the Usertype is in the URL
-    if (strpos($url, "User/".$_SESSION['Usertype']."/") || strpos($url, "user/".$_SESSION['Usertype']."/") || strpos($url, "Function") || strpos($url, "Profile") || strpos($url, "Setting") || $_SESSION['Usertype'] == "Admin") {
+    if (strpos($url, "User/".$_SESSION['Usertype']."/") || strpos($url, "user/".$_SESSION['Usertype']."/") || strpos($url, "Function") || strpos($url, "Profile") || strpos($url, "Setting") || strpos($url, "Component") || $_SESSION['Usertype'] == "Admin") {
         // Only Access in own User Type, Function(Basic, Submit), Admins
     }
     else{

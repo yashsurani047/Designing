@@ -1,6 +1,6 @@
 <?php
 if(!isset($path)){
-  $path = "..";
+    $path = "..";
 }
 include_once "$path/Function/Basic.php";
 include_once "$path/Function/Database.php";
@@ -12,7 +12,7 @@ class TableHelper {
         $this->db = new Database();
     }
 
-    public function table($title, $query, $is_Add = 0, $is_Edit = 0, $is_Delete = 0, $is_View = 0) {
+    public function table($title, $query, $is_Add = 0, $is_Edit = 0, $is_Delete = 0, $is_View = 1) {
         // Extract the table name from the query
         $tableName = $this->getTableNameFromQuery($query);
 
@@ -75,15 +75,29 @@ class TableHelper {
         </div>
 
         <script>
-        function toggleOptions(button) {
-            const options = button.nextElementSibling;
-            options.style.display = options.style.display === "none" ? "block" : "none";
-        }
+            function toggleOptions(button) {
+                const options = button.nextElementSibling; // Get the associated options div
+                const allOptions = document.querySelectorAll('.action-options'); // Get all options divs
+
+                // Close all other options divs
+                allOptions.forEach(option => {
+                    if (option !== options) {
+                        option.style.display = 'none';
+                    }
+                });
+
+                // Toggle the visibility of the clicked options div
+                options.style.display = options.style.display === 'none' || options.style.display === '' ? 'block' : 'none';
+            }
         </script>
+
         <?php
     }
 
     private function renderTableRow($row, $columns, $tableName, $is_Edit, $is_Delete, $is_View) {
+        if(!isset($path)){
+            $path = "..";
+        }
         ?>
         <tr>
             <?php
@@ -110,14 +124,14 @@ class TableHelper {
                     <button class="btn btn-secondary" onclick="toggleOptions(this)">More Options</button>
                     <div class="action-options" style="display:none; margin-top: 5px;">
                         <?php if ($is_View): ?>
-                            <a class="btn btn-info btn-sm" href="view.php?table=<?php echo urlencode($tableName); ?>&id=<?php echo htmlspecialchars($row[$columns[0]]); ?>">View Details</a>
+                            <a class="btn btn-info btn-sm" href="<?php echo $path."/.."; ?>/Component/View.php?table=<?php echo urlencode($tableName); ?>&Job_Id=<?php echo htmlspecialchars($row[$columns[0]]); ?>">View Details</a>
                         <?php endif; ?>
                         <br>
                         <?php if ($is_Edit): ?>
-                            <a class="btn btn-warning btn-sm" href="edit.php?table=<?php echo urlencode($tableName); ?>&id=<?php echo htmlspecialchars($row[$columns[0]]); ?>">Edit</a>
+                            <a class="btn btn-warning btn-sm" href="<?php echo $path."/.."; ?>/Component/edit.php?table=<?php echo urlencode($tableName); ?>&id=<?php echo htmlspecialchars($row[$columns[0]]); ?>">Edit</a>
                         <?php endif; ?>
                         <?php if ($is_Delete): ?>
-                            <a class="btn btn-danger btn-sm" href="delete.php?table=<?php echo urlencode($tableName); ?>&id=<?php echo htmlspecialchars($row[$columns[0]]); ?>" onclick="return confirm('Are you sure?')">Delete</a>
+                            <a class="btn btn-danger btn-sm" href="<?php echo $path."/.."; ?>/Component/delete.php?table=<?php echo urlencode($tableName); ?>&id=<?php echo htmlspecialchars($row[$columns[0]]); ?>" onclick="return confirm('Are you sure?')">Delete</a>
                         <?php endif; ?>
                     </div>
                 </div>

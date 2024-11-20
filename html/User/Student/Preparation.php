@@ -3,6 +3,7 @@ $path = "../..";
 $user = "Student";
 
 require_once "$path/Function/Basic.php";
+if(!isset($_SESSION["Userid"])) $basic->alert("First Logined In",$path);
 startContainer($path, $user);
 ?>
 <main>

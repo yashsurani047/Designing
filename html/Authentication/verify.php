@@ -1,44 +1,70 @@
 <?php
-include_once "../Function/Basic.php";
-include_once "../Function/Database.php";
+$path = "..";
+$user = "Guest";
+include_once "$path/Function/Basic.php";
+include_once "$path/Function/Database.php";
+$db = new Basic();
 $db = new Database();
-if(isset($_GET['Token'])){
-    $Token = $_GET['Token'];
-    
-    $forget = $db->fetch("select Email from forgot where Pass = '$Token'");
-    $user = $db->fetch("select Id from Users where Email = '$forget[Email]'");
-    echo $_SESSION['TokenUserId'] = $user['Id'];
-    header("location:ChangePassword.php");
+startContainer($path, $user);
+if(isset($_POST['submit'])){
+    $submit = $_POST["submit"];
+    if($submit == "GetOTP"){
+        $Email = $_POST['Email'];
+        if($db->fetch("select * from Users where Email = '$Email'") != null){
+            $db->SentOTPEmail($Email);
+            echo "<script>window.location.href = window.location.href;</script>";
+        }
+        else{
+            echo "Email not found
+                <a href=''>Try Again</a>";
+        }
+    }
+    else if($submit == "VerifyOTP"){
+        $Token = $_POST['Token'];
+        $Email = $_POST['Email'];
+        
+        $otp = $db->fetch("select * from otp where Email ='$Email'");
+        if(isset($otp['Email'])){
+            if($otp["Pass"] == $Token){
+                $basic->alert("Token Matched");
+                $db->delete("delete from otp where Email = '$otp[Email]'");
+                $user = $db->fetch("select Id from Users where Email = '$otp[Email]'");
+                $_SESSION['TokenUserId'] = $user['Id'];
+                $_SESSION['TokenTimestamp'] = time();
+                $db->update("update Users set verified = 1 where Id = '$user[Id]'");
+                ?>
+                    <a href="Login.php">GOTO LOGIN PAGE</a><br><br>
+                    <a href="ChangePassword.php">Change Password</a>
+                <?php
+            }
+            else{
+                echo "Token Not Matched
+                <a href=''>Try Again</a>";
+            }
+        }
+        else{
+            echo "OTP/Email Not Found, Please Register or Verify
+                <a href=''>Try Again</a>";
+        }
+        
+        // header("location:ChangePassword.php");
+    }
 }
 else{
     ?>
     <form action="" method="post">
         Email : <input type="text" name="Email" placeholder="Enter Email"><br>
-        OTP : <input type="text" name="Token" placeholder="Enter OTP"><br>
-        <button type="submit" value="VerifyOTP">Verify OTP</button>
+        OTP : <input type="text" name="Token" placeholder="Enter OTP">
+        <input type="hidden" name="submit" value="VerifyOTP">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-primary" type="submit" value="VerifyOTP">Verify OTP</button>
     </form>
-
+<br><br>
     <form action="" method="post">
-        Email : <input type="text" name="Email" placeholder="Enter Email"><br>
-        <input type="hidden" name="submit" value="GetOTP">
-        <button type="submit" value="GetOTP">Get OTP</button>
+        Email : <input type="text" name="Email" placeholder="Enter Email">
+        <input type="hidden" name="submit" value="GetOTP">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-primary" type="submit"value="GetOTP">Get OTP</button>
     </form>
     <?php
-}
-if(isset($_POST['submit'])){
-    $submit = $_POST["submit"];
-    if($submit == "GetOTP"){
-        $Email = $_POST['Email'];
-        $db->SentOTPEmail($Email);       
-    }
-    else if($submit == "VerifyOTP"){
-        $Token = $_POST['Token'];
-        
-        $forget = $db->fetch("select Email from forgot where Pass = '$Token'");
-        $user = $db->fetch("select Id from Users where Email = '$forget[Email]'");
-        echo $_SESSION['TokenUserId'] = $user['Id'];
-        header("location:ChangePassword.php");
-    }
 }
 if(isset($_GET['OTP'])){
     $Email = $_POST['Email'];

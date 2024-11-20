@@ -87,6 +87,10 @@ class Submit
                 $UserDB = self::$db->fetch("select * from Users where Username = '$Email'; ");
                 $Email = $UserDB["Email"];
             }
+            if($UserDB["verified"] == 0){
+                self::$basic->error("Account not Verified", 1);
+                return;
+            }
             $Usertype = $UserDB["Usertype"];
             if (session_status() !== PHP_SESSION_ACTIVE)
                 session_start();
@@ -217,7 +221,6 @@ class Submit
                     $missedData[] = 'Language';
                     $flag = 1;
                 }
-
                 // Convert missedData array to a string
                 $missedDataString = implode(', ', $missedData);
        
@@ -244,7 +247,6 @@ class Submit
                     Contact_Information = '$Contact_Information', Industry_Sector = '$Industry_Sector', 
                     Company_Overview = '$Company_Overview', Top_Client = '$Top_Client', 
                     Company_Award = '$Company_Award', Language = '$Language' WHERE User_ID = '$userID'";
-
             }
             else{
                 // Collect form data into an associative array
@@ -404,7 +406,7 @@ class Submit
                 $query = "UPDATE jobs SET 
                     Job_Profile = '$Job_Profile',
                     CTC = '$CTC', 
-                    Job_Location = '$Job_Location', 
+                    Job_Location = '$Job_Location',
                     Internship = '$Internship', 
                     Stipend = '$Stipend', 
                     Selection_Process = '$Selection_Process', 
