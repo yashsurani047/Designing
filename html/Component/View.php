@@ -5,6 +5,7 @@ $user = "Student";
 require_once "$path/Function/Basic.php";
 
 startContainer($path, $user);
+<<<<<<< HEAD
 ?><main>
 
 <?php
@@ -104,4 +105,14 @@ if (!$job) {
 
 </main>
 
+=======
+?>
+<main>
+
+<div id="jobDescription" style="display: block;">
+    <?php include "$path/Component/JobDescription.php"; ?>
+</div>
+
+</main>
+>>>>>>> 09c6a43 (done)
 <?php endContainer($path); ?>

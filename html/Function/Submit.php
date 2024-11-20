@@ -58,7 +58,7 @@ class Submit
                 if(self::$db->insert("insert into Users (Usertype,Email,Password) values('$Usertype','$Email','$Password1')")){
                     $OTP = random_int(100000,999999);
                     self::$db->Execute("insert into otp (Email,OTP) values('$Email',$OTP)");
-                    self::$basic->SentOTPEmail($Email,1);
+                    self::$db->SentOTPEmail($Email);
                     self::$basic->success("User Registered Successfully",self::$basic->getRoot()."/Authentication");
                 }
                 else{
@@ -86,6 +86,17 @@ class Submit
                 $Username = $Email;
                 $UserDB = self::$db->fetch("select * from Users where Username = '$Email'; ");
                 $Email = $UserDB["Email"];
+            }
+            $isExistUser = self::$db->fetch("select * from Users where Email = '$Email'");
+            if($isExistUser <=0 || $isExistUser == null){
+                self::$basic->error("Account Not Found", 1);
+                return;
+            }
+            else{
+                if($UserDB["verified"] == 0){
+                    self::$basic->error("Account not Verified", 1);
+                    return;
+                }
             }
             if($UserDB["verified"] == 0){
                 self::$basic->error("Account not Verified", 1);

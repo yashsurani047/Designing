@@ -99,19 +99,31 @@ class TableHelper {
             function toggleOptions(button) {
                 const options = button.nextElementSibling; // Get the associated options div
                 const allOptions = document.querySelectorAll('.action-options'); // Get all options divs
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 09c6a43 (done)
                 // Close all other options divs
                 allOptions.forEach(option => {
                     if (option !== options) {
                         option.style.display = 'none';
                     }
                 });
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 09c6a43 (done)
                 // Toggle the visibility of the clicked options div
                 options.style.display = options.style.display === 'none' || options.style.display === '' ? 'block' : 'none';
             }
         </script>
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 09c6a43 (done)
         <?php
     }
     
@@ -158,7 +170,11 @@ class TableHelper {
                     <button class="btn btn-secondary" onclick="toggleOptions(this)">More Options</button>
                     <div class="action-options" style="display:none; margin-top: 5px;">
                         <?php if ($is_View): ?>
+<<<<<<< HEAD
                             <a class="btn btn-info btn-sm" href="<?php echo $path."/.."; ?>/Component/View.php?table=<?php echo urlencode($tableName); ?>&id=<?php echo htmlspecialchars($row[$columns[0]]); ?>">View Details</a>
+=======
+                            <a class="btn btn-info btn-sm" href="<?php echo $path."/.."; ?>/Component/View.php?table=<?php echo urlencode($tableName); ?>&Job_Id=<?php echo htmlspecialchars($row[$columns[0]]); ?>">View Details</a>
+>>>>>>> 09c6a43 (done)
                         <?php endif; ?>
                         <br>
                         <?php if ($is_Edit): ?>
