@@ -15,26 +15,42 @@ class TableHelper {
     public function table($title, $query, $is_Add = 0, $is_Edit = 0, $is_Delete = 0, $is_View = 1) {
         // Extract the table name from the query
         $tableName = $this->getTableNameFromQuery($query);
-
-        // Initialize search variable
+    
+        // Get the search term from the URL (if any)
         $search = isset($_GET['search']) ? trim($_GET['search']) : '';
-
+    
+        // If a search term is provided, modify the query to filter results
+        if ($search !== '') {
+            $search = mysqli_real_escape_string($this->db->getConnection(), $search); // Sanitize the search term
+            // Get the columns used in the SELECT query
+            $columns = $this->getColumnsFromQuery($query);
+            $columnsList = implode(", ", $columns); // Join columns into a comma-separated string
+            
+            // Check if the query already contains a WHERE clause
+            if (stripos($query, 'WHERE') === false) {
+                $query .= " WHERE CONCAT_WS(' ', $columnsList) LIKE '%$search%'";
+            } else {
+                $query .= " AND CONCAT_WS(' ', $columnsList) LIKE '%$search%'";
+            }
+        }
+    
         // Execute the query
         $result = $this->db->Execute($query);
-
-        if (!$result || mysqli_num_rows($result) == 0) {
-            echo "<center><h2>No Records Found</h2></center>";
-            return;
+    
+        // Ensure the result is valid
+        if ($result && mysqli_num_rows($result) > 0) {
+            // Get the column names from the first row of the result
+            $columns = array_keys(mysqli_fetch_assoc($result)); // Extract column names from the first row
+            mysqli_data_seek($result, 0); // Reset the result pointer
+    
+            // Ensure 'id' is the first column
+            if (in_array('id', $columns)) {
+                $columns = array_merge(['id'], array_diff($columns, ['id']));
+            }
+        } else {
+            $columns = []; // If no rows returned, set columns to an empty array
         }
-
-        // Get the column names from the first row of the result
-        $columns = array_keys(mysqli_fetch_assoc($result));
-        mysqli_data_seek($result, 0); // Reset the result pointer
-
-        // Ensure 'id' is the first column
-        if (in_array('id', $columns)) {
-            $columns = array_merge(['id'], array_diff($columns, ['id']));
-        }
+    
         ?>
         <div class="card" style="margin-left:35px;margin-right:35px;margin-top:35px;">
             <h5 class="card-header"><?php echo htmlspecialchars($title); ?></h5>
@@ -63,9 +79,14 @@ class TableHelper {
                         </thead>
                         <tbody id="table-body">
                             <?php
-                            // Display initial table data
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                $this->renderTableRow($row, $columns, $tableName, $is_Edit, $is_Delete, $is_View);
+                            // If no records are found, display a single row with a "No Records Found" message
+                            if (count($columns) == 0 || mysqli_num_rows($result) == 0) {
+                                echo "<tr><td colspan='" . (count($columns) + 1) . "' class='text-center'><strong>No Records Found</strong></td></tr>";
+                            } else {
+                                // Display the table rows
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    $this->renderTableRow($row, $columns, $tableName, $is_Edit, $is_Delete, $is_View);
+                                }
                             }
                             ?>
                         </tbody>
@@ -73,26 +94,39 @@ class TableHelper {
                 </div>
             </div>
         </div>
-
+    
         <script>
             function toggleOptions(button) {
                 const options = button.nextElementSibling; // Get the associated options div
                 const allOptions = document.querySelectorAll('.action-options'); // Get all options divs
-
+    
                 // Close all other options divs
                 allOptions.forEach(option => {
                     if (option !== options) {
                         option.style.display = 'none';
                     }
                 });
-
+    
                 // Toggle the visibility of the clicked options div
                 options.style.display = options.style.display === 'none' || options.style.display === '' ? 'block' : 'none';
             }
         </script>
-
+    
         <?php
     }
+    
+    
+    
+    // Helper function to get columns from the query
+    private function getColumnsFromQuery($query) {
+        // Basic extraction of columns from a SELECT query
+        preg_match('/SELECT\s+(.*?)\s+FROM/i', $query, $matches);
+        $columns = isset($matches[1]) ? $matches[1] : '';
+        $columns = explode(',', $columns);
+        $columns = array_map('trim', $columns);
+        return $columns;
+    }
+    
 
     private function renderTableRow($row, $columns, $tableName, $is_Edit, $is_Delete, $is_View) {
         if(!isset($path)){
@@ -124,7 +158,7 @@ class TableHelper {
                     <button class="btn btn-secondary" onclick="toggleOptions(this)">More Options</button>
                     <div class="action-options" style="display:none; margin-top: 5px;">
                         <?php if ($is_View): ?>
-                            <a class="btn btn-info btn-sm" href="<?php echo $path."/.."; ?>/Component/View.php?table=<?php echo urlencode($tableName); ?>&Job_Id=<?php echo htmlspecialchars($row[$columns[0]]); ?>">View Details</a>
+                            <a class="btn btn-info btn-sm" href="<?php echo $path."/.."; ?>/Component/View.php?table=<?php echo urlencode($tableName); ?>&id=<?php echo htmlspecialchars($row[$columns[0]]); ?>">View Details</a>
                         <?php endif; ?>
                         <br>
                         <?php if ($is_Edit): ?>
