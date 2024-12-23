@@ -20,7 +20,7 @@ FROM
 INNER JOIN 
     studentprofile s ON s.User_Id = a.User_Id
 INNER JOIN 
-    Jobs j ON j.Id = a.Job_Id
+    jobs j ON j.Id = a.Job_Id
 WHERE 
     j.User_Id = ".$_SESSION['Userid']." 
     AND EXISTS (

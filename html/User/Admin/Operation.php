@@ -8,7 +8,7 @@ $db = new Database();
 
 if(isset($_GET['Com_Id'])){
     try{
-        $JobId = $db->Execute("select applied.Id from applied inner join Jobs on applied.Job_Id = Jobs.Id where Jobs.User_Id = $_GET[Com_Id]");
+        $JobId = $db->Execute("select applied.Id from applied inner join jobs on applied.Job_Id = Jobs.Id where Jobs.User_Id = $_GET[Com_Id]");
         foreach($JobId as $id){
             $db->Execute("delete from applied where Id =$id");
         }

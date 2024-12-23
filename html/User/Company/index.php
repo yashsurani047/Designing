@@ -5,7 +5,7 @@
   require_once "$path/Function/Basic.php";
   require_once "$path/Function/Database.php";
   $db = new Database();
-  $user1 = $db->Execute_one("select * from Users where Id = $_SESSION[Userid]");
+  $user1 = $db->Execute_one("select * from users where Id = $_SESSION[Userid]");
   startContainer($path, $user);
   ?>
   <div class="container-xxl flex-grow-1 container-p-y">

@@ -10,7 +10,7 @@ if(isset($_GET['Token'])){
     if(isset($_GET['ref'])){
         $ref = $_GET['ref'];
         $OTP = $_GET['Token'];
-        $user = $db->fetch("select * from OTP where reference = '$ref' AND  pass = '$OTP'");
+        $user = $db->fetch("select * from otp where reference = '$ref' AND  pass = '$OTP'");
         if($user){
             $verify = $db->Execute("update Users set verified = 1 ");
             $basic->success("Account Verified successfully",$basic->getRoot()."/Authentication/Login.php");
@@ -27,7 +27,7 @@ if(isset($_POST['submit'])){
     $submit = $_POST["submit"];
     if($submit == "GetOTP"){
         $Email = $_POST['Email'];
-        if($db->fetch("select * from Users where Email = '$Email'") != null){
+        if($db->fetch("select * from users where Email = '$Email'") != null){
             $db->SentOTPEmail($Email);
             echo "<script>window.location.href = window.location.href;</script>";
         }
@@ -45,10 +45,10 @@ if(isset($_POST['submit'])){
             if($otp["Pass"] == $Token){
                 $basic->alert("Token Matched");
                 $db->delete("delete from otp where Email = '$otp[Email]'");
-                $user = $db->fetch("select Id from Users where Email = '$otp[Email]'");
+                $user = $db->fetch("select Id from users where Email = '$otp[Email]'");
                 $_SESSION['TokenUserId'] = $user['Id'];
                 $_SESSION['TokenTimestamp'] = time();
-                $db->update("update Users set verified = 1 where Id = '$user[Id]'");
+                $db->update("update users set verified = 1 where Id = '$user[Id]'");
                 ?>
                     <a href="Login.php">GOTO LOGIN PAGE</a><br><br>
                     <a href="ChangePassword.php">Change Password</a>

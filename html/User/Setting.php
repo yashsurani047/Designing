@@ -112,7 +112,7 @@ include "../Function/Database.php";
 $basic = new Basic();
 if(!isset($_SESSION["Userid"])) $basic->alert("First Logined In", "..");
 $db = new Database();
-$user = $db->fetch("select * from Users where Id = '$_SESSION[Userid]'");
+$user = $db->fetch("select * from users where Id = '$_SESSION[Userid]'");
 // var_dump($user);
 
 $oldPass = $_POST['oldPass'];

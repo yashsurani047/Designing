@@ -33,7 +33,7 @@ require_once "$path/Function/Basic.php";
       $message = mysqli_real_escape_string($conn, $_POST['message']);
 
       // Insert data into the database
-      $sql = "INSERT INTO ContactUs (name, email, message) VALUES ('$name', '$email', '$message')";
+      $sql = "INSERT INTO contactus (name, email, message) VALUES ('$name', '$email', '$message')";
 
       if ($conn->query($sql) === TRUE) {
           // Prepare email to be sent using PHPMailer

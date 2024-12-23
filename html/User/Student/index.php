@@ -7,7 +7,7 @@
   $basic = new Basic();
   $db = new Database();
   if(!isset($_SESSION["Userid"])) $basic->alert("First Logined In", $path);
-  $user1 = $db->fetch("select * from Users where Id = $_SESSION[Userid]");
+  $user1 = $db->fetch("select * from users where Id = $_SESSION[Userid]");
   startContainer($path, $user);
   ?>
   <div class="container-xxl flex-grow-1 container-p-y">

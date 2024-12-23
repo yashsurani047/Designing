@@ -14,7 +14,7 @@ $db = new Database();
 if(!isset($_GET['id'])){
      $_GET['id'] = null;
 }else{
-    $sql = "select * from Jobs where Id = ".$_GET['id'];
+    $sql = "select * from jobs where Id = ".$_GET['id'];
     if(!$job = $db->Execute_One($sql)){
         $basic->error("$_GET[table] Not Found", 1);
     }
@@ -235,7 +235,7 @@ if (!isset($_GET['id'])) {
     $_GET['id'] = 0;  // No job ID provided
 } else {
     // Fetch job details if ID is provided
-    $sql = "SELECT * FROM Jobs WHERE Id = " . $_GET['id'];
+    $sql = "SELECT * FROM jobs WHERE Id = " . $_GET['id'];
     $job = $db->Execute_One($sql);
     if (!$job && $_GET['id'] != 0) {
         $basic->error("$_GET[table] Not Found", 0);

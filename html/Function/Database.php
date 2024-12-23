@@ -98,7 +98,7 @@ class Database extends Basic {
         }
     
         // Check if the email exists in the database
-        $emailCheck = $this->fetch("select Email from Users where Email = '$Email'");
+        $emailCheck = $this->fetch("select Email from users where Email = '$Email'");
         
         if (!$emailCheck) {
             // If email is not found in the database, return an error

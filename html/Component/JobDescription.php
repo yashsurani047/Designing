@@ -6,7 +6,7 @@ require_once "$path/Function/Database.php";
 $basic  = new Basic($path);
 
 $db = new Database();
-$sql = "select * from Jobs where Id = ".$_GET['id'];
+$sql = "select * from jobs where Id = ".$_GET['id'];
 if(!$job = $db->Execute_One($sql)){
     $basic->error("$_GET[table] Not Found", 1);
 }
@@ -18,10 +18,10 @@ $Is_Collage  = $_SESSION['Usertype'] == "Collage";
 $Is_Student  = $_SESSION['Usertype'] == "Student";
 $Is_Company  = $_SESSION['Usertype'] == "Company";
 if($Is_Company){
-    $Is_Circulated  = $db->fetch("select * from Circulated where User_Id = ".$_SESSION['Userid']." AND  Job_Id = ".$_GET['id']) != null? true:false;
+    $Is_Circulated  = $db->fetch("select * from circulated where User_Id = ".$_SESSION['Userid']." AND  Job_Id = ".$_GET['id']) != null? true:false;
 }
 if($Is_Student){
-    $Is_Applied  = $db->fetch("select * from Applied where User_Id = ".$_SESSION['Userid']." AND  Job_Id = ".$_GET['id']) != null? true:false;
+    $Is_Applied  = $db->fetch("select * from applied where User_Id = ".$_SESSION['Userid']." AND  Job_Id = ".$_GET['id']) != null? true:false;
 }
 // echo $_SESSION['Userid']." AND  Job_Id = ".$_GET['Job_Id'];
 

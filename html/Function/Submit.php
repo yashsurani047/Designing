@@ -57,8 +57,8 @@ class Submit
         $Password2 = $_POST['Password2'] ?? null; if (!$Password2) { self::$basic->alert("Please Provide Confirm Password!", 1); return; }
         
         if ($Password1 == $Password2) {
-            if (self::$db->fetch("select * from Users where Email = '$Email'") == false) {
-                if(self::$db->insert("insert into Users (Usertype,Email,Password) values('$Usertype','$Email','$Password1')")){
+            if (self::$db->fetch("select * from users where Email = '$Email'") == false) {
+                if(self::$db->insert("insert into users (Usertype,Email,Password) values('$Usertype','$Email','$Password1')")){
                     $OTP = random_int(100000,999999);
                     self::$db->Execute("insert into otp (Email,pass) values('$Email',$OTP)");
                     self::$db->SentOTPEmail($Email);
@@ -79,18 +79,18 @@ class Submit
         $Password = $_POST['Password'] ?? null; if (!$Password) { self::$basic->alert("Please Provide Password!", 1); return; }
 
         // $result = self::$db->CheckUser($Email, $Password);
-        $result = self::$db->Execute("select * from Users where Email='$Email' and Password='$Password'");
+        $result = self::$db->Execute("select * from users where Email='$Email' and Password='$Password'");
 
         if ($result == true) {
             if (filter_var($Email, FILTER_VALIDATE_EMAIL)) {
-                $UserDB = self::$db->fetch("select * from Users where Email = '$Email'; ");
+                $UserDB = self::$db->fetch("select * from users where Email = '$Email'; ");
                 $Username = $UserDB["Username"];
             } else {
                 $Username = $Email;
-                $UserDB = self::$db->fetch("select * from Users where Username = '$Email'; ");
+                $UserDB = self::$db->fetch("select * from users where Username = '$Email'; ");
                 $Email = $UserDB["Email"];
             }
-            $isExistUser = self::$db->fetch("select * from Users where Email = '$Email'");
+            $isExistUser = self::$db->fetch("select * from users where Email = '$Email'");
             if($isExistUser <=0 || $isExistUser == null){
                 self::$basic->error("Account Not Found", 1);
                 return;
@@ -144,7 +144,7 @@ class Submit
         $db = new Database();
         $basic = new Basic();
         $Email = $_POST['Email'];
-        $user = $db->fetch("select * from Users where Email = '$Email'; ");
+        $user = $db->fetch("select * from users where Email = '$Email'; ");
         $Is_User = $Email == $user['Email']; //check its user or not
         if($Is_User){
             $db->SentOTPEmail($Email);
@@ -159,7 +159,7 @@ class Submit
         $newPass = $_POST['newPass'];
         $db = new Database();
         $basic = new Basic();
-        echo $sql = "update Users set Password = '$newPass' where Id=$userid";
+        echo $sql = "update users set Password = '$newPass' where Id=$userid";
         $db->Execute($sql);
         $basic->success("Password Changed Successfully",$basic->getRoot()."/Authentication/Login.php");
     }
