@@ -89,8 +89,40 @@ class Database extends Basic {
         $query = "SELECT * FROM `$table`";
         return $this->Execute($query);
     }
-
-    // Other methods...
+    public function SentOTPEmail($Email){
+        // Validate the email format first
+        if (!filter_var($Email, FILTER_VALIDATE_EMAIL)) {
+            // If email format is invalid, return an error message
+            self::error("Invalid email format");
+            return false;
+        }
+    
+        // Check if the email exists in the database
+        $emailCheck = $this->fetch("select Email from Users where Email = '$Email'");
+        
+        if (!$emailCheck) {
+            // If email is not found in the database, return an error
+            self::error("Email not found");
+            return false;
+        }
+    
+        // Generate a random OTP
+        $Token = random_int(10000, 99999);
+    
+        // If the email exists, update or insert the OTP in the database
+        if ($data = $this->fetch("select * from otp where Email = '$Email'")) {
+            $this->Execute("update otp set pass = '$Token' where Email = '$Email'");
+        } else {
+            $this->Execute("insert into otp (Email, Pass) values ('$Email', '$Token')");
+        }
+        $reference = $data['reference'];
+        // Send the OTP email
+        if ($this->SentEmail($Email, "Verification Link of your Placement Plus Account", "OTP: $Token \n\n" . $this->getRoot() . "/Authentication/verify.php?Token=" . $Token . "&ref=" .$reference)) {
+            self::success("Email was sent successfully");
+        } else {
+            self::error("Email was not sent, Facing an Error");
+        }
+    }
     public function SentEmail($toEmail,$subject,$message){
         $smtpHost = 'smtp.gmail.com'; // SMTP server
         $smtpPort = 587; // SMTP port
@@ -127,7 +159,20 @@ class Database extends Basic {
             return false;
         }
     }
-    public function SentOTPEmail($Email){
+    public function HiringEmail($Email, $data) {
+        // Extract relevant data
+        $StudentName = $data['Student_Name'];
+        $JobProfile = $data['Job_Profile'];
+        $CompanyName = $data['Company_Name'];
+        $CTC = $data['CTC'];
+        $JobLocation = $data['Job_Location'];
+        $JoiningDate = $data['Date_Of_Joining'];
+        $HRContact = $data['HR_Contact'];
+        // $HiringId = 12; // Ensure you get the correct Hiring_Id value
+        // print_r($data);
+        $hid = $this->Execute("select Id from hiring where User_Id = ".$data['User_Id']);
+        echo $HiringId = "Hiring ID".(int)$hid; // Ensure you get the correct Hiring_Id value
+        
         // Validate the email format first
         if (!filter_var($Email, FILTER_VALIDATE_EMAIL)) {
             // If email format is invalid, return an error message
@@ -135,32 +180,47 @@ class Database extends Basic {
             return false;
         }
     
-        // Check if the email exists in the database
-        $emailCheck = $this->fetch("select Email from Users where Email = '$Email'");
-        
-        if (!$emailCheck) {
-            // If email is not found in the database, return an error
-            self::error("Email not found");
-            return false;
-        }
+        // Generate the URL for downloading the offer letter
+        $offerLetterUrl = "http://localhost/Designing/html/vendor/offerlatter.php?Hiring_Id=" . $HiringId; // Make sure Hiring_Id is included
     
-        // Generate a random OTP
-        $Token = random_int(10000, 99999);
+        // Generate the plain text content for the offer letter
+        $emailSubject = "Job Offer Letter from $CompanyName";
+        $emailBody = "
+            Dear $StudentName,
     
-        // If the email exists, update or insert the OTP in the database
-        if ($this->fetch("select Email from otp where Email = '$Email'")) {
-            $data = $this->Execute("update otp set OTP = '$Token' where Email = '$Email'");
+            Congratulations! We are pleased to extend the offer to join $CompanyName as a $JobProfile.
+    
+            Below are the details of your offer:
+    
+            - Job Profile: $JobProfile
+            - CTC: $CTC
+            - Job Location: $JobLocation
+            - Date of Joining: $JoiningDate
+    
+            Our HR team will contact you shortly for further instructions. In the meantime, if you have any questions, feel free to reach out to our HR department.
+    
+            HR Contact Information: $HRContact
+    
+            Please click the link below to download your offer letter:
+            
+            $offerLetterUrl
+    
+            We look forward to welcoming you to our team!
+    
+            Best regards,
+            The $CompanyName Team
+            HR Contact Information: $HRContact
+        ";
+    
+        // Send the email
+        if ($this->SentEmail($Email, $emailSubject, $emailBody)) {
+            self::success("Offer letter email was sent successfully to $StudentName.");
+            $sql = "insert into hiring (User_Id, Job_Id) values($_GET[uid],$_GET[jid])";
+            $this->Execute("update hiring set OfferSent = 1 where Id = $HiringId");
         } else {
-            $data = $this->Execute("insert into otp (Email, Pass) values ('$Email', '$Token')");
-        }
-    
-        // Send the OTP email
-        if ($this->SentEmail($Email, "Verification Link of your Placement Plus Account", "OTP: $Token \n\n" . $this->getRoot() . "/Authentication/verify.php?Token=" . $Token)) {
-            self::success("Email was sent successfully");
-        } else {
-            self::error("Email was not sent, Facing an Error");
+            self::error("Error in sending offer letter email.");
         }
     }
-    
+       
 }
 ?>

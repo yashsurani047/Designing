@@ -79,6 +79,7 @@ if(isset($_SESSION['Email'])){
   <li><a class='nav-item me-5 desktop-nav ' href='$path/user/Company/index.php'>Home</a></li> <!--
   <li><a class='nav-item me-5 desktop-nav ' href='$path/user/Company/FindCollage.php'>Find Collage</a></li> --> 
   <li><a class='nav-item me-5 desktop-nav ' href='$path/user/Company/JobDrive.php'>Jobs</a></li>
+  <li><a class='nav-item me-5 desktop-nav ' href='$path/user/Company/Hired.php'>Hired</a></li>
   <li><a class='nav-item me-5 desktop-nav ' href='$path/user/Company/EmployeeRequest.php'>Employee requests</a></li>
   $Userbtn;
   ";
@@ -97,6 +98,7 @@ if(isset($_SESSION['Email'])){
   $Userbtn;
   ";
   $AdminMenu = "
+  <li><a class='dropdown-item' href='../Admin/ViewJob.php'>View Jobs</a></li> <!--
   <li><a class='dropdown-item' href='../Admin/ViewCompany.php'>View Company</a></li> <!--
   <li><a class='dropdown-item' href='../Admin/ViewCollage.php'>View Collage</a></li> -->
   <li><a class='dropdown-item' href='../Admin/ViewStudent.php'>View Student</a></li>

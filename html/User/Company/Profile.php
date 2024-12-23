@@ -174,82 +174,99 @@ if ($profile2 != null) {
             </div>
             <hr class="my-0" />
             <div class="card-body">
-              <form id="formAccountSettings" method="POST" method="POST"
-                action="<?php echo $path ?>/Function/submit.php">
-                <div class="row">
+            <form id="formAccountSettings" method="POST" action="<?php echo $path ?>/Function/submit.php">
+              <div class="row">
 
-                  <div class="mb-3 col-md-6">
-                    <label for="Company_Name" class="form-label">Company Name
-                    </label>
-                    <input class="form-control" type="text" id="Company_Name" name="Company_Name"
-                      value="<?php echo $Company_Name ?>" placeholder="Company Name" autofocus />
-                  </div>
-                  <div class="mb-3 col-md-6">
-                    <label for="Company_URL" class="form-label">Company URL
-                    </label>
-                    <input class="form-control" type="text" id="Company_URL" name="Company_URL"
-                      value="<?php echo $Company_URL ?>" placeholder="Company URL" autofocus />
-                  </div>
-                  <div class="mb-3 col-md-6">
-                    <label for="Company_Address" class="form-label">Company Address
-                    </label>
-                    <input class="form-control" type="text" name="Company_Address" id="Company_Address"
-                      value="<?php echo $Company_Address ?>" placeholder="Company Address" />
-                  </div>
-                  <div class="mb-3 col-md-6">
-                    <label for="Contact_Information" class="form-label">Contact Information
-                    </label>
-                    <input class="form-control" type="text" name="Contact_Information" id="Contact_Information"
-                      value="<?php echo $Contact_Information ?>" placeholder="Enter Contact Information" />
-                  </div>
-                  <div class="mb-3 col-md-6">
-                    <label class="form-label" for="Industry_Sector">Industry Sector
-                    </label>
-                    <div class="input-group input-group-merge">
-                      <input type="text" id="Industry_Sector" name="Industry_Sector" class="form-control"
-                        value="<?php echo $Industry_Sector ?>" placeholder="Industry Sector" />
-                    </div>
-                  </div>
-                  <div class="mb-3 col-md-6">
-                    <label for="Company_Overview" class="form-label">Company Overview
-                    </label>
-                    <input class="form-control" type="text" id="Company_Overview" name="Company_Overview"
-                      value="<?php echo $Company_Overview ?>" placeholder="Company Overview" />
-                  </div>
-                  <div class="mb-3 col-md-6">
-                    <label for="Top_Client" class="form-label">Top Clients or Partners
-                    </label>
-                    <input type="text" class="form-control" id="Top_Client" name="Top_Client"
-                      value="<?php echo $Top_Client ?>" placeholder="Top CLient or Partners" />
-                  </div>
-                  <div class="mb-3 col-md-6">
-                    <label class="form-label" for="Company_Award">Company Achievements and Awards
-                    </label>
-                    <div class="input-group input-group-merge">
-                      <span class="input-group-text"></span>
-                      <input type="text" id="Company_Award" name="Company_Award" class="form-control"
-                        value="<?php echo $Company_Award ?>" placeholder="Company Achievements and Awards" />
-                    </div>
-                  </div>
-
-
-                  <div class="mb-3 col-md-6">
-                    <label for="language" class="form-label">Language</label>
-                    <select id="language" class="select2 form-select" name="Language">
-                      <option value="">Select Language</option>
-                      <option value="English">English</option>
-                      <option value="Gujarati">Gujarati</option>
-                      <option value="Hindi">Hindi</option>
-                      <option value="Sanskrit">Sanskrit</option>
-                    </select>
-                  </div>
+                <div class="mb-3 col-md-6">
+                  <label for="Company_Name" class="form-label">Company Name</label>
+                  <input class="form-control" type="text" id="Company_Name" name="Company_Name"
+                    value="<?php echo $Company_Name ?>" placeholder="Company Name" autofocus required />
                 </div>
-                <div class="col-sm-10">
-                  <input type="hidden" class="btn btn-primary me-2" name="submit" value="Profile">
-                  <button type="submit" class="btn btn-primary me-2">Save Changes</button>
-                  <button type="button" class="btn btn-secondary" onclick="return window.history.go(-1)">Back</button>
+
+                <div class="mb-3 col-md-6">
+                  <label for="Company_URL" class="form-label">Company URL</label>
+                  <input class="form-control" type="text" id="Company_URL" name="Company_URL"
+                    value="<?php echo $Company_URL ?>" placeholder="Company URL" autofocus required />
                 </div>
-              </form>
+
+                <div class="mb-3 col-md-6">
+                  <label for="Company_Address" class="form-label">Company Address</label>
+                  <input class="form-control" type="text" name="Company_Address" id="Company_Address"
+                    value="<?php echo $Company_Address ?>" placeholder="Company Address" required />
+                </div>
+
+                <div class="mb-3 col-md-6">
+                  <label for="Contact_Information" class="form-label">Contact Information</label>
+                  <input class="form-control" type="text" name="Contact_Information" id="Contact_Information"
+                    value="<?php echo $Contact_Information ?>" placeholder="Enter Contact Information" required />
+                </div>
+
+                <div class="mb-3 col-md-6">
+                  <label class="form-label" for="Industry_Sector">Industry Sector</label>
+                  <input type="text" id="Industry_Sector" name="Industry_Sector" class="form-control"
+                    value="<?php echo $Industry_Sector ?>" placeholder="Industry Sector" required />
+                </div>
+
+                <div class="mb-3 col-md-6">
+                  <label for="Company_Overview" class="form-label">Company Overview</label>
+                  <input class="form-control" type="text" id="Company_Overview" name="Company_Overview"
+                    value="<?php echo $Company_Overview ?>" placeholder="Company Overview" required />
+                </div>
+
+                <div class="mb-3 col-md-6">
+                  <label for="Top_Client" class="form-label">Top Clients or Partners</label>
+                  <input type="text" class="form-control" id="Top_Client" name="Top_Client"
+                    value="<?php echo $Top_Client ?>" placeholder="Top Client or Partners" required />
+                </div>
+
+                <div class="mb-3 col-md-6">
+                  <label class="form-label" for="Company_Award">Company Achievements and Awards</label>
+                  <input type="text" id="Company_Award" name="Company_Award" class="form-control"
+                    value="<?php echo $Company_Award ?>" placeholder="Company Achievements and Awards" required />
+                </div>
+
+                <div class="mb-3 col-md-6">
+                  <label for="language" class="form-label">Language</label>
+                  <select id="language" class="select2 form-select" name="Language" required>
+                    <option value="">Select Language</option>
+                    <option value="English">English</option>
+                    <option value="Gujarati">Gujarati</option>
+                    <option value="Hindi">Hindi</option>
+                    <option value="Sanskrit">Sanskrit</option>
+                  </select>
+                </div>
+
+              </div>
+
+              <div class="col-sm-10">
+                <input type="hidden" class="btn btn-primary me-2" name="submit" value="Profile">
+                <button type="submit" class="btn btn-primary me-2">Save Changes</button>
+                <button type="button" class="btn btn-secondary" onclick="return window.history.go(-1)">Back</button>
+              </div>
+            </form>
+            <script>
+              document.getElementById("formAccountSettings").addEventListener("submit", function(event) {
+                let formValid = true;
+                let requiredFields = document.querySelectorAll("[required]");
+
+                requiredFields.forEach(function(field) {
+                  if (!field.value.trim()) {
+                    formValid = false;
+                    field.classList.add("is-invalid"); // Add a custom invalid class (Bootstrap)
+                    // You can add an error message display here as well.
+                  } else {
+                    field.classList.remove("is-invalid");
+                  }
+                });
+
+                if (!formValid) {
+                  event.preventDefault(); // Prevent form submission
+                  alert("Please fill out all required fields.");
+                }
+              });
+            </script>
+
+
             </div>
             <!-- /Account -->
           </div>

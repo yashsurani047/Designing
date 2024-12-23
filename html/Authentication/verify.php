@@ -6,6 +6,23 @@ include_once "$path/Function/Database.php";
 $db = new Basic();
 $db = new Database();
 startContainer($path, $user);
+if(isset($_GET['Token'])){
+    if(isset($_GET['ref'])){
+        $ref = $_GET['ref'];
+        $OTP = $_GET['Token'];
+        $user = $db->fetch("select * from OTP where reference = '$ref' AND  pass = '$OTP'");
+        if($user){
+            $verify = $db->Execute("update Users set verified = 1 ");
+            $basic->success("Account Verified successfully",$basic->getRoot()."/Authentication/Login.php");
+        }
+        else{
+            $basic->error("Invalid OTP",2);
+        }
+    }
+    else{
+        $basic->error("No reference found");
+    }
+}
 if(isset($_POST['submit'])){
     $submit = $_POST["submit"];
     if($submit == "GetOTP"){

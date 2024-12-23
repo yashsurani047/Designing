@@ -37,13 +37,16 @@ class Submit
         elseif ($_POST["submit"] == "Profile") $this->Profile();
         elseif ($_POST["submit"] == "Profile2") $this->Profile2();
         elseif ($_POST["submit"] == "AddJob") $this->JobDrive();
+        elseif ($_POST["submit"] == "hire") $this->Hire();
         elseif ($_POST["submit"] == "ForgotPass") $this->ForgotPass();
         elseif ($_POST["submit"] == "ChangePass") $this->ChangePass();
         elseif ($_POST["submit"] == "Apply") $this->Apply();
         exit();
     }
-    function programGet(){
+    function programGet(){        
         if($_GET['submit'] == "Logout") $this->Logout();
+        elseif ($_GET["submit"] == "AddJob") $this->JobDrive();
+        elseif ($_GET["submit"] == "hire") $this->Hire();
         exit();
     }
     function Register()
@@ -57,7 +60,7 @@ class Submit
             if (self::$db->fetch("select * from Users where Email = '$Email'") == false) {
                 if(self::$db->insert("insert into Users (Usertype,Email,Password) values('$Usertype','$Email','$Password1')")){
                     $OTP = random_int(100000,999999);
-                    self::$db->Execute("insert into otp (Email,OTP) values('$Email',$OTP)");
+                    self::$db->Execute("insert into otp (Email,pass) values('$Email',$OTP)");
                     self::$db->SentOTPEmail($Email);
                     self::$basic->success("User Registered Successfully",self::$basic->getRoot()."/Authentication");
                 }
@@ -177,12 +180,12 @@ class Submit
             $State = $_POST["State"];
             $Zip_Code = $_POST["Zip_Code"];
             $Language = $_POST["Language"];
-            if(self::$db->Execute("select * from studentprofile where User_Id = '$userID'") != null) {
+            if(self::$db->fetch("select * from studentprofile where User_Id = $userID") != null) {
                 $query = "UPDATE studentprofile SET First_Name = '$First_Name', Last_Name = '$Last_Name',
                 Father_Name = '$Father_Name', Parent_Number = '$Parent_Number',
                 Email = '$Email', Stream = '$Stream', Phone_Number = '$Phone_Number',
                 Address = '$Address', State = '$State', Zip_Code = $Zip_Code,
-                Language = '$Language' WHERE User_ID = '$userID'";
+                Language = '$Language' WHERE User_ID = $userID";
             }
             else{
                 $flag = 0; // Initialize flag
@@ -238,7 +241,7 @@ class Submit
                 if($flag){
                     $basic->error("Data Missing : $missedDataString ",$basic->getRoot()."/User/Student/Profile.php");
                 }
-                $query = "insert into studentprofile values(default,'$userID','$First_Name','$Last_Name','$Father_Name','$Parent_Number','$Email','$Stream','$Phone_Number','$Address','$State',$Zip_Code,'$Language',default)";
+                $query = "insert into studentprofile values(default,'$userID','$First_Name','$Last_Name','$Father_Name','$Parent_Number','$Email','$Stream','$Phone_Number','$Address','$State',$Zip_Code,'$Language',default, null)";
             }
         }
         if($user == "Company"){
@@ -257,7 +260,7 @@ class Submit
                     Company_Name = '$Company_Name', Company_URL = '$Company_URL', Company_Address = '$Company_Address', 
                     Contact_Information = '$Contact_Information', Industry_Sector = '$Industry_Sector', 
                     Company_Overview = '$Company_Overview', Top_Client = '$Top_Client', 
-                    Company_Award = '$Company_Award', Language = '$Language' WHERE User_ID = '$userID'";
+                    Company_Award = '$Company_Award', Language = '$Language' WHERE User_ID = $userID";
             }
             else{
                 // Collect form data into an associative array
@@ -293,14 +296,13 @@ class Submit
                 '$Company_Overview', '$Top_Client', '$Company_Award', '$Language',default)";
             }
         }
-        
+        echo $query;
         if(self::$db->Execute($query)){
-            self::$basic->success("Profile Updated");
+            self::$basic->success("Profile Updated", 1);
         }
         else{
-            self::$basic->error("Profile Updation Error");
+            self::$basic->error("Profile Updation Error or no changed made", 1);
         }
-        self::$basic->redirect(self::$basic->getRoot()."/User/$user/");
     }
     function Profile2(){
         $user = $_SESSION['Usertype'];
@@ -359,7 +361,7 @@ class Submit
         $user = $_SESSION['Usertype'];
         $userID = $_SESSION['Userid'];
 
-        if($user == "Company"){$Job_Id = $_POST["Job_Id"] ?? null;
+        if($user == "Company" || $user == "Admin"){$Job_Id = $_POST["Job_Id"] ?? null;
             $Job_Profile = $_POST["Job_Profile"] ?? null;
             $CTC = $_POST["CTC"] ?? null;
             $Job_Location = $_POST["Job_Location"] ?? null;
@@ -412,7 +414,7 @@ class Submit
             // Proceed with your code if there are no errors
             
 
-            if (self::$db->Execute("SELECT * FROM jobs WHERE Id = '$Job_Id'") != null) {
+            if (self::$db->Execute("SELECT * FROM jobs WHERE Id = '$Job_Id'") != null && $Job_Id != null) {
                 // Update existing record
                 $query = "UPDATE jobs SET 
                     Job_Profile = '$Job_Profile',
@@ -428,7 +430,7 @@ class Submit
                     DateTime = '$DateTime', 
                     Eligible_Course = '$Eligible_Course', 
                     Batch = '$Batch', 
-                    Due_Date = '$Due_Date' 
+                    Due_Date = '$Due_Date'
                     WHERE Id = '$Job_Id'";
             } else {
                 // Insert new record
@@ -440,12 +442,12 @@ class Submit
             }
             echo $query;
             if(self::$db->Execute($query)){
-                self::$basic->success("Job Added or Updated");
+                self::$basic->success("Job Added or Updated", 2);
             }
             else{
-                self::$basic->error("Profile Adding or Updation Error");
+                self::$basic->error("Profile Adding or Updation Error", 2);
             }
-            self::$basic->redirect(self::$basic->getRoot()."/User/$user/JobDrive.php");
+            // self::$basic->redirect(self::$basic->getUrl().""); //Not Executing
         }
     }
     function Apply(){
@@ -455,9 +457,73 @@ class Submit
         // echo "<br>User ID : ".$userID = $_SESSION['Userid'];
         
         echo "<br><br>Processing Applying...";
-        
-        $db->Execute("insert into Applied (User_Id, Job_Id) values($_SESSION[Userid],$_POST[Job_Id])");
+        echo $sql = "insert into Applied (User_Id, Job_Id) values($_SESSION[Userid],$_POST[Job_Id])";
+        $db->Execute($sql);
         $basic->success("Job Applied Successfully",2);
+    }
+    function Hire(){
+        $db = new Database();
+        $basic = new Basic();
+        echo "<br><br>Processing Hiring...";
+        $query = "SELECT
+                s.User_Id, 
+                CONCAT(s.First_Name, ' ', s.Last_Name) AS Student_Name,
+                s.Phone_Number AS Student_Phone,
+                s.Email AS Student_Email,
+                s.Stream AS Student_Stream,
+                
+                j.Job_Profile,
+                j.CTC,
+                j.Job_Location,
+                j.Internship,
+                j.Stipend,
+                j.Selection_Process,
+                j.Bond,
+                j.Term,
+                j.Date_Of_Joining,
+                
+                c.Company_Name,
+                c.Company_URL,
+                c.Company_Address,
+                c.Contact_Information AS Company_Contact,
+                
+                c2.HR_Name,
+                c2.HR_Contact,
+                c2.Job_Location AS Company_Job_Location,
+                c2.Eligibility_Criteria
+                
+            FROM 
+                applied a
+            INNER JOIN 
+                studentprofile s ON a.User_Id = s.User_Id
+            INNER JOIN 
+                jobs j ON a.Job_Id = j.Id
+            INNER JOIN 
+                companyprofile c ON j.User_Id = c.User_Id
+            INNER JOIN 
+                companyprofile2 c2 ON j.User_Id = c2.User_Id
+            WHERE 
+                a.Job_Id = " . (int)$_GET['jid'] . " AND 
+                a.User_Id = " . (int)$_GET['uid'];
+            $data = $db->Execute($query);
+            $row = mysqli_fetch_assoc($data);
+
+        if($db->Execute("select * from hiring where Job_Id = $_GET[jid] and User_Id = $_GET[uid]")){
+            $basic->success("Student Hired already",2);
+            self::$db->HiringEmail($row['Student_Email'], $row);
+        }
+        else
+        {
+            $sql = "insert into hiring (User_Id, Job_Id) values($_GET[uid],$_GET[jid])";
+            if($db->Execute($sql)){
+                $basic->success("Student Hired Successfully",2);
+                self::$db->HiringEmail($row['Student_Email'], $row);
+            }
+            else
+            {
+                $basic->error("Student Hired error",1);
+            }
+        }
     }
     
 }
