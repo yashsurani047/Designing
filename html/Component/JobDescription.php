@@ -68,10 +68,13 @@ if($Is_Student){
     <h1 class="fw-bold py-3"><span class="text-muted fw-light"></span> Job Details</h1>
     <?php
         if($Is_Edit){
-            ?><button class="btn btn-info" onclick="showEdit()">Edit</button><?php
+            ?>
+            <!-- <button class="btn btn-info" onclick="showEdit()">Edit</button> -->
+            <?php
         }
     ?> 
 </div>
+<a class="btn btn-info"href="../vendor/generate-invoice.php?Table_Name=jobs">Download</a>
    
 
               <!-- Basic Layout & Basic with Icons -->

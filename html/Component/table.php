@@ -57,7 +57,8 @@ class TableHelper {
             <h5 class="card-header"><?php echo htmlspecialchars($title); ?></h5>
             <div class="card-body d-flex justify-content-between align-items-center">
                 <?php if ($is_Add): ?>
-                    <a class="btn btn-primary" href="<?php echo $path."/.."; ?>/Component/Edit.php?table=<?php echo urlencode($tableName); ?>">New Entry</a>
+                    <a class="btn btn-primary" href="<?php echo "../.."; ?>/Component/Edit.php?id=1&table=<?php echo urlencode($tableName); ?>">New Entry</a>
+                    <!-- <a class="btn btn-primary" href="http://localhost/Designing/html/user/Company/AddNewJob.php?table=Jobs">New Entry</a> -->
                 <?php endif; ?>
                 <form method="GET" action="" class="d-flex">
                     <input type="text" name="search" value="<?php echo htmlspecialchars($search); ?>" placeholder="Search..." class="form-control" style="width: 300px; margin-right: 10px;">

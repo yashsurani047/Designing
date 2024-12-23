@@ -7,18 +7,19 @@ if(isset($_POST['table'])){
         $db = new Database();
         $table = $_POST['table'];
         if($table = "job"){
+            $table = "jobs";
             if($db->Execute("delete from applied where Job_Id =".$_POST['id'])){
                 $basic->success("Record Deleted");
             }
             else{
-                $basic->error("Record Deletion Error", $_SERVER['HTTP_REFERER']);
+                // $basic->error("Record applied Deletion Error", $_SERVER['HTTP_REFERER']);
             }
         }
         if($db->Execute("delete from $table where Id =".$_POST['id'])){
             $basic->success("Record Deleted", $_SERVER['HTTP_REFERER']);
         }
         else{
-            $basic->error("Record Deletion Error", $_SERVER['HTTP_REFERER']);
+            $basic->error("Record jobs Deletion Error", $_SERVER['HTTP_REFERER']);
         }
     }
     else{

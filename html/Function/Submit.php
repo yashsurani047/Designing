@@ -507,7 +507,15 @@ class Submit
                 a.User_Id = " . (int)$_GET['uid'];
             $data = $db->Execute($query);
             $row = mysqli_fetch_assoc($data);
-
+            $sql = "insert into hiring (User_Id, Job_Id) values($_GET[uid],$_GET[jid])";
+            if($db->Execute($sql)){
+                $basic->success("Student Hired Successfully",2);
+                self::$db->HiringEmail($row['Student_Email'], $row);
+            }
+            else
+            {
+                $basic->error("Student Hired error",1);
+            }
         if($db->Execute("select * from hiring where Job_Id = $_GET[jid] and User_Id = $_GET[uid]")){
             $basic->success("Student Hired already",2);
             self::$db->HiringEmail($row['Student_Email'], $row);

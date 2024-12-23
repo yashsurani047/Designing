@@ -171,7 +171,7 @@ class Database extends Basic {
         // $HiringId = 12; // Ensure you get the correct Hiring_Id value
         // print_r($data);
         $hid = $this->Execute("select Id from hiring where User_Id = ".$data['User_Id']);
-        echo $HiringId = "Hiring ID".(int)$hid; // Ensure you get the correct Hiring_Id value
+        echo $HiringId = (int)$hid; // Ensure you get the correct Hiring_Id value
         
         // Validate the email format first
         if (!filter_var($Email, FILTER_VALIDATE_EMAIL)) {
